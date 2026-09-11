@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mehran Sahara Foundation | Sindh Relief, Water & Education NGO (سنڌ سهارو)</title>
+  <meta name="description" content="Dedicated humanitarian NGO in Sindh, Pakistan. Providing clean drinking water in Tharparkar, flood-resilient housing along the Indus, rural girls' solar education, and mobile healthcare with a 100% Zakat policy.">
+  <meta name="keywords" content="Sindh NGO, Tharparkar water charity, flood relief Sindh, Pakistan charity, Zakat Sindh, Indus river relief, donate Pakistan, Mehran Sahara">
+  <meta property="og:title" content="Mehran Sahara Foundation | Sindh Relief & Hope">
+  <meta property="og:description" content="Join us in bringing clean water to Thar, rebuilding homes after floods, and educating girls in rural Sindh. 100% Direct Delivery.">
+  <meta property="og:image" content="assets/images/hero.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- Top Emergency & Currency Bar -->
+  <div class="top-bar ajrak-border-top">
+    <div class="container top-bar-inner">
+      <div class="emergency-ticker">
+        <span class="pulse-dot"></span>
+        <span><strong>URGENT APPEAL:</strong> Monsoon preparedness & clean water crisis response in Tharparkar & rural Sindh — <em>100% Zakat Verified</em></span>
+      </div>
+      <div class="top-bar-actions">
+        <div class="currency-toggle">
+          <button type="button" class="curr-btn curr-pkr-btn active" title="Pakistani Rupees">🇵🇰 PKR (₨)</button>
+          <button type="button" class="curr-btn curr-usd-btn" title="US Dollars for Overseas Donors">🌐 USD ($)</button>
+        </div>
+        <a href="https://wa.me/923004746341" target="_blank" class="top-contact-link">
+          <span>💬 WhatsApp Aid: +92 300 4746341</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-symbol">
+          <span>س</span>
+        </div>
+        <div class="brand-names">
+          <span class="brand-title">Mehran Sahara</span>
+          <span class="brand-sub">
+            <span>سنڌ سهارو ٽرسٽ</span>
+            <span>•</span>
+            <span class="ajrak-badge">Sindh Relief Trust</span>
+          </span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#causes" class="nav-link">Our Causes</a></li>
+          <li><a href="#impact" class="nav-link">Impact Calculator</a></li>
+          <li><a href="#districts" class="nav-link">Sindh Districts</a></li>
+          <li><a href="#zakat" class="nav-link">Zakat Portal</a></li>
+          <li><a href="#transparency" class="nav-link">Transparency</a></li>
+          <li><a href="#stories" class="nav-link">Stories of Hope</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle theme">🌙</button>
+        <a href="#zakat" class="btn btn-outline btn-sm">Calculate Zakat</a>
+        <button type="button" class="btn btn-primary btn-sm" onclick="openDonationModal()">Donate Now</button>
+        <button type="button" id="mobile-menu-toggle" class="mobile-toggle" aria-label="Open navigation menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Integrated Quick Donation Card -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span>🌾 سندھ سہارا فاؤنڈیشن</span>
+          <span>•</span>
+          <span>100% Direct Delivery</span>
+        </div>
+        <h1 class="hero-title">
+          Empowering Resilient Communities Across <span class="highlight">Sindh</span>
+        </h1>
+        <p class="hero-lead">
+          From the arid sand dunes of Tharparkar to the vulnerable riverbanks of the Indus — we provide solar-powered deep water wells, climate-resilient homes, solar schools for rural girls, and mobile health clinics.
+        </p>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#causes" class="btn btn-gold btn-lg">Explore Sindh Causes</a>
+          <button type="button" class="btn btn-outline btn-lg open-volunteer-modal-btn" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">Volunteer in Sindh</button>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="stat-item">
+            <div class="stat-num">₨ 240M<span class="plus">+</span></div>
+            <div class="stat-label">Direct Field Aid Delivered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">520<span class="plus">+</span></div>
+            <div class="stat-label">Solar Wells in Tharparkar</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">78,000<span class="plus">+</span></div>
+            <div class="stat-label">Sindh Families Empowered</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Donate Card Widget -->
+      <div class="hero-donate-card">
+        <div class="donate-card-header">
+          <div class="card-title-row">
+            <h3 class="donate-card-title">Send Urgent Relief to Sindh</h3>
+            <span class="zakat-flag">100% Zakat Eligible</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Fast, secure & directly delivered to vetted beneficiaries.</p>
+        </div>
+
+        <!-- Frequency Tabs -->
+        <div class="freq-tabs">
+          <button type="button" class="freq-btn hero-freq-btn active" data-freq="once">Give Once</button>
+          <button type="button" class="freq-btn hero-freq-btn" data-freq="monthly">Monthly Hope</button>
+          <button type="button" class="freq-btn hero-freq-btn" data-freq="zakat">Pay Zakat</button>
+        </div>
+
+        <!-- Preset Amount Grid -->
+        <div class="amount-grid" id="hero-preset-grid">
+          <!-- Populated dynamically via JS based on selected currency -->
+        </div>
+
+        <!-- Custom Input -->
+        <div class="custom-amount-wrapper">
+          <span class="currency-symbol-input curr-symbol-text">₨</span>
+          <input type="number" id="hero-custom-amount" class="custom-amount-input" placeholder="Or enter custom amount" min="100">
+        </div>
+
+        <!-- Dynamic Impact Description -->
+        <div class="donation-impact-box">
+          <span style="font-size: 1.25rem;">✨</span>
+          <span id="hero-impact-text">Provides emergency food rations & clean drinking water for 1 rural household for a month.</span>
+        </div>
+
+        <button type="button" id="hero-submit-donate-btn" class="btn btn-accent btn-lg btn-block">
+          Proceed to Secure Donation →
+        </button>
+
+        <div class="donate-guarantee">
+          <div class="guarantee-item">
+            <span>🔒</span> 256-Bit SSL Encrypted
+          </div>
+          <span>•</span>
+          <div class="guarantee-item">
+            <span>🧾</span> Instant Tax Receipt
+          </div>
+          <span>•</span>
+          <div class="guarantee-item">
+            <span>🇵🇰</span> Raast / Easypaisa / Cards
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust & Governance Strip -->
+  <section class="trust-strip">
+    <div class="container trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon-wrap">🛡️</div>
+        <div class="trust-text">
+          <h4>100% Zakat Policy</h4>
+          <p>Every single rupee of Zakat reaches verified Mustahiqeen with 0% administrative deductions.</p>
+        </div>
+      </div>
+
+      <div class="trust-card">
+        <div class="trust-icon-wrap">🏛️</div>
+        <div class="trust-text">
+          <h4>Sindh Registered Trust</h4>
+          <p>Approved by the Sindh Charity Commission & Government of Sindh welfare directorate.</p>
+        </div>
+      </div>
+
+      <div class="trust-card">
+        <div class="trust-icon-wrap">⚖️</div>
+        <div class="trust-text">
+          <h4>Shariah Certified</h4>
+          <p>Audited and verified by senior certified Islamic scholars for strict Zakat compliance.</p>
+        </div>
+      </div>
+
+      <div class="trust-card">
+        <div class="trust-icon-wrap">📄</div>
+        <div class="trust-text">
+          <h4>FBR Tax Exemption</h4>
+          <p>Official tax deduction certificates issued automatically with every contribution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Active Causes & Campaigns -->
+  <section class="causes-section" id="causes">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Active Relief Programs</span>
+        <h2 class="section-title">Critical Causes Requiring Your Support in Sindh</h2>
+        <p class="section-desc">
+          Every project is managed on the ground in partnership with local Sindhi village committees to ensure long-term community ownership and sustainability.
+        </p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <button type="button" class="filter-pill active" data-filter="all">All Causes</button>
+        <button type="button" class="filter-pill" data-filter="water">💧 Thar Clean Water</button>
+        <button type="button" class="filter-pill" data-filter="education">📚 Rural Girls Education</button>
+        <button type="button" class="filter-pill" data-filter="flood">🏠 Flood Resilient Homes</button>
+        <button type="button" class="filter-pill" data-filter="health">🩺 Mobile Healthcare</button>
+        <button type="button" class="filter-pill" data-filter="emergency">🚨 Emergency Aid</button>
+      </div>
+
+      <!-- Campaign Cards Grid -->
+      <div class="campaigns-grid">
+        <!-- Campaign 1: Thar Water -->
+        <div class="campaign-card" data-category="water">
+          <div class="campaign-img-wrap">
+            <img src="assets/images/thar-water.jpg" alt="Solar Powered Clean Water Wells in Tharparkar Sindh" loading="lazy">
+            <span class="campaign-category-badge">Tharparkar Water</span>
+            <span class="campaign-zakat-pill">Zakat Eligible</span>
+          </div>
+          <div class="campaign-body">
+            <div class="campaign-location">📍 Mithi & Chachro, Thar Desert</div>
+            <h3 class="campaign-title">Solar Deep Water Wells & RO Desalination in Thar</h3>
+            <p class="campaign-desc">
+              Drilling 250-foot solar-powered boreholes to provide sweet, fluorosis-free drinking water to drought-stricken desert communities.
+            </p>
+
+            <div class="campaign-progress-block">
+              <div class="progress-labels">
+                <span class="raised-val">₨ 3,840,000 Raised</span>
+                <span class="goal-val">Goal: ₨ 5,000,000</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar-fill" style="width: 76.8%;"></div>
+              </div>
+            </div>
+
+            <div class="campaign-meta-row">
+              <span>👥 482 Donors</span>
+              <span>⏳ 14 Days Remaining</span>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Tharparkar Solar Deep Wells" data-default-pkr="10000">
+              Support Thar Water →
+            </button>
+          </div>
+        </div>
+
+        <!-- Campaign 2: Education -->
+        <div class="campaign-card" data-category="education">
+          <div class="campaign-img-wrap">
+            <img src="assets/images/education.jpg" alt="Rural Girls Education in interior Sindh" loading="lazy">
+            <span class="campaign-category-badge">Education</span>
+            <span class="campaign-zakat-pill">Zakat Eligible</span>
+          </div>
+          <div class="campaign-body">
+            <div class="campaign-location">📍 Larkana & Qambar Shahdadkot</div>
+            <h3 class="campaign-title">Marvi Solar Classrooms & Girls' Education Fund</h3>
+            <p class="campaign-desc">
+              Empowering young rural girls with free schooling, solar lighting, learning tablets, qualified female teachers, and midday nutritious meals.
+            </p>
+
+            <div class="campaign-progress-block">
+              <div class="progress-labels">
+                <span class="raised-val">₨ 2,450,000 Raised</span>
+                <span class="goal-val">Goal: ₨ 3,500,000</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar-fill" style="width: 70%;"></div>
+              </div>
+            </div>
+
+            <div class="campaign-meta-row">
+              <span>👥 319 Donors</span>
+              <span>⏳ Ongoing Fund</span>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Marvi Girls Solar Education" data-default-pkr="5000">
+              Sponsor a Student →
+            </button>
+          </div>
+        </div>
+
+        <!-- Campaign 3: Flood Homes -->
+        <div class="campaign-card" data-category="flood">
+          <div class="campaign-img-wrap">
+            <img src="assets/images/flood-rebuild.jpg" alt="Flood Resilient Raised Brick Shelters in Sindh" loading="lazy">
+            <span class="campaign-category-badge">Housing Recovery</span>
+            <span class="campaign-zakat-pill">Zakat Eligible</span>
+          </div>
+          <div class="campaign-body">
+            <div class="campaign-location">📍 Dadu, Khairpur & Johi</div>
+            <h3 class="campaign-title">Indus Basin Climate-Resilient Raised Homes</h3>
+            <p class="campaign-desc">
+              Building sturdy 1-room brick homes on 4-foot elevated plinths to keep families, elderly, and livestock safe from future monsoon floodwaters.
+            </p>
+
+            <div class="campaign-progress-block">
+              <div class="progress-labels">
+                <span class="raised-val">₨ 7,920,000 Raised</span>
+                <span class="goal-val">Goal: ₨ 10,000,000</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar-fill" style="width: 79.2%;"></div>
+              </div>
+            </div>
+
+            <div class="campaign-meta-row">
+              <span>👥 684 Donors</span>
+              <span>⏳ 22 Days Remaining</span>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Flood Resilient Brick Housing" data-default-pkr="35000">
+              Rebuild a Family Home →
+            </button>
+          </div>
+        </div>
+
+        <!-- Campaign 4: Healthcare -->
+        <div class="campaign-card" data-category="health">
+          <div class="campaign-img-wrap">
+            <img src="assets/images/healthcare.jpg" alt="Mobile Mother and Child Healthcare clinic in Coastal Sindh" loading="lazy">
+            <span class="campaign-category-badge">Healthcare</span>
+            <span class="campaign-zakat-pill">Zakat Eligible</span>
+          </div>
+          <div class="campaign-body">
+            <div class="campaign-location">📍 Thatta, Badin & Sujawal Delta</div>
+            <h3 class="campaign-title">Coastal Delta Mobile Mother & Child Medical Units</h3>
+            <p class="campaign-desc">
+              Specialized boat and van clinics reaching remote riverine hamlets to provide prenatal care, pediatric screenings, and emergency medical kits.
+            </p>
+
+            <div class="campaign-progress-block">
+              <div class="progress-labels">
+                <span class="raised-val">₨ 1,890,000 Raised</span>
+                <span class="goal-val">Goal: ₨ 2,800,000</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar-fill" style="width: 67.5%;"></div>
+              </div>
+            </div>
+
+            <div class="campaign-meta-row">
+              <span>👥 245 Donors</span>
+              <span>⏳ Monthly Mission</span>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Mobile Coastal Healthcare Units" data-default-pkr="3500">
+              Support Medical Aid →
+            </button>
+          </div>
+        </div>
+
+        <!-- Campaign 5: Emergency Rations -->
+        <div class="campaign-card" data-category="emergency">
+          <div class="campaign-img-wrap">
+            <img src="assets/images/hero.jpg" alt="Emergency Rations and Food Relief for Sindh" loading="lazy">
+            <span class="campaign-category-badge">Emergency Food</span>
+            <span class="campaign-zakat-pill">100% Zakat</span>
+          </div>
+          <div class="campaign-body">
+            <div class="campaign-location">📍 Interior Sindh Districts</div>
+            <h3 class="campaign-title">Monsoon Emergency Rations & Nutrition Drive</h3>
+            <p class="campaign-desc">
+              Delivering monthly packages of flour, rice, lentils, ghee, clean water jerrycans, and baby nutritional packs to vulnerable wage-labor families.
+            </p>
+
+            <div class="campaign-progress-block">
+              <div class="progress-labels">
+                <span class="raised-val">₨ 4,120,000 Raised</span>
+                <span class="goal-val">Goal: ₨ 5,000,000</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar-fill" style="width: 82.4%;"></div>
+              </div>
+            </div>
+
+            <div class="campaign-meta-row">
+              <span>👥 712 Donors</span>
+              <span>⏳ High Urgency</span>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Monsoon Emergency Rations Drive" data-default-pkr="3500">
+              Provide Rations →
+            </button>
+          </div>
+        </div>
+
+        <!-- Campaign 6: Livelihood -->
+        <div class="campaign-card" data-category="flood">
+          <div class="campaign-img-wrap">
+            <img src="assets/images/thar-water.jpg" alt="Sindhi Women Artisan Micro-Livelihood & Goat Units" loading="lazy">
+            <span class="campaign-category-badge">Livelihood</span>
+            <span class="campaign-zakat-pill">Zakat Eligible</span>
+          </div>
+          <div class="campaign-body">
+            <div class="campaign-location">📍 Sanghar & Mirpurkhas</div>
+            <h3 class="campaign-title">Sindh Women Micro-Livelihood & Livestock Grants</h3>
+            <p class="campaign-desc">
+              Granting milk-producing goats, rilli quilting sewing machines, and artisan embroidery toolkits to widowed and landless rural women.
+            </p>
+
+            <div class="campaign-progress-block">
+              <div class="progress-labels">
+                <span class="raised-val">₨ 1,450,000 Raised</span>
+                <span class="goal-val">Goal: ₨ 2,000,000</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-bar-fill" style="width: 72.5%;"></div>
+              </div>
+            </div>
+
+            <div class="campaign-meta-row">
+              <span>👥 198 Donors</span>
+              <span>⏳ Ongoing Support</span>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Sindh Women Micro-Livelihood" data-default-pkr="15000">
+              Grant a Livestock Unit →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Impact Simulator Section -->
+  <section class="simulator-section" id="impact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Real Impact Simulator</span>
+        <h2 class="section-title">See Where Every Rupee Transforms Sindh</h2>
+        <p class="section-desc">
+          Drag the slider below to simulate the exact, measurable relief your contribution delivers to families on the ground.
+        </p>
+      </div>
+
+      <div class="simulator-card">
+        <div class="slider-container">
+          <div class="slider-amount-display" id="simulator-display-val">₨ 15,000</div>
+          <p class="slider-sub">Your Selected Contribution Level</p>
+          <input type="range" class="range-slider" id="impact-range-slider" min="2000" max="250000" step="1000" value="15000">
+        </div>
+
+        <div class="outcomes-grid">
+          <div class="outcome-box">
+            <div class="outcome-icon">💧</div>
+            <div class="outcome-val" id="outcome-water-liters">10,714 L</div>
+            <div class="outcome-label">Clean Filtered Drinking Water</div>
+          </div>
+
+          <div class="outcome-box">
+            <div class="outcome-icon">📚</div>
+            <div class="outcome-val" id="outcome-school-kits">3</div>
+            <div class="outcome-label">School Bags & Solar Lamp Kits</div>
+          </div>
+
+          <div class="outcome-box">
+            <div class="outcome-icon">🧱</div>
+            <div class="outcome-val" id="outcome-bricks">833</div>
+            <div class="outcome-label">Resilient Bricks for Raised Homes</div>
+          </div>
+
+          <div class="outcome-box">
+            <div class="outcome-icon">🍲</div>
+            <div class="outcome-val" id="outcome-meals">68</div>
+            <div class="outcome-label">Hot Cooked Nutritious Meals</div>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <button type="button" id="simulator-donate-btn" class="btn btn-primary btn-lg">
+            Donate This Exact Amount Now →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Sindh District Showcase -->
+  <section class="district-section" id="districts">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Regional Presence</span>
+        <h2 class="section-title">Where We Work Across Sindh</h2>
+        <p class="section-desc">
+          Every district in Sindh possesses distinct geographic and climatic realities. Explore our tailored regional interventions.
+        </p>
+      </div>
+
+      <div class="district-selector-bar">
+        <button type="button" class="district-pill active" data-district="tharparkar">Tharparkar Desert (ٿر)</button>
+        <button type="button" class="district-pill" data-district="dadu">Dadu & Khairpur (دادو)</button>
+        <button type="button" class="district-pill" data-district="thatta">Thatta & Sujawal Delta (ٺٽو)</button>
+        <button type="button" class="district-pill" data-district="larkana">Larkana & Qambar (لاڙڪاڻو)</button>
+      </div>
+
+      <div class="district-detail-card" id="district-card-container">
+        <div class="district-info-pane">
+          <span class="district-badge" id="district-badge">Drought Resilience Zone</span>
+          <h3 class="district-name" id="district-title">Tharparkar (ٿرپارڪر)</h3>
+          <p class="district-overview" id="district-overview">
+            In the remote desert villages of Mithi, Islamkot, Chachro and Nagarparkar, chronic water scarcity forces women and children to walk up to 7 km daily under extreme 48°C heat. Mehran Sahara has drilled 380+ solar deep-water boreholes and solar RO purification units.
+          </p>
+
+          <div class="district-stats-grid" id="district-stats-grid">
+            <div class="d-stat-box">
+              <div class="d-stat-num">380+</div>
+              <div class="d-stat-lbl">Solar Water Wells Built</div>
+            </div>
+            <div class="d-stat-box">
+              <div class="d-stat-num">48,000+</div>
+              <div class="d-stat-lbl">Villagers with Clean Tap Water</div>
+            </div>
+            <div class="d-stat-box">
+              <div class="d-stat-num">12</div>
+              <div class="d-stat-lbl">Solar RO Plants Active</div>
+            </div>
+            <div class="d-stat-box">
+              <div class="d-stat-num">100%</div>
+              <div class="d-stat-lbl">Powered by Renewable Solar</div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-accent btn-sm" style="width: fit-content;" onclick="openDonationModal({cause: 'Tharparkar Water Wells'})">
+            Support This District →
+          </button>
+        </div>
+
+        <div class="district-img-pane">
+          <img src="assets/images/thar-water.jpg" alt="Sindh District Focus" id="district-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Sindh Zakat Portal -->
+  <section class="zakat-section" id="zakat">
+    <div class="container">
+      <div class="zakat-grid">
+        <div class="zakat-info-col">
+          <span class="section-subtitle">100% Zakat Certified</span>
+          <h2 class="section-title">Fulfill Your Sacred Zakat with Radical Transparency</h2>
+          <p class="section-desc">
+            We adhere to a strict 100% Zakat Policy: zero administrative or operational expenses are deducted from your Zakat. Every rupee goes directly to verified impoverished families in Sindh.
+          </p>
+
+          <ul class="zakat-feature-list">
+            <li class="zakat-feature-item">
+              <div class="z-check-icon">✓</div>
+              <div class="z-feature-text">
+                <h4>100% Direct Delivery Guarantee</h4>
+                <p>Administrative and marketing costs are funded exclusively through dedicated private endowments and unrestricted Sadaqah.</p>
+              </div>
+            </li>
+
+            <li class="zakat-feature-item">
+              <div class="z-check-icon">✓</div>
+              <div class="z-feature-text">
+                <h4>Verified Mustahiqeen Only</h4>
+                <p>Beneficiaries undergo rigorous community door-to-door validation and NADRA family status checks in interior Sindh.</p>
+              </div>
+            </li>
+
+            <li class="zakat-feature-item">
+              <div class="z-check-icon">✓</div>
+              <div class="z-feature-text">
+                <h4>Scholar-Approved Fatwa</h4>
+                <p>Compliant with Quranic categories (As-Sadaqat) under continuous oversight by recognized Muftis.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="nisab-badge-row">
+            <div class="nisab-item">
+              <span>Silver Nisab (612.36g):</span>
+              <span class="nisab-val">Approx ₨ 185,000</span>
+            </div>
+            <div class="nisab-item">
+              <span>Gold Nisab (87.48g):</span>
+              <span class="nisab-val">Approx ₨ 2,150,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Calculator Card -->
+        <div class="zakat-calc-card">
+          <h3 class="calc-title">Sindh Zakat Calculator</h3>
+          <p class="calc-subtitle">Calculate your annual 2.5% Zakat liability in seconds.</p>
+
+          <div class="calc-inputs-grid">
+            <div class="calc-field">
+              <label class="calc-label">Cash in Hand & Bank Accounts</label>
+              <div class="calc-input-group">
+                <span class="curr-symbol-text">₨</span>
+                <input type="number" id="zakat-cash" class="calc-input zakat-input-calc" placeholder="0" value="100000">
+              </div>
+            </div>
+
+            <div class="calc-field">
+              <label class="calc-label">Gold & Jewelry Value</label>
+              <div class="calc-input-group">
+                <span class="curr-symbol-text">₨</span>
+                <input type="number" id="zakat-gold" class="calc-input zakat-input-calc" placeholder="0" value="150000">
+              </div>
+            </div>
+
+            <div class="calc-field">
+              <label class="calc-label">Silver Value</label>
+              <div class="calc-input-group">
+                <span class="curr-symbol-text">₨</span>
+                <input type="number" id="zakat-silver" class="calc-input zakat-input-calc" placeholder="0" value="0">
+              </div>
+            </div>
+
+            <div class="calc-field">
+              <label class="calc-label">Business Inventory / Stocks</label>
+              <div class="calc-input-group">
+                <span class="curr-symbol-text">₨</span>
+                <input type="number" id="zakat-business" class="calc-input zakat-input-calc" placeholder="0" value="50000">
+              </div>
+            </div>
+
+            <div class="calc-field" style="grid-column: span 2;">
+              <label class="calc-label">Less: Immediate Liabilities / Debts Due</label>
+              <div class="calc-input-group">
+                <span class="curr-symbol-text">₨</span>
+                <input type="number" id="zakat-liabilities" class="calc-input zakat-input-calc" placeholder="0" value="20000">
+              </div>
+            </div>
+          </div>
+
+          <div class="zakat-result-banner">
+            <div>
+              <div class="zakat-due-label">Total Zakat Payable (2.5%)</div>
+              <div style="font-size: 0.74rem; color: var(--primary);">Above Silver Nisab Standard</div>
+            </div>
+            <div class="zakat-due-amount" id="zakat-calculated-display">₨ 7,000</div>
+          </div>
+
+          <button type="button" id="btn-donate-calculated-zakat" class="btn btn-primary btn-block btn-lg">
+            Direct My Zakat to Sindh Relief →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories of Hope & Beneficiaries -->
+  <section class="stories-section" id="stories">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Voices from the Ground</span>
+        <h2 class="section-title">Stories of Transformation in Rural Sindh</h2>
+        <p class="section-desc">
+          Behind every statistic is a human life renewed. Meet the families whose dignity has been restored through your generosity.
+        </p>
+      </div>
+
+      <div class="stories-grid">
+        <!-- Story 1 -->
+        <div class="story-card">
+          <div class="quote-mark">“</div>
+          <p class="story-quote">
+            "Before the solar water pump, our women and young daughters spent six exhausting hours every day pulling brackish water from 180-foot wells under the Thar desert sun. Now, clean sweet water flows right into our village courtyard. Our girls are finally attending school instead of carrying water pots."
+          </p>
+          <div class="story-author">
+            <img src="assets/images/thar-water.jpg" alt="Mai Jamna" class="story-avatar">
+            <div class="author-info">
+              <h4>Mai Jamna</h4>
+              <p>Chachro, Tharparkar District</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="story-card">
+          <div class="quote-mark">“</div>
+          <p class="story-quote">
+            "The 2022 deluge washed away our ancestral mud house overnight. We lived on the highway embankment under plastic sheets for months. Mehran Sahara rebuilt our permanent brick home on a 4-foot raised plinth. When heavy rains returned this monsoon, our children slept warm and completely dry."
+          </p>
+          <div class="story-author">
+            <img src="assets/images/flood-rebuild.jpg" alt="Allah Dino" class="story-avatar">
+            <div class="author-info">
+              <h4>Allah Dino Solangi</h4>
+              <p>Khairpur Nathan Shah, Dadu</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="story-card">
+          <div class="quote-mark">“</div>
+          <p class="story-quote">
+            "In our village, no girl had ever finished primary school because the nearest school had no roof or electricity. Mehran Sahara installed solar panels, ceiling fans, and provided free bags and books. I dream of becoming a doctor to heal mothers in our village."
+          </p>
+          <div class="story-author">
+            <img src="assets/images/education.jpg" alt="Bakhtawar" class="story-avatar">
+            <div class="author-info">
+              <h4>Bakhtawar & Amina</h4>
+              <p>Rural Qambar-Shahdadkot</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financial Transparency & Governance -->
+  <section class="transparency-section" id="transparency">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Accountability</span>
+        <h2 class="section-title">Where Every Rupee Truly Goes</h2>
+        <p class="section-desc">
+          We believe absolute trust is earned through complete financial openness. Review our audited expenditure model.
+        </p>
+      </div>
+
+      <div class="transparency-card">
+        <div class="transparency-grid">
+          <div class="allocation-breakdown">
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Annual Fund Utilization</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+              Independent annual audits conducted by leading chartered accounting firms. 100% of all Zakat is preserved in separate non-operational trust accounts.
+            </p>
+
+            <div class="alloc-item">
+              <div class="alloc-meta">
+                <span>Field Aid & Beneficiary Programs</span>
+                <span style="color: var(--primary);">87%</span>
+              </div>
+              <div class="alloc-bar">
+                <div class="alloc-fill fill-programs"></div>
+              </div>
+            </div>
+
+            <div class="alloc-item">
+              <div class="alloc-meta">
+                <span>Ground Logistics & Technical Monitoring</span>
+                <span style="color: var(--accent-gold);">8%</span>
+              </div>
+              <div class="alloc-bar">
+                <div class="alloc-fill fill-admin"></div>
+              </div>
+            </div>
+
+            <div class="alloc-item">
+              <div class="alloc-meta">
+                <span>Sindh Emergency Response Reserve</span>
+                <span style="color: var(--accent-terracotta);">5%</span>
+              </div>
+              <div class="alloc-bar">
+                <div class="alloc-fill fill-reserve"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="audit-badges-pane">
+            <div class="audit-box">
+              <div class="audit-icon">📋</div>
+              <div class="audit-details">
+                <h4>Sindh Charity Commission Registered</h4>
+                <p>Registration No. SINDH-CC/REG/2021/0488. Fully compliant with charity regulation ordinances.</p>
+              </div>
+            </div>
+
+            <div class="audit-box">
+              <div class="audit-icon">🔍</div>
+              <div class="audit-details">
+                <h4>Annual External Audits</h4>
+                <p>Audited financial statements available publicly for download every fiscal quarter.</p>
+              </div>
+            </div>
+
+            <div class="audit-box">
+              <div class="audit-icon">🕌</div>
+              <div class="audit-details">
+                <h4>Strict Shariah Supervision</h4>
+                <p>Supervised by Mufti Board to ensure 0% interest, halal banking, and exact Tamleek verification.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer & Direct Bank Wire Section -->
+  <section class="cta-banner-section">
+    <div class="container cta-banner-grid">
+      <div class="cta-content">
+        <h2>Join the Caravan of Hope Across Sindh</h2>
+        <p>
+          Whether you are a doctor, water engineer, teacher, or passionate youth — your skills can save lives in interior Sindh. Join our field relief teams in the upcoming deployment.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button type="button" class="btn btn-gold btn-lg open-volunteer-modal-btn">Sign Up as Volunteer</button>
+          <a href="https://wa.me/923004746341" target="_blank" class="btn btn-outline btn-lg" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">
+            WhatsApp Field Desk
+          </a>
+        </div>
+      </div>
+
+      <div class="bank-info-box">
+        <h3>🏦 Official Bank Transfer Details</h3>
+        <p style="font-size: 0.8rem; color: #BDD1E8; margin-bottom: 1rem;">Direct bank deposits accepted via Raast, 1Link, and Roshan Digital Accounts:</p>
+
+        <div class="bank-row">
+          <span class="bank-label">Bank Name:</span>
+          <span class="bank-val">Meezan Bank Limited</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Account Title:</span>
+          <span class="bank-val">Mehran Sahara Relief Trust</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">IBAN:</span>
+          <span class="bank-val">PK42 MEZN 0001 0892 0192 8301</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Raast ID:</span>
+          <span class="bank-val">03004746341</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Swift Code:</span>
+          <span class="bank-val">MEZNPKKA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="margin-bottom: 0.5rem;">
+            <div class="logo-symbol"><span>س</span></div>
+            <div class="brand-names">
+              <span class="brand-title" style="color: #FFFFFF;">Mehran Sahara</span>
+              <span class="brand-sub" style="color: #A6C2B8;">سنڌ سهارو ٽرسٽ</span>
+            </div>
+          </div>
+          <p>
+            A non-profit humanitarian foundation dedicated to sustainable development, disaster relief, water security, and rural empowerment across the province of Sindh, Pakistan.
+          </p>
+          <div style="display: flex; gap: 0.8rem;">
+            <span class="ajrak-badge" style="background: rgba(255,255,255,0.1); color: var(--accent-gold-light); border-color: rgba(255,255,255,0.15);">
+              NTN: 8934120-4
+            </span>
+            <span class="ajrak-badge" style="background: rgba(255,255,255,0.1); color: #FFFFFF; border-color: rgba(255,255,255,0.15);">
+              SCC Reg: 0488
+            </span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Our Programs</h4>
+          <ul class="footer-links">
+            <li><a href="#causes">Tharparkar Water Wells</a></li>
+            <li><a href="#causes">Flood Resilient Brick Housing</a></li>
+            <li><a href="#causes">Marvi Girls Solar Schools</a></li>
+            <li><a href="#causes">Coastal Delta Medical Boats</a></li>
+            <li><a href="#causes">Emergency Food Packages</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Governance & Zakat</h4>
+          <ul class="footer-links">
+            <li><a href="#zakat">100% Zakat Policy</a></li>
+            <li><a href="#zakat">Online Zakat Calculator</a></li>
+            <li><a href="#transparency">Audited Annual Reports</a></li>
+            <li><a href="#transparency">Shariah Certification</a></li>
+            <li><a href="#districts">Field Verification System</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Field Offices & Contact</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <span>📍</span>
+              <span><strong>Head Office:</strong> Suite 402, Al-Rahim Tower, I.I. Chundrigar Rd, Karachi, Sindh</span>
+            </li>
+            <li class="footer-contact-item">
+              <span>📍</span>
+              <span><strong>Thar Field Hub:</strong> Main Bypass Road, Mithi, Tharparkar</span>
+            </li>
+            <li class="footer-contact-item">
+              <span>📞</span>
+              <span><strong>Helpline:</strong> +92 (021) 3241-8900</span>
+            </li>
+            <li class="footer-contact-item">
+              <span>✉️</span>
+              <span><strong>Email:</strong> relief@mehran-sahara.org</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Mehran Sahara Relief & Welfare Trust (سنڌ سهارو). All rights reserved. Registered Charity in Pakistan.
+        </div>
+        <div>
+          Crafted with reverence for Sindh’s people, heritage & resilient future.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODAL 1: Universal Donation Wizard Checkout
+       ========================================================================== -->
+  <div class="modal-overlay" id="donation-modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-header-title">
+          <span>💚</span>
+          <span>Support Sindh Relief</span>
+        </h3>
+        <button type="button" class="modal-close-btn" id="donation-modal-close" aria-label="Close modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Wizard Steps Indicator -->
+        <div class="donation-wizard-steps">
+          <div class="step-indicator active" id="wizard-indicator-1">
+            <div class="step-circle">1</div>
+            <div class="step-label">Amount</div>
+          </div>
+          <div class="step-indicator" id="wizard-indicator-2">
+            <div class="step-circle">2</div>
+            <div class="step-label">Donor Info</div>
+          </div>
+          <div class="step-indicator" id="wizard-indicator-3">
+            <div class="step-circle">3</div>
+            <div class="step-label">Payment</div>
+          </div>
+        </div>
+
+        <!-- Step 1: Cause & Amount -->
+        <div class="step-content active" id="wizard-step-1">
+          <div class="form-group">
+            <label class="form-label" for="wizard-cause-select">Select Sindh Cause</label>
+            <select id="wizard-cause-select" class="form-select">
+              <option value="General Sindh Relief Fund">General Sindh Relief & Emergency Fund</option>
+              <option value="Tharparkar Solar Deep Wells">Tharparkar Solar Deep Water Wells & RO Units</option>
+              <option value="Flood Resilient Brick Housing">Indus Flood Resilient Brick Shelters (Dadu/Khairpur)</option>
+              <option value="Marvi Girls Solar Education">Marvi Girls Solar Classrooms & Textbooks</option>
+              <option value="Mobile Coastal Healthcare Units">Coastal Delta Mobile Mother-Child Clinics</option>
+              <option value="100% Zakat Fund (Sindh Rural Relief)">100% Zakat Fund for Eligible Mustahiqeen</option>
+            </select>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="wizard-freq-select">Donation Frequency</label>
+              <select id="wizard-freq-select" class="form-select">
+                <option value="once">Give Once (Sadaqah / Relief)</option>
+                <option value="monthly">Monthly Sustained Sponsor</option>
+                <option value="zakat">100% Zakat Eligible</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="wizard-amount-input">Donation Amount (<span class="curr-symbol-text">₨</span>)</label>
+              <input type="number" id="wizard-amount-input" class="form-control" value="3500" min="50">
+            </div>
+          </div>
+
+          <button type="button" id="btn-wizard-to-step2" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">
+            Continue to Donor Details →
+          </button>
+        </div>
+
+        <!-- Step 2: Donor Info -->
+        <div class="step-content" id="wizard-step-2">
+          <div class="form-group">
+            <label class="checkbox-label" style="margin-bottom: 1rem;">
+              <input type="checkbox" id="donor-anonymous">
+              <span>Make my donation anonymous on public leaderboards</span>
+            </label>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="donor-name">Full Name *</label>
+              <input type="text" id="donor-name" class="form-control" placeholder="e.g. Sarang Saif">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="donor-email">Email Address *</label>
+              <input type="email" id="donor-email" class="form-control" placeholder="name@domain.com">
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="donor-phone">Phone / WhatsApp (for receipt)</label>
+              <input type="tel" id="donor-phone" class="form-control" placeholder="+92 3XX XXXXXXX">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="donor-city">City / Country</label>
+              <input type="text" id="donor-city" class="form-control" placeholder="e.g. Karachi / London">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="donor-dedication">Dedication / Isaal-e-Sawab (Optional)</label>
+            <input type="text" id="donor-dedication" class="form-control" placeholder="e.g. In memory of loving parents / for wellbeing of Sindh">
+          </div>
+
+          <div style="display: flex; gap: 0.85rem; margin-top: 1.5rem;">
+            <button type="button" id="btn-wizard-back-step1" class="btn btn-outline" style="flex: 1;">← Back</button>
+            <button type="button" id="btn-wizard-to-step3" class="btn btn-primary" style="flex: 2;">Continue to Payment →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Payment Gateway Selector -->
+        <div class="step-content" id="wizard-step-3">
+          <div style="background: var(--bg-subtle); padding: 0.85rem 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Total Contribution:</div>
+              <div style="font-size: 1.35rem; font-weight: 800; color: var(--primary);" id="summary-pay-amount">₨ 3,500</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Allocated Cause:</div>
+              <div style="font-size: 0.85rem; font-weight: 700;" id="summary-pay-cause">General Relief</div>
+            </div>
+          </div>
+
+          <label class="form-label">Select Payment Method</label>
+          <div class="payment-methods-grid">
+            <div class="payment-option-card active" data-method="easypaisa">
+              <div class="payment-badge-icon badge-easypaisa">EP</div>
+              <div class="payment-text">
+                <h5>Easypaisa</h5>
+                <p>Mobile Account / QR</p>
+              </div>
+            </div>
+
+            <div class="payment-option-card" data-method="jazzcash">
+              <div class="payment-badge-icon badge-jazzcash">JC</div>
+              <div class="payment-text">
+                <h5>JazzCash</h5>
+                <p>Mobile Wallet / MPIN</p>
+              </div>
+            </div>
+
+            <div class="payment-option-card" data-method="raast">
+              <div class="payment-badge-icon badge-raast">⚡</div>
+              <div class="payment-text">
+                <h5>Raast / 1Link</h5>
+                <p>Instant Pakistani Banks</p>
+              </div>
+            </div>
+
+            <div class="payment-option-card" data-method="card">
+              <div class="payment-badge-icon badge-card">💳</div>
+              <div class="payment-text">
+                <h5>Credit / Debit Card</h5>
+                <p>Visa, Mastercard, PayPak</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Gateway Instructions Box -->
+          <div class="gateway-details-box" id="gateway-dynamic-instructions">
+            <div class="instruction-step"><strong>1.</strong> Send contribution to Easypaisa Till / Mobile Account: <strong>0300-4746341 (Mehran Sahara Trust)</strong></div>
+            <div class="instruction-step"><strong>2.</strong> Or enter your registered phone number for automatic instant push payment request.</div>
+            <input type="tel" class="form-control" placeholder="03XXXXXXXXX (Your Easypaisa mobile number)" style="margin-top: 0.8rem;" value="03">
+          </div>
+
+          <div style="display: flex; gap: 0.85rem;">
+            <button type="button" id="btn-wizard-back-step2" class="btn btn-outline" style="flex: 1;">← Back</button>
+            <button type="button" id="btn-wizard-submit-payment" class="btn btn-accent" style="flex: 2;">
+              Confirm & Complete Donation
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: Official Printable Donation Receipt
+       ========================================================================== -->
+  <div class="modal-overlay" id="receipt-modal-overlay">
+    <div class="modal-container" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 class="modal-header-title">
+          <span>📜</span>
+          <span>Official Donation Receipt</span>
+        </h3>
+        <button type="button" class="modal-close-btn" id="receipt-modal-close" aria-label="Close modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="receipt-certificate" id="printable-receipt-card">
+          <div class="receipt-watermark">MEHRAN SAHARA</div>
+
+          <div class="receipt-header">
+            <div class="receipt-ngo-name">Mehran Sahara Relief & Welfare Trust</div>
+            <div class="receipt-reg-info">Registered under Sindh Charity Commission Act (Reg # SINDH-CC/0488) • NTN: 8934120-4</div>
+            <div class="receipt-title-badge" id="receipt-zakat-status">TAX EXEMPT SINDH CHARITY DONATION</div>
+          </div>
+
+          <div class="receipt-meta-grid">
+            <div class="receipt-meta-row">
+              <span class="receipt-meta-label">Receipt / TX ID:</span>
+              <span class="receipt-meta-value" id="receipt-tx-id">MSF-2026-891245</span>
+            </div>
+            <div class="receipt-meta-row">
+              <span class="receipt-meta-label">Date & Time:</span>
+              <span class="receipt-meta-value" id="receipt-date">12 Sep 2026</span>
+            </div>
+            <div class="receipt-meta-row">
+              <span class="receipt-meta-label">Donor Name:</span>
+              <span class="receipt-meta-value" id="receipt-donor-name">Sarang Saif</span>
+            </div>
+            <div class="receipt-meta-row">
+              <span class="receipt-meta-label">Email:</span>
+              <span class="receipt-meta-value" id="receipt-donor-email">donor@domain.com</span>
+            </div>
+            <div class="receipt-meta-row">
+              <span class="receipt-meta-label">Cause:</span>
+              <span class="receipt-meta-value" id="receipt-cause">Tharparkar Solar Deep Wells</span>
+            </div>
+            <div class="receipt-meta-row">
+              <span class="receipt-meta-label">Method / Type:</span>
+              <span class="receipt-meta-value"><span id="receipt-method">EASYPAISA</span> (<span id="receipt-freq">ONCE</span>)</span>
+            </div>
+          </div>
+
+          <div class="receipt-amount-banner">
+            <span>Total Donated Amount</span>
+            <div class="receipt-amount-val" id="receipt-amount">₨ 3,500</div>
+          </div>
+
+          <p style="font-size: 0.76rem; color: #555; text-align: center; line-height: 1.5;">
+            Thank you for bringing hope, dignity, and life-saving water to the communities of Sindh. Under Section 61 of the Income Tax Ordinance, donations to registered welfare trusts are eligible for full tax credit.
+          </p>
+
+          <div class="receipt-footer-stamp">
+            <div>
+              <strong>Audit Officer</strong><br>
+              Sindh Field Disbursement Desk
+            </div>
+            <div class="verified-stamp">
+              ✓ VERIFIED SHARIAH COMPLIANT
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.85rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline btn-block" id="print-receipt-btn">
+            🖨️ Print / Save as PDF
+          </button>
+          <a href="https://wa.me/?text=I%20just%20supported%20Mehran%20Sahara%20Foundation%20to%20help%20communities%20in%20Sindh!%20Join%20me%20in%20bringing%20hope." target="_blank" class="btn btn-primary btn-block">
+            📲 Share on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: Volunteer Registration Modal
+       ========================================================================== -->
+  <div class="modal-overlay" id="volunteer-modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-header-title">
+          <span>🤝</span>
+          <span>Volunteer for Sindh Relief</span>
+        </h3>
+        <button type="button" class="modal-close-btn" id="volunteer-modal-close" aria-label="Close modal">×</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="volunteer-signup-form">
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+            Join our dedicated teams of field volunteers, medical practitioners, engineers, and teachers deployed across Sindh districts.
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" for="vol-name">Full Name *</label>
+            <input type="text" id="vol-name" class="form-control" required placeholder="Your name">
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="vol-email">Email Address *</label>
+              <input type="email" id="vol-email" class="form-control" required placeholder="name@domain.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vol-phone">WhatsApp Number *</label>
+              <input type="tel" id="vol-phone" class="form-control" required placeholder="+92 3XX XXXXXXX">
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="vol-city">Current City / District</label>
+              <input type="text" id="vol-city" class="form-control" placeholder="e.g. Karachi / Hyderabad / Sukkur">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="vol-skill">Primary Skill Area</label>
+              <select id="vol-skill" class="form-select">
+                <option value="doctor">Medical / Nurse / Healthcare</option>
+                <option value="water">Civil / Water / Solar Engineering</option>
+                <option value="education">Teacher / Education Specialist</option>
+                <option value="relief">Field Relief & Logistics</option>
+                <option value="media">Photography / Media & Storytelling</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="vol-district">Preferred Sindh District for Deployment</label>
+            <select id="vol-district" class="form-select">
+              <option value="tharparkar">Tharparkar (Mithi / Islamkot / Chachro)</option>
+              <option value="dadu">Dadu & Khairpur</option>
+              <option value="thatta">Thatta & Sujawal Delta</option>
+              <option value="larkana">Larkana & Qambar</option>
+              <option value="any">Any district where need is highest</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">
+            Submit Volunteer Registration
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Mobile Donate Sticky Bar -->
+  <div class="floating-donate-bar">
+    <div class="floating-content">
+      <span class="floating-title">Sindh Relief Appeal</span>
+      <span class="floating-sub">100% Direct Zakat Delivery</span>
+    </div>
+    <button type="button" class="btn btn-accent btn-sm" onclick="openDonationModal()">Donate Now</button>
+  </div>
+
+  <!-- JavaScript Scripts -->
+  <script src="js/donation.js"></script>
+  <script src="js/zakat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
