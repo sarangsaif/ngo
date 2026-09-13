@@ -276,6 +276,26 @@ function initVolunteerModal() {
       submitBtn.textContent = 'Registering with Sindh Field Team...';
 
       setTimeout(() => {
+        // Persist volunteer to localStorage for Admin Portal
+        try {
+          const existingVols = JSON.parse(localStorage.getItem('msf_volunteers') || '[]');
+          const newVol = {
+            id: 'VOL-' + Math.floor(1000 + Math.random() * 9000),
+            name: document.getElementById('vol-name')?.value || 'New Volunteer',
+            email: document.getElementById('vol-email')?.value || '',
+            phone: document.getElementById('vol-phone')?.value || '',
+            city: document.getElementById('vol-city')?.value || 'Sindh',
+            skill: document.getElementById('vol-skill')?.value || 'relief',
+            district: document.getElementById('vol-district')?.value || 'tharparkar',
+            date: new Date().toLocaleDateString('en-GB'),
+            status: 'Active'
+          };
+          existingVols.unshift(newVol);
+          localStorage.setItem('msf_volunteers', JSON.stringify(existingVols));
+        } catch (err) {
+          console.warn('Could not persist volunteer', err);
+        }
+
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit Registration';
         modal.classList.remove('active');
@@ -293,8 +313,8 @@ function initDirectDonateTriggers() {
     btn.addEventListener('click', () => {
       const cause = btn.dataset.cause;
       const targetPkr = parseFloat(btn.dataset.defaultPkr) || 5000;
-      const finalAmount = DonationState.currency === 'PKR' 
-        ? targetPkr 
+      const finalAmount = DonationState.currency === 'PKR'
+        ? targetPkr
         : Math.round(targetPkr / DonationState.exchangeRate);
 
       if (typeof openDonationModal === 'function') {

@@ -445,6 +445,31 @@ function processDonationPayment() {
       zakatBadge.textContent = 'TAX EXEMPT SINDH CHARITY DONATION';
     }
 
+    // Persist donation into localStorage for Admin Portal
+    try {
+      const existing = JSON.parse(localStorage.getItem('msf_donations') || '[]');
+      const newDonation = {
+        id: txId,
+        date: dateStr,
+        donor: DonationState.donor.fullName,
+        email: DonationState.donor.email,
+        phone: DonationState.donor.phone,
+        city: DonationState.donor.city,
+        cause: DonationState.cause,
+        amount: DonationState.amount,
+        currency: DonationState.currency,
+        frequency: DonationState.frequency,
+        method: DonationState.paymentMethod,
+        isAnonymous: DonationState.donor.isAnonymous,
+        dedication: DonationState.donor.dedication,
+        status: 'Verified'
+      };
+      existing.unshift(newDonation);
+      localStorage.setItem('msf_donations', JSON.stringify(existing));
+    } catch (err) {
+      console.warn('Could not persist donation to localStorage', err);
+    }
+
     // Show Receipt Modal
     const receiptModal = document.getElementById('receipt-modal-overlay');
     if (receiptModal) {

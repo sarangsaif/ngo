@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Admin Portal | Mehran Sahara Relief Foundation (سنڌ سهارو)</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       VIEW 1: Admin Authentication Gate
+       ========================================================================== -->
+  <div class="admin-login-wrapper" id="admin-login-view">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo">س</div>
+        <h2 class="login-title">Mehran Sahara Admin</h2>
+        <p class="login-sub">Sindh Field Operations & Donations Management</p>
+      </div>
+
+      <div class="demo-credentials-box">
+        <strong>Demo Credentials:</strong><br>
+        Email: <code>admin@mehran-sahara.org</code><br>
+        Password: <code>sindh2026</code>
+      </div>
+
+      <form id="admin-login-form">
+        <div class="login-form-group">
+          <label class="login-label" for="login-email">Official Admin Email</label>
+          <input type="email" id="login-email" class="login-input" required placeholder="admin@mehran-sahara.org" value="admin@mehran-sahara.org">
+        </div>
+
+        <div class="login-form-group">
+          <label class="login-label" for="login-password">Security Password</label>
+          <input type="password" id="login-password" class="login-input" required placeholder="••••••••" value="sindh2026">
+        </div>
+
+        <button type="submit" class="login-btn" style="margin-bottom: 0.75rem;">
+          Sign In to Admin Portal →
+        </button>
+
+        <button type="button" id="btn-oneclick-demo" class="login-btn" style="background: var(--admin-gold); color: #111;">
+          ⚡ Instant 1-Click Demo Login
+        </button>
+      </form>
+
+      <div class="login-footer-links">
+        <a href="index.html">← Return to Public Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       VIEW 2: Authenticated Executive Admin Dashboard
+       ========================================================================== -->
+  <div class="admin-layout" id="admin-dashboard-view" style="display: none;">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">س</div>
+        <div>
+          <div class="sidebar-brand-name">Mehran Sahara</div>
+          <div class="sidebar-brand-role">Field Admin • Sindh</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="sidebar-nav-item active">
+          <button type="button" class="sidebar-nav-btn" data-tab="overview" data-title="Executive Dashboard">
+            <span class="nav-item-inner">
+              <span>📊</span>
+              <span>Overview</span>
+            </span>
+            <span class="nav-badge">Live</span>
+          </button>
+        </li>
+
+        <li class="sidebar-nav-item">
+          <button type="button" class="sidebar-nav-btn" data-tab="donations" data-title="Donations & Zakat Ledger">
+            <span class="nav-item-inner">
+              <span>💰</span>
+              <span>Donations & Zakat</span>
+            </span>
+            <span class="nav-badge" id="sidebar-badge-donations">0</span>
+          </button>
+        </li>
+
+        <li class="sidebar-nav-item">
+          <button type="button" class="sidebar-nav-btn" data-tab="campaigns" data-title="Sindh Relief Campaigns">
+            <span class="nav-item-inner">
+              <span>🎯</span>
+              <span>Campaigns</span>
+            </span>
+          </button>
+        </li>
+
+        <li class="sidebar-nav-item">
+          <button type="button" class="sidebar-nav-btn" data-tab="volunteers" data-title="Volunteer Registry">
+            <span class="nav-item-inner">
+              <span>🤝</span>
+              <span>Volunteers</span>
+            </span>
+            <span class="nav-badge" id="sidebar-badge-volunteers">0</span>
+          </button>
+        </li>
+
+        <li class="sidebar-nav-item">
+          <button type="button" class="sidebar-nav-btn" data-tab="disbursements" data-title="Field Disbursements">
+            <span class="nav-item-inner">
+              <span>📋</span>
+              <span>Disbursements</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="admin-user-profile">
+          <div class="user-avatar">SS</div>
+          <div class="user-meta">
+            <h5>Sarang Saif</h5>
+            <p>Field Director</p>
+          </div>
+        </div>
+        <button type="button" class="logout-btn" id="btn-admin-logout" title="Sign Out" aria-label="Sign Out">🚪</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button type="button" class="sidebar-mobile-toggle" id="btn-admin-mobile-toggle" aria-label="Open Sidebar Menu">☰</button>
+          <h2 class="topbar-title" id="admin-active-title">Executive Dashboard</h2>
+          <div class="live-sync-indicator">
+            <span class="sync-dot"></span>
+            <span>Sindh Sync Active</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="index.html" target="_blank" class="topbar-btn">
+            <span>🌐</span>
+            <span>View Public Site</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Tab Panes Container -->
+      <div class="admin-body">
+        
+        <!-- TAB 1: OVERVIEW -->
+        <section class="admin-tab-pane active" id="tab-overview">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-header">
+                <span class="kpi-title">Total Funds Raised</span>
+                <span class="kpi-icon">💰</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-raised">₨ 0</div>
+              <div class="kpi-trend">
+                <span class="trend-up">↑ 18.4%</span>
+                <span class="trend-sub">vs last month</span>
+              </div>
+            </div>
+
+            <div class="kpi-card kpi-zakat">
+              <div class="kpi-header">
+                <span class="kpi-title">100% Zakat Volume</span>
+                <span class="kpi-icon">🌙</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-zakat">₨ 0</div>
+              <div class="kpi-trend">
+                <span class="trend-up">100% Direct Delivery</span>
+              </div>
+            </div>
+
+            <div class="kpi-card kpi-volunteers">
+              <div class="kpi-header">
+                <span class="kpi-title">Registered Volunteers</span>
+                <span class="kpi-icon">🤝</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-volunteers">0</div>
+              <div class="kpi-trend">
+                <span class="trend-sub">Across 6 Sindh Districts</span>
+              </div>
+            </div>
+
+            <div class="kpi-card kpi-projects">
+              <div class="kpi-header">
+                <span class="kpi-title">Pending Verifications</span>
+                <span class="kpi-icon">⏳</span>
+              </div>
+              <div class="kpi-value" id="kpi-total-pending">0</div>
+              <div class="kpi-trend">
+                <span class="trend-sub">Direct Bank / Raast Wires</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity Card -->
+          <div class="content-card">
+            <div class="card-toolbar">
+              <div class="card-title-group">
+                <h3>Recent Live Donations</h3>
+                <p>Showing the 5 most recent contributions received across Sindh causes.</p>
+              </div>
+              <button type="button" class="btn-export" onclick="document.querySelector('[data-tab=donations]').click()">
+                View All Donations →
+              </button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Receipt ID</th>
+                    <th>Donor</th>
+                    <th>Cause</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="overview-recent-tbody">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 2: DONATIONS & ZAKAT MANAGER -->
+        <section class="admin-tab-pane" id="tab-donations">
+          <div class="content-card">
+            <div class="card-toolbar">
+              <div class="card-title-group">
+                <h3>All Donations & Zakat Records</h3>
+                <p>Comprehensive ledger with real-time sync from public website checkouts.</p>
+              </div>
+
+              <div class="toolbar-controls">
+                <div class="search-input-wrap">
+                  <span>🔍</span>
+                  <input type="text" id="donations-search-input" placeholder="Search ID, Donor, City...">
+                </div>
+
+                <select id="donations-cause-filter" class="filter-select">
+                  <option value="all">All Sindh Causes</option>
+                  <option value="Tharparkar">Tharparkar Water</option>
+                  <option value="Education">Girls Education</option>
+                  <option value="Flood">Flood Housing</option>
+                  <option value="Healthcare">Mobile Healthcare</option>
+                  <option value="Zakat">100% Zakat Fund</option>
+                </select>
+
+                <select id="donations-status-filter" class="filter-select">
+                  <option value="all">All Statuses</option>
+                  <option value="verified">Verified</option>
+                  <option value="pending">Pending</option>
+                </select>
+
+                <button type="button" id="btn-export-donations-csv" class="btn-export">
+                  <span>📥</span>
+                  <span>Export CSV</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Donor & Contact</th>
+                    <th>Allocated Cause</th>
+                    <th>Amount</th>
+                    <th>Gateway</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="donations-table-body">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 3: CAMPAIGNS MANAGER -->
+        <section class="admin-tab-pane" id="tab-campaigns">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <div>
+              <h3 style="font-size: 1.3rem; font-weight: 800;">Sindh Relief Projects</h3>
+              <p style="font-size: 0.85rem; color: var(--admin-text-muted);">Manage funding targets and field deployment status.</p>
+            </div>
+            <button type="button" class="btn-export" id="btn-open-new-campaign-modal">
+              <span>+</span>
+              <span>Add New Sindh Project</span>
+            </button>
+          </div>
+
+          <div class="admin-campaign-grid" id="admin-campaigns-container">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </section>
+
+        <!-- TAB 4: VOLUNTEERS REGISTRY -->
+        <section class="admin-tab-pane" id="tab-volunteers">
+          <div class="content-card">
+            <div class="card-toolbar">
+              <div class="card-title-group">
+                <h3>Registered Sindh Volunteers</h3>
+                <p>Medical personnel, civil engineers, teachers, and ground field workers.</p>
+              </div>
+
+              <div class="toolbar-controls">
+                <select id="volunteers-district-filter" class="filter-select">
+                  <option value="all">All Sindh Districts</option>
+                  <option value="tharparkar">Tharparkar</option>
+                  <option value="dadu">Dadu & Khairpur</option>
+                  <option value="thatta">Thatta & Sujawal</option>
+                  <option value="larkana">Larkana</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Vol ID</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>WhatsApp Contact</th>
+                    <th>Deployment District</th>
+                    <th>Skill Focus</th>
+                    <th>Applied Date</th>
+                  </tr>
+                </thead>
+                <tbody id="volunteers-table-body">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB 5: FIELD DISBURSEMENTS LOG -->
+        <section class="admin-tab-pane" id="tab-disbursements">
+          <div class="content-card">
+            <div class="card-toolbar">
+              <div class="card-title-group">
+                <h3>Ground Field Disbursements</h3>
+                <p>Transparent expenditure log of funds released to contractors, engineers, and supply trucks.</p>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Voucher #</th>
+                    <th>Disbursed Amount</th>
+                    <th>Target District</th>
+                    <th>Project Purpose</th>
+                    <th>Field Supervisor</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="disbursements-table-body">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL: Add New Campaign Dialog
+       ========================================================================== -->
+  <div class="modal-overlay" id="campaign-modal-overlay" style="display: none;">
+    <div class="modal-container" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 class="modal-header-title">Create Sindh Relief Project</h3>
+        <button type="button" class="modal-close-btn" id="campaign-modal-close">×</button>
+      </div>
+      <div class="modal-body">
+        <form id="new-campaign-form">
+          <div class="form-group">
+            <label class="form-label" for="new-camp-title">Project Title *</label>
+            <input type="text" id="new-camp-title" class="form-control" required placeholder="e.g. Solar RO Desalination Plant in Nagarparkar">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-camp-district">Target District *</label>
+            <input type="text" id="new-camp-district" class="form-control" required placeholder="e.g. Nagarparkar, Tharparkar">
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="new-camp-goal">Fundraising Goal (₨ PKR) *</label>
+              <input type="number" id="new-camp-goal" class="form-control" required min="10000" placeholder="2500000">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="new-camp-category">Cause Category</label>
+              <select id="new-camp-category" class="form-select">
+                <option value="water">Clean Drinking Water</option>
+                <option value="education">Girls Education</option>
+                <option value="flood">Flood Rehabilitation</option>
+                <option value="health">Mobile Healthcare</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">
+            Launch Project on Portal
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/admin.js"></script>
+</body>
+</html>
