@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Mehran Sahara Foundation | Sindh Relief, Water & Education NGO (سنڌ سهارو)</title>
   <meta name="description" content="Dedicated humanitarian NGO in Sindh, Pakistan. Providing clean drinking water in Tharparkar, flood-resilient housing along the Indus, rural girls' solar education, and mobile healthcare with a 100% Zakat policy.">
   <meta name="keywords" content="Sindh NGO, Tharparkar water charity, flood relief Sindh, Pakistan charity, Zakat Sindh, Indus river relief, donate Pakistan, Mehran Sahara">
@@ -22,15 +22,15 @@
     <div class="container top-bar-inner">
       <div class="emergency-ticker">
         <span class="pulse-dot"></span>
-        <span><strong>URGENT APPEAL:</strong> Monsoon preparedness & clean water crisis response in Tharparkar & rural Sindh — <em>100% Zakat Verified</em></span>
+        <span class="ticker-text"><strong>URGENT APPEAL:</strong> Drought relief in Tharparkar & monsoon response in Sindh — <em>100% Zakat Verified</em></span>
       </div>
       <div class="top-bar-actions">
-        <div class="currency-toggle">
+        <div class="currency-toggle top-bar-currency">
           <button type="button" class="curr-btn curr-pkr-btn active" title="Pakistani Rupees">🇵🇰 PKR (₨)</button>
           <button type="button" class="curr-btn curr-usd-btn" title="US Dollars for Overseas Donors">🌐 USD ($)</button>
         </div>
         <a href="https://wa.me/923004746341" target="_blank" class="top-contact-link">
-          <span>💬 WhatsApp Aid: +92 300 4746341</span>
+          <span>💬 Aid Desk: +92 300 4746341</span>
         </a>
       </div>
     </div>
@@ -48,12 +48,12 @@
           <span class="brand-sub">
             <span>سنڌ سهارو ٽرسٽ</span>
             <span>•</span>
-            <span class="ajrak-badge">Sindh Relief Trust</span>
+            <span class="ajrak-badge">Sindh Relief</span>
           </span>
         </div>
       </a>
 
-      <nav>
+      <nav class="desktop-nav">
         <ul class="nav-menu">
           <li><a href="#causes" class="nav-link">Our Causes</a></li>
           <li><a href="#impact" class="nav-link">Impact Calculator</a></li>
@@ -66,12 +66,72 @@
 
       <div class="nav-actions">
         <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle theme">🌙</button>
-        <a href="#zakat" class="btn btn-outline btn-sm">Calculate Zakat</a>
-        <button type="button" class="btn btn-primary btn-sm" onclick="openDonationModal()">Donate Now</button>
-        <button type="button" id="mobile-menu-toggle" class="mobile-toggle" aria-label="Open navigation menu">☰</button>
+        <a href="#zakat" class="btn btn-outline btn-sm nav-btn-zakat">Calculate Zakat</a>
+        <button type="button" class="btn btn-primary btn-sm nav-btn-donate" onclick="openDonationModal()">Donate Now</button>
+        <button type="button" id="mobile-menu-toggle" class="mobile-toggle" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile & Tablet Off-Canvas Navigation Drawer -->
+  <div class="nav-drawer-backdrop" id="nav-drawer-backdrop"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation Menu">
+    <div class="drawer-header">
+      <a href="#" class="brand-logo" onclick="closeNavDrawer()">
+        <div class="logo-symbol"><span>س</span></div>
+        <div class="brand-names">
+          <span class="brand-title">Mehran Sahara</span>
+          <span class="brand-sub">سنڌ سهارو ٽرسٽ</span>
+        </div>
+      </a>
+      <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Close navigation menu">✕</button>
+    </div>
+
+    <div class="drawer-currency-row">
+      <span class="drawer-currency-lbl">Currency:</span>
+      <div class="currency-toggle">
+        <button type="button" class="curr-btn curr-pkr-btn active">🇵🇰 PKR (₨)</button>
+        <button type="button" class="curr-btn curr-usd-btn">🌐 USD ($)</button>
+      </div>
+    </div>
+
+    <nav class="drawer-nav">
+      <ul class="drawer-links">
+        <li><a href="#causes" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🌱</span> <span>Our Sindh Causes</span> <span class="d-arrow">›</span></a></li>
+        <li><a href="#impact" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🧮</span> <span>Impact Calculator</span> <span class="d-arrow">›</span></a></li>
+        <li><a href="#districts" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🗺️</span> <span>Sindh District Focus</span> <span class="d-arrow">›</span></a></li>
+        <li><a href="#zakat" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🌙</span> <span>100% Zakat Portal</span> <span class="d-badge">Verified</span></a></li>
+        <li><a href="#transparency" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">📊</span> <span>Financial Transparency</span> <span class="d-arrow">›</span></a></li>
+        <li><a href="#stories" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">📖</span> <span>Stories of Hope</span> <span class="d-arrow">›</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="drawer-actions">
+      <button type="button" class="btn btn-primary btn-block btn-lg" onclick="closeNavDrawer(); openDonationModal();">
+        Donate Now 💚
+      </button>
+      <a href="#zakat" class="btn btn-outline btn-block" onclick="closeNavDrawer();">
+        Calculate My Zakat
+      </a>
+      <button type="button" class="btn btn-gold btn-block open-volunteer-modal-btn" onclick="closeNavDrawer();">
+        Volunteer in Sindh 🤝
+      </button>
+    </div>
+
+    <div class="drawer-footer">
+      <a href="https://wa.me/923004746341" target="_blank" class="drawer-whatsapp-btn">
+        <span>💬 WhatsApp Field Helpline:</span>
+        <strong>+92 300 4746341</strong>
+      </a>
+      <div class="drawer-reg-txt">
+        <span>Sindh Charity Commission Reg: SINDH-CC/0488</span> • <span>NTN: 8934120-4</span>
+      </div>
+    </div>
+  </aside>
 
   <!-- Hero Section with Integrated Quick Donation Card -->
   <section class="hero-section">

@@ -307,28 +307,78 @@ function initDirectDonateTriggers() {
   });
 }
 
-// 7. Mobile Navigation Drawer
+// 7. Mobile & Tablet Off-Canvas Navigation Drawer
+function openNavDrawer() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const backdrop = document.getElementById('nav-drawer-backdrop');
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+
+  if (drawer && backdrop) {
+    drawer.classList.add('drawer-open');
+    backdrop.classList.add('backdrop-active');
+    document.body.classList.add('nav-locked');
+    if (toggleBtn) {
+      toggleBtn.classList.add('is-active');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+  }
+}
+
+function closeNavDrawer() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const backdrop = document.getElementById('nav-drawer-backdrop');
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+
+  if (drawer && backdrop) {
+    drawer.classList.remove('drawer-open');
+    backdrop.classList.remove('backdrop-active');
+    document.body.classList.remove('nav-locked');
+    if (toggleBtn) {
+      toggleBtn.classList.remove('is-active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+  }
+}
+
+window.openNavDrawer = openNavDrawer;
+window.closeNavDrawer = closeNavDrawer;
+
 function initMobileNav() {
   const toggleBtn = document.getElementById('mobile-menu-toggle');
-  const navMenu = document.querySelector('.nav-menu');
+  const closeBtn = document.getElementById('drawer-close-btn');
+  const backdrop = document.getElementById('nav-drawer-backdrop');
 
-  if (toggleBtn && navMenu) {
+  if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
-      const isVisible = navMenu.style.display === 'flex';
-      if (isVisible) {
-        navMenu.style.display = 'none';
+      const isOpen = toggleBtn.classList.contains('is-active');
+      if (isOpen) {
+        closeNavDrawer();
       } else {
-        navMenu.style.display = 'flex';
-        navMenu.style.flexDirection = 'column';
-        navMenu.style.position = 'absolute';
-        navMenu.style.top = '100%';
-        navMenu.style.left = '0';
-        navMenu.style.width = '100%';
-        navMenu.style.background = 'var(--bg-card)';
-        navMenu.style.padding = '1.5rem';
-        navMenu.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-        navMenu.style.gap = '1rem';
+        openNavDrawer();
       }
     });
   }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeNavDrawer);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeNavDrawer);
+  }
+
+  // Close drawer on Escape key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeNavDrawer();
+    }
+  });
+
+  // Automatically close drawer when window resized to desktop (> 1024px)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+      closeNavDrawer();
+    }
+  });
 }
+

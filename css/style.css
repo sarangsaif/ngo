@@ -1,6 +1,6 @@
 /* ==========================================================================
    MEHRAN SAHARA FOUNDATION (سنڌ سهارو ٽرسٽ)
-   Core Design System & Stylesheet
+   Core Design System & Responsive Stylesheet
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
@@ -55,8 +55,8 @@
   --trans-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Fonts */
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-urdu: 'Noto Nastaliq Urdu', serif;
 }
 
@@ -95,6 +95,12 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   transition: background-color var(--trans-smooth), color var(--trans-smooth);
+}
+
+/* Lock scrolling when mobile drawer or modal is active */
+body.nav-locked {
+  overflow: hidden !important;
+  touch-action: none;
 }
 
 img {
@@ -165,14 +171,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-title {
-  font-size: 2.35rem;
+  font-size: clamp(1.85rem, 3.2vw, 2.35rem);
   font-weight: 800;
   margin-bottom: 1rem;
   color: var(--text-main);
+  letter-spacing: -0.015em;
 }
 
 .section-desc {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
   color: var(--text-muted);
   max-width: 680px;
   margin: 0 auto;
@@ -186,12 +193,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
 }
 
-/* ==========================================================================
-   Ajrak Motif Accents
-   ========================================================================== */
-
+/* Ajrak Patterns & Badges */
 .ajrak-border-top {
-  border-top: 5px solid transparent;
+  border-top: 4px solid transparent;
   border-image: linear-gradient(90deg, #A82C23 0%, #D99B26 25%, #0A533E 50%, #1C355E 75%, #A82C23 100%) 1;
 }
 
@@ -199,25 +203,27 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(135deg, rgba(168, 44, 35, 0.08), rgba(217, 155, 38, 0.08));
   border: 1px solid rgba(168, 44, 35, 0.2);
   color: var(--accent-terracotta);
-  padding: 0.25rem 0.75rem;
+  padding: 0.2rem 0.65rem;
   border-radius: var(--radius-full);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 /* ==========================================================================
-   Header & Emergency Top Bar
+   Top Announcement Bar (Responsive)
    ========================================================================== */
 
 .top-bar {
-  background: #112019;
+  background: #0D1B15;
   color: #E2ECE8;
-  font-size: 0.85rem;
-  padding: 0.55rem 0;
+  font-size: 0.84rem;
+  padding: 0.5rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 1002;
 }
 
 .top-bar-inner {
@@ -232,6 +238,17 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.6rem;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.ticker-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.82rem;
 }
 
 .pulse-dot {
@@ -241,6 +258,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
   animation: pulse 1.6s infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -253,10 +271,11 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   gap: 1.25rem;
+  flex-shrink: 0;
 }
 
 .currency-toggle {
-  display: flex;
+  display: inline-flex;
   background: rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-full);
   padding: 2px;
@@ -266,10 +285,11 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent;
   color: #B5CAC4;
   border-radius: var(--radius-full);
-  padding: 0.2rem 0.65rem;
+  padding: 0.25rem 0.7rem;
   font-size: 0.75rem;
   font-weight: 700;
   transition: all var(--trans-fast);
+  min-height: 28px;
 }
 
 .curr-btn.active {
@@ -284,45 +304,52 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.4rem;
   color: #B5CAC4;
   font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .top-contact-link:hover {
   color: #FFFFFF;
 }
 
-/* Main Site Header */
+/* ==========================================================================
+   Main Sticky Header & Desktop Navbar
+   ========================================================================== */
+
 .main-header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-light);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   transition: all var(--trans-smooth);
 }
 
 [data-theme="dark"] .main-header {
-  background: rgba(20, 34, 30, 0.94);
+  background: rgba(20, 34, 30, 0.96);
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.85rem 1.5rem;
+  padding: 0.75rem 1.5rem;
+  min-height: 68px;
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .logo-symbol {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   background: linear-gradient(135deg, var(--primary) 0%, #063729 100%);
   border-radius: 12px;
   display: flex;
@@ -330,19 +357,20 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   color: #FFFFFF;
   font-weight: 800;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   box-shadow: 0 4px 12px rgba(10, 83, 62, 0.25);
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .logo-symbol::after {
   content: '';
   position: absolute;
-  top: -6px;
-  right: -6px;
-  width: 14px;
-  height: 14px;
+  top: -4px;
+  right: -4px;
+  width: 12px;
+  height: 12px;
   background: var(--accent-terracotta);
   border-radius: 50%;
 }
@@ -353,11 +381,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-title {
-  font-size: 1.25rem;
+  font-size: 1.22rem;
   font-weight: 800;
   color: var(--primary-dark);
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 [data-theme="dark"] .brand-title {
@@ -365,23 +393,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-sub {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
+}
+
+/* Desktop Nav Menu */
+.desktop-nav {
+  display: block;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
   align-items: center;
-  gap: 1.8rem;
+  gap: 1.6rem;
 }
 
 .nav-link {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-main);
   padding: 0.35rem 0;
@@ -411,48 +444,50 @@ h1, h2, h3, h4, h5, h6 {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
-/* Button Variants */
+/* Button System */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   font-weight: 700;
-  font-size: 0.925rem;
-  padding: 0.7rem 1.4rem;
+  font-size: 0.92rem;
+  padding: 0.65rem 1.35rem;
   border-radius: var(--radius-full);
   transition: all var(--trans-fast);
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
   white-space: nowrap;
+  user-select: none;
 }
 
 .btn-primary {
   background: var(--primary);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(10, 83, 62, 0.3);
+  box-shadow: 0 4px 14px rgba(10, 83, 62, 0.28);
 }
 
 .btn-primary:hover {
   background: var(--primary-light);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(10, 83, 62, 0.4);
+  box-shadow: 0 6px 20px rgba(10, 83, 62, 0.38);
 }
 
 .btn-accent {
   background: var(--accent-terracotta);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(168, 44, 35, 0.3);
+  box-shadow: 0 4px 14px rgba(168, 44, 35, 0.28);
 }
 
 .btn-accent:hover {
   background: var(--accent-terracotta-dark);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(168, 44, 35, 0.4);
+  box-shadow: 0 6px 20px rgba(168, 44, 35, 0.38);
 }
 
 .btn-outline {
@@ -479,13 +514,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-sm {
-  padding: 0.45rem 0.95rem;
+  padding: 0.42rem 0.95rem;
   font-size: 0.825rem;
+  min-height: 38px;
 }
 
 .btn-lg {
-  padding: 0.9rem 1.9rem;
-  font-size: 1.05rem;
+  padding: 0.85rem 1.85rem;
+  font-size: 1.02rem;
+  min-height: 48px;
 }
 
 .btn-block {
@@ -502,6 +539,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   color: var(--text-main);
   transition: all var(--trans-fast);
+  flex-shrink: 0;
 }
 
 [data-theme="dark"] .theme-toggle-btn {
@@ -509,11 +547,274 @@ h1, h2, h3, h4, h5, h6 {
   color: #FFFFFF;
 }
 
+/* ==========================================================================
+   Mobile & Tablet Hamburger Button
+   ========================================================================== */
+
 .mobile-toggle {
   display: none;
-  background: transparent;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  padding: 0;
+  margin-left: 0.25rem;
+}
+
+.mobile-toggle:hover {
+  background: rgba(var(--primary-rgb), 0.08);
+  border-color: var(--primary);
+}
+
+.hamburger-box {
+  width: 22px;
+  height: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 22px;
+  height: 2.2px;
+  background-color: var(--text-main);
+  border-radius: 2px;
+  position: absolute;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.hamburger-inner {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger-inner::before {
+  content: '';
+  top: -7px;
+}
+
+.hamburger-inner::after {
+  content: '';
+  bottom: -7px;
+}
+
+/* Hamburger active state */
+.mobile-toggle.is-active .hamburger-inner {
+  background-color: transparent;
+}
+
+.mobile-toggle.is-active .hamburger-inner::before {
+  transform: translateY(7px) rotate(45deg);
+  background-color: var(--accent-terracotta);
+}
+
+.mobile-toggle.is-active .hamburger-inner::after {
+  transform: translateY(-7px) rotate(-45deg);
+  background-color: var(--accent-terracotta);
+}
+
+/* ==========================================================================
+   Mobile & Tablet Off-Canvas Drawer System
+   ========================================================================== */
+
+.nav-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 20, 16, 0.68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-drawer-backdrop.backdrop-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 88%;
+  max-width: 390px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg-card);
+  border-left: 1px solid var(--border-light);
+  box-shadow: -10px 0 45px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  transform: translateX(100%);
+  transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.25rem 1.4rem calc(1.5rem + env(safe-area-inset-bottom));
+}
+
+.mobile-nav-drawer.drawer-open {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 1rem;
+}
+
+.drawer-close-btn {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.drawer-close-btn:hover {
+  background: rgba(168, 44, 35, 0.1);
+  color: var(--accent-terracotta);
+  border-color: var(--accent-terracotta);
+}
+
+.drawer-currency-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-subtle);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.2rem;
+  border: 1px solid var(--border-light);
+}
+
+.drawer-currency-lbl {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.drawer-nav {
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.78rem 0.95rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
   color: var(--text-main);
-  font-size: 1.5rem;
+  transition: all var(--trans-fast);
+  min-height: 48px;
+}
+
+.drawer-link:hover,
+.drawer-link:active {
+  background: rgba(var(--primary-rgb), 0.08);
+  color: var(--primary);
+  transform: translateX(3px);
+}
+
+.drawer-link .d-icon {
+  margin-right: 0.75rem;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.drawer-link span:nth-child(2) {
+  flex-grow: 1;
+}
+
+.drawer-link .d-arrow {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+.drawer-link .d-badge {
+  background: rgba(10, 83, 62, 0.12);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.drawer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.drawer-footer {
+  padding-top: 1rem;
+  border-top: 1px dashed var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.drawer-whatsapp-btn {
+  display: flex;
+  flex-direction: column;
+  background: rgba(37, 211, 102, 0.1);
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.9rem;
+  color: #128C7E;
+  font-size: 0.78rem;
+  transition: all var(--trans-fast);
+}
+
+.drawer-whatsapp-btn strong {
+  font-size: 0.88rem;
+  color: #075E54;
+}
+
+[data-theme="dark"] .drawer-whatsapp-btn {
+  color: #4ADE80;
+}
+
+[data-theme="dark"] .drawer-whatsapp-btn strong {
+  color: #86EFAC;
+}
+
+.drawer-reg-txt {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.4;
 }
 
 /* ==========================================================================
@@ -565,9 +866,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-title {
-  font-size: 3.35rem;
+  font-size: clamp(2.1rem, 4.2vw, 3.35rem);
   font-weight: 800;
-  line-height: 1.12;
+  line-height: 1.15;
   color: #FFFFFF;
   margin-bottom: 1.3rem;
   letter-spacing: -0.02em;
@@ -579,7 +880,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-lead {
-  font-size: 1.18rem;
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
   color: #D3E4DE;
   line-height: 1.65;
   margin-bottom: 2rem;
@@ -602,7 +903,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .stat-num {
   font-family: var(--font-heading);
-  font-size: 1.95rem;
+  font-size: clamp(1.5rem, 2.5vw, 1.95rem);
   font-weight: 800;
   color: #FFFFFF;
   line-height: 1.1;
@@ -644,6 +945,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.5rem;
+  gap: 0.5rem;
 }
 
 .donate-card-title {
@@ -663,6 +965,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 800;
   padding: 0.25rem 0.6rem;
   border-radius: var(--radius-full);
+  white-space: nowrap;
 }
 
 /* Frequency Tabs */
@@ -685,6 +988,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: calc(var(--radius-md) - 3px);
   transition: all var(--trans-fast);
   text-align: center;
+  min-height: 40px;
 }
 
 .freq-btn.active {
@@ -715,6 +1019,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.95rem;
   color: var(--text-main);
   transition: all var(--trans-fast);
+  min-height: 44px;
 }
 
 .amount-btn:hover {
@@ -754,6 +1059,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.05rem;
   font-weight: 700;
   transition: border-color var(--trans-fast);
+  min-height: 48px;
 }
 
 .custom-amount-input:focus {
@@ -761,7 +1067,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.12);
 }
 
-/* Impact Badge Description */
+/* Impact Description Box */
 .donation-impact-box {
   background: linear-gradient(135deg, rgba(10, 83, 62, 0.07), rgba(217, 155, 38, 0.08));
   border-left: 3px solid var(--primary);
@@ -783,6 +1089,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.78rem;
   color: var(--text-muted);
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .guarantee-item {
@@ -792,7 +1099,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   Trust Banner & Policy
+   Trust Strip Section
    ========================================================================== */
 
 .trust-strip {
@@ -845,7 +1152,7 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 
 .causes-section {
-  padding: 6rem 0;
+  padding: 5.5rem 0;
 }
 
 .filter-bar {
@@ -853,7 +1160,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.6rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
 }
 
 .filter-pill {
@@ -865,6 +1172,9 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9rem;
   font-weight: 600;
   transition: all var(--trans-fast);
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .filter-pill:hover {
@@ -977,7 +1287,6 @@ h1, h2, h3, h4, h5, h6 {
   flex-grow: 1;
 }
 
-/* Progress Component */
 .campaign-progress-block {
   margin-bottom: 1.5rem;
 }
@@ -1029,7 +1338,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   Impact Calculator Simulator Section
+   Impact Simulator Section
    ========================================================================== */
 
 .simulator-section {
@@ -1041,19 +1350,19 @@ h1, h2, h3, h4, h5, h6 {
 .simulator-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: 3rem;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-light);
 }
 
 .slider-container {
-  margin: 2.5rem 0 3.5rem;
+  margin: 2rem 0 3rem;
   text-align: center;
 }
 
 .slider-amount-display {
   font-family: var(--font-heading);
-  font-size: 3.2rem;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 800;
   color: var(--primary);
   line-height: 1;
@@ -1068,19 +1377,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .range-slider {
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
-  height: 12px;
-  border-radius: 6px;
+  height: 14px;
+  border-radius: 7px;
   background: #DFD7C7;
   outline: none;
   transition: background 0.2s;
+  cursor: pointer;
 }
 
 .range-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: var(--primary);
   border: 4px solid #FFFFFF;
@@ -1093,7 +1404,16 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.15);
 }
 
-/* Dynamic Outcome Cards */
+.range-slider::-moz-range-thumb {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 4px solid #FFFFFF;
+  box-shadow: 0 4px 12px rgba(10, 83, 62, 0.4);
+  cursor: pointer;
+}
+
 .outcomes-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1104,7 +1424,7 @@ h1, h2, h3, h4, h5, h6 {
 .outcome-box {
   background: var(--bg-subtle);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
+  padding: 1.4rem;
   text-align: center;
   border: 1px solid var(--border-light);
   transition: all var(--trans-fast);
@@ -1117,12 +1437,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .outcome-icon {
   font-size: 2rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .outcome-val {
   font-family: var(--font-heading);
-  font-size: 1.85rem;
+  font-size: clamp(1.45rem, 2.2vw, 1.85rem);
   font-weight: 800;
   color: var(--primary-dark);
   line-height: 1.1;
@@ -1140,19 +1460,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   Interactive Sindh District Map / Showcase
+   Sindh District Showcase Section
    ========================================================================== */
 
 .district-section {
-  padding: 6rem 0;
+  padding: 5.5rem 0;
 }
 
 .district-selector-bar {
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  overflow-x: auto;
-  padding-bottom: 1rem;
   margin-bottom: 2.5rem;
 }
 
@@ -1166,6 +1484,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-main);
   white-space: nowrap;
   transition: all var(--trans-fast);
+  min-height: 42px;
 }
 
 .district-pill.active {
@@ -1182,11 +1501,11 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1.15fr 1fr;
 }
 
 .district-info-pane {
-  padding: 3rem;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1202,7 +1521,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .district-name {
-  font-size: 2.2rem;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
   font-weight: 800;
   margin-bottom: 1rem;
 }
@@ -1256,7 +1575,7 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 
 .zakat-section {
-  padding: 6rem 0;
+  padding: 5.5rem 0;
   background: linear-gradient(135deg, #052F23 0%, #0B4D39 60%, #136048 100%);
   color: #FFFFFF;
   position: relative;
@@ -1336,6 +1655,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1rem 1.4rem;
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.15);
+  flex-wrap: wrap;
 }
 
 .nisab-item {
@@ -1350,11 +1670,10 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.95rem;
 }
 
-/* Zakat Calculator Box */
 .zakat-calc-card {
   background: #FFFFFF;
   border-radius: var(--radius-lg);
-  padding: 2.2rem;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
   color: var(--text-main);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
@@ -1421,7 +1740,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: var(--text-main);
   background: var(--bg-subtle);
-  font-size: 0.95rem;
+  font-size: 16px; /* iOS zoom prevention */
+  min-height: 44px;
 }
 
 .calc-input:focus {
@@ -1438,6 +1758,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.4rem;
+  gap: 0.75rem;
 }
 
 [data-theme="dark"] .zakat-result-banner {
@@ -1452,17 +1773,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .zakat-due-amount {
   font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
   font-weight: 800;
   color: var(--primary);
 }
 
 /* ==========================================================================
-   Stories of Hope & Beneficiaries
+   Stories of Hope & Beneficiaries Section
    ========================================================================== */
 
 .stories-section {
-  padding: 6rem 0;
+  padding: 5.5rem 0;
 }
 
 .stories-grid {
@@ -1474,7 +1795,7 @@ h1, h2, h3, h4, h5, h6 {
 .story-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: 2.2rem;
+  padding: clamp(1.5rem, 2.5vw, 2.2rem);
   border: 1px solid var(--border-light);
   box-shadow: var(--shadow-card);
   display: flex;
@@ -1492,7 +1813,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .story-quote {
-  font-size: 1rem;
+  font-size: 0.98rem;
   color: var(--text-main);
   font-style: italic;
   line-height: 1.6;
@@ -1514,6 +1835,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--accent-gold);
+  flex-shrink: 0;
 }
 
 .author-info h4 {
@@ -1527,7 +1849,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   Financial Transparency & Audits
+   Financial Transparency Section
    ========================================================================== */
 
 .transparency-section {
@@ -1538,7 +1860,7 @@ h1, h2, h3, h4, h5, h6 {
 .transparency-card {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: 3rem;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
   border: 1px solid var(--border-light);
   box-shadow: var(--shadow-md);
 }
@@ -1589,14 +1911,14 @@ h1, h2, h3, h4, h5, h6 {
 .audit-badges-pane {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .audit-box {
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  padding: 1.2rem;
+  padding: 1.1rem;
   background: var(--bg-subtle);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-light);
@@ -1605,10 +1927,11 @@ h1, h2, h3, h4, h5, h6 {
 .audit-icon {
   font-size: 2rem;
   color: var(--primary);
+  flex-shrink: 0;
 }
 
 .audit-details h4 {
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 700;
 }
 
@@ -1618,7 +1941,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   Volunteer & Bank Transfer Section
+   Volunteer & Bank Transfer CTA Section
    ========================================================================== */
 
 .cta-banner-section {
@@ -1635,7 +1958,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .cta-content h2 {
-  font-size: 2.2rem;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
   color: #FFFFFF;
   margin-bottom: 1rem;
 }
@@ -1651,7 +1974,7 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-lg);
-  padding: 2rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .bank-info-box h3 {
@@ -1666,9 +1989,10 @@ h1, h2, h3, h4, h5, h6 {
 .bank-row {
   display: flex;
   justify-content: space-between;
-  padding: 0.6rem 0;
+  padding: 0.65rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.85rem;
+  gap: 0.5rem;
 }
 
 .bank-row:last-child {
@@ -1677,22 +2001,25 @@ h1, h2, h3, h4, h5, h6 {
 
 .bank-label {
   color: #9DB0C6;
+  flex-shrink: 0;
 }
 
 .bank-val {
   font-weight: 700;
   color: #FFFFFF;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
+  word-break: break-all;
+  text-align: right;
 }
 
 /* ==========================================================================
-   Footer
+   Site Footer
    ========================================================================== */
 
 .site-footer {
   background: #08120E;
   color: #E2ECE8;
-  padding: 5rem 0 2rem;
+  padding: 4.5rem 0 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -1700,7 +2027,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
   gap: 3rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .footer-brand p {
@@ -1769,76 +2096,282 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   font-size: 0.8rem;
   color: #728A83;
+  gap: 1rem;
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   SPECIFIC RESPONSIVE BREAKPOINTS (Desktop, iPad, Mobile)
    ========================================================================== */
 
+/* 1. iPad Landscape & Smaller Desktops (1024px and below) */
 @media (max-width: 1024px) {
+  .desktop-nav {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+  }
+  
+  .nav-btn-zakat {
+    display: none;
+  }
+  
+  .nav-container {
+    padding: 0.65rem 1.25rem;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  .hero-title {
-    font-size: 2.75rem;
-  }
+
   .campaigns-grid,
   .stories-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
+
   .trust-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
+
   .outcomes-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
   }
+
   .district-detail-card {
     grid-template-columns: 1fr;
   }
+
   .district-img-pane {
-    min-height: 260px;
+    min-height: 280px;
+    max-height: 380px;
   }
+
   .zakat-grid,
   .transparency-grid,
   .cta-banner-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+
   .footer-top-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
 }
 
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none;
+/* 2. iPad Portrait & Tablet Specific (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-section {
+    padding: 3.5rem 0 4.5rem;
   }
-  .mobile-toggle {
-    display: block;
+  
+  .hero-donate-card {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
   }
+
+  .district-selector-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
+
+  .filter-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;
+  }
+}
+
+/* 3. Mobile Phones (767px and below) */
+@media (max-width: 767px) {
+  html {
+    font-size: 15px;
+  }
+
+  .top-bar-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4rem;
+  }
+
+  .emergency-ticker {
+    font-size: 0.76rem;
+  }
+
+  .top-bar-actions {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .top-contact-link {
+    font-size: 0.74rem;
+  }
+
+  .nav-container {
+    padding: 0.5rem 1rem;
+    min-height: 60px;
+  }
+
+  .brand-logo {
+    gap: 0.55rem;
+  }
+
+  .logo-symbol {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+  }
+
+  .brand-title {
+    font-size: 1.05rem;
+  }
+
+  .brand-sub span:last-child {
+    display: none; /* Hide secondary tag on tiny screens */
+  }
+
+  .nav-btn-donate {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.78rem;
+    min-height: 34px;
+  }
+
+  /* Hero on mobile */
+  .hero-section {
+    padding: 2.5rem 0 3.5rem;
+    min-height: auto;
+  }
+
+  .hero-tag {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.85rem;
+    margin-bottom: 1rem;
+  }
+
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 1.95rem;
+    margin-bottom: 1rem;
   }
+
+  .hero-lead {
+    font-size: 0.98rem;
+    margin-bottom: 1.5rem;
+  }
+
   .hero-stats-row {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.85rem;
+    padding-top: 1.25rem;
   }
+
+  .hero-donate-card {
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  .amount-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .amount-btn {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.3rem;
+  }
+
+  /* Horizontal touch scrolling chips for Filter Bar & Districts */
+  .filter-bar {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1rem 0.85rem;
+    margin: 0 -1.5rem 2.5rem;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .filter-bar::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .filter-pill {
+    flex-shrink: 0;
+    font-size: 0.84rem;
+    padding: 0.45rem 1rem;
+  }
+
+  .district-selector-bar {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 1rem 0.85rem;
+    margin: 0 -1.5rem 2rem;
+    scrollbar-width: none;
+  }
+
+  .district-selector-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .district-pill {
+    flex-shrink: 0;
+    font-size: 0.84rem;
+    padding: 0.5rem 1.1rem;
+  }
+
+  /* Single Column Grids */
   .campaigns-grid,
   .stories-grid,
   .trust-grid,
-  .outcomes-grid {
+  .outcomes-grid,
+  .calc-inputs-grid,
+  .district-stats-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
-  .calc-inputs-grid {
-    grid-template-columns: 1fr;
+
+  .calc-field[style*="span 2"] {
+    grid-column: span 1 !important;
   }
+
+  .district-img-pane {
+    min-height: 220px;
+  }
+
   .footer-top-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
+
   .footer-bottom {
     flex-direction: column;
-    gap: 1rem;
     text-align: center;
+    gap: 0.75rem;
+  }
+
+  /* Ensure padding for floating donate bar */
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+/* 4. Very Small Phones (< 380px) */
+@media (max-width: 380px) {
+  .brand-title {
+    font-size: 0.95rem;
+  }
+  
+  .amount-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
