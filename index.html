@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <title>Mehran Sahara Foundation | Sindh Relief, Water & Education NGO (سنڌ سهارو)</title>
-  <meta name="description" content="Dedicated humanitarian NGO in Sindh, Pakistan. Providing clean drinking water in Tharparkar, flood-resilient housing along the Indus, rural girls' solar education, and mobile healthcare with a 100% Zakat policy.">
-  <meta name="keywords" content="Sindh NGO, Tharparkar water charity, flood relief Sindh, Pakistan charity, Zakat Sindh, Indus river relief, donate Pakistan, Mehran Sahara">
-  <meta property="og:title" content="Mehran Sahara Foundation | Sindh Relief & Hope">
-  <meta property="og:description" content="Join us in bringing clean water to Thar, rebuilding homes after floods, and educating girls in rural Sindh. 100% Direct Delivery.">
-  <meta property="og:image" content="assets/images/hero.jpg">
+  <title>Swiss Sindh Relief | Schweizer Sindh Hilfswerk (Aid & Hope for Sindh)</title>
+  <meta name="description" content="Offizielles Schweizer Hilfswerk für Sindh, Pakistan. Sauberes Trinkwasser in Tharparkar, flutsichere Häuser und Mädchen-Bildung. Steuerbefreite Spenden, ZEWO-konform & TWINT / QR-Rechnung.">
+  <meta name="keywords" content="Swiss NGO, Hilfswerk Schweiz Pakistan, Sindh Fluthilfe, Spenden Schweiz, Zakat Schweiz, TWINT Spende, Tharparkar Wasser, Swiss Sindh Relief">
+  <meta property="og:title" content="Swiss Sindh Relief | Schweizer Sindh Hilfswerk">
+  <meta property="og:description" content="Direkte humanitäre Hilfe aus der Schweiz nach Sindh, Pakistan. 100% Direkthilfe für Trinkwasser, Bildung und Fluthilfe.">
+  <meta property="og:image" content="assets/images/story-amina.jpg">
   <meta property="og:type" content="website">
 
   <!-- Core Stylesheets -->
@@ -17,21 +17,90 @@
 </head>
 <body>
 
+  <!-- ==========================================================================
+       Cinematic Story Prologue Curtain (Swiss First-Impression Entrance)
+       ========================================================================== -->
+  <div id="story-prologue-curtain" class="story-prologue-curtain" role="dialog" aria-modal="true" aria-label="Unsere Geschichte aus Sindh">
+    <div class="prologue-top-bar">
+      <div class="prologue-flag-badge">
+        <span>🇨🇭</span>
+        <span>Schweizer Hilfsinitiative für Sindh</span>
+      </div>
+      <button type="button" class="prologue-skip-btn" id="prologue-skip-btn">
+        Überspringen & zur Website ›
+      </button>
+    </div>
+
+    <div class="prologue-center-content">
+      <div class="prologue-distance-chip">
+        <span>📍 Zürich ➔ Tharparkar • 6'200 km Luftlinie</span>
+        <span>•</span>
+        <span>1 Franken verändert alles</span>
+      </div>
+
+      <h1 class="prologue-title">
+        Ein Kaffee in Zürich.<br>
+        <span class="text-swiss">Ein ganzes Leben in Sindh.</span>
+      </h1>
+
+      <p class="prologue-story-text">
+        In der Schweiz ist 1 Franken ein kleines Wechselgeld. In den Dürredörfern von Tharparkar schenkt dieser eine Franken einem Kind <strong>25 Liter sauberes Trinkwasser</strong>. Amina (9) lief jahrelang täglich 5 Stunden barfuss durch 46°C heissen Wüstensand zu verseuchten Brunnen. Heute fliesst dank Schweizer Direkthilfe frisches Wasser in ihrem Dorf – und Amina kann endlich zur Schule gehen.
+      </p>
+
+      <div class="prologue-stats-cards">
+        <div class="prologue-stat-card">
+          <div class="prologue-stat-val">1 CHF</div>
+          <div class="prologue-stat-lbl">💧 25 L reines Trinkwasser für ein Wüstenkind</div>
+        </div>
+        <div class="prologue-stat-card">
+          <div class="prologue-stat-val">2 CHF</div>
+          <div class="prologue-stat-lbl">🎒 2 Tage warme Schulmahlzeit & Solarlampe</div>
+        </div>
+        <div class="prologue-stat-card">
+          <div class="prologue-stat-val">5 CHF</div>
+          <div class="prologue-stat-lbl">🧼 150 L Trinkwasser & Entkeimungs-Kit</div>
+        </div>
+      </div>
+
+      <div class="prologue-actions">
+        <button type="button" class="btn btn-twint-instant btn-lg" id="prologue-twint-btn" onclick="openMicroDonationModal(1)">
+          <span>⚡</span> Mit 1 CHF via TWINT sofort helfen
+        </button>
+        <button type="button" class="btn btn-outline-white btn-lg" id="prologue-enter-btn">
+          Website betreten & Hoffnung schenken ↓
+        </button>
+      </div>
+    </div>
+
+    <div class="prologue-trust-footer">
+      <span>🇨🇭 Steuerbefreit in der Schweiz (Art. 56 DBG)</span>
+      <span>•</span>
+      <span>📱 1-Klick TWINT & QR-Rechnung</span>
+      <span>•</span>
+      <span>🛡️ 100% Direkthilfe ohne Verwaltungskosten</span>
+    </div>
+  </div>
+
   <!-- Top Emergency & Currency Bar -->
   <div class="top-bar ajrak-border-top">
     <div class="container top-bar-inner">
       <div class="emergency-ticker">
         <span class="pulse-dot"></span>
-        <span class="ticker-text"><strong>URGENT APPEAL:</strong> Drought relief in Tharparkar & monsoon response in Sindh — <em>100% Zakat Verified</em></span>
+        <span class="ticker-text"><strong>🇨🇭 SCHWEIZER HILFSINITIATIVE:</strong> Direkte Fluthilfe, Solar-Trinkwasser & Mädchenbildung in Sindh — <em>100% Direkthilfe vor Ort</em></span>
       </div>
       <div class="top-bar-actions">
         <div class="currency-toggle top-bar-currency">
-          <button type="button" class="curr-btn curr-pkr-btn active" title="Pakistani Rupees">🇵🇰 PKR (₨)</button>
-          <button type="button" class="curr-btn curr-usd-btn" title="US Dollars for Overseas Donors">🌐 USD ($)</button>
+          <button type="button" class="curr-btn curr-chf-btn active" title="Schweizer Franken">🇨🇭 CHF (₣)</button>
+          <button type="button" class="curr-btn curr-eur-btn" title="Euro">🇪🇺 EUR (€)</button>
+          <button type="button" class="curr-btn curr-usd-btn" title="US Dollars">🌐 USD ($)</button>
+          <button type="button" class="curr-btn curr-pkr-btn" title="Pakistani Rupees">🇵🇰 PKR (₨)</button>
         </div>
-        <a href="https://wa.me/923004746341" target="_blank" class="top-contact-link">
-          <span>💬 Aid Desk: +92 300 4746341</span>
-        </a>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted); opacity:0.85;">DE | FR | EN</span>
+          <a href="https://wa.me/41793408219" target="_blank" class="top-contact-link">
+            <span>💬 Desk: +41 79 340 82 19</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -41,33 +110,36 @@
     <div class="container nav-container">
       <a href="#" class="brand-logo">
         <div class="logo-symbol">
-          <span>س</span>
+          <span>🇨🇭</span>
         </div>
         <div class="brand-names">
-          <span class="brand-title">Mehran Sahara</span>
+          <span class="brand-title">Swiss Sindh Relief</span>
           <span class="brand-sub">
-            <span>سنڌ سهارو ٽرسٽ</span>
+            <span>Schweizer Hilfswerk</span>
             <span>•</span>
-            <span class="ajrak-badge">Sindh Relief</span>
+            <span class="ajrak-badge">Mehran Sahara</span>
           </span>
         </div>
       </a>
 
       <nav class="desktop-nav">
         <ul class="nav-menu">
-          <li><a href="#causes" class="nav-link">Our Causes</a></li>
-          <li><a href="#impact" class="nav-link">Impact Calculator</a></li>
-          <li><a href="#districts" class="nav-link">Sindh Districts</a></li>
-          <li><a href="#zakat" class="nav-link">Zakat Portal</a></li>
-          <li><a href="#transparency" class="nav-link">Transparency</a></li>
-          <li><a href="#stories" class="nav-link">Stories of Hope</a></li>
+          <li><a href="#causes" class="nav-link">Projekte</a></li>
+          <li><a href="#stories" class="nav-link">Geschichten</a></li>
+          <li><a href="#spark-module" class="nav-link">⚡ 1-CHF Funke</a></li>
+          <li><a href="#impact" class="nav-link">Wirkungsrechner</a></li>
+          <li><a href="#transparency" class="nav-link">Transparenz & ZEWO</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
+        <button type="button" class="btn-prologue-replay" id="prologue-replay-btn" title="Intro-Geschichte erneut ansehen">
+          📖 Prolog
+        </button>
+        <button type="button" class="btn btn-primary btn-sm nav-btn-donate" onclick="openMicroDonationModal(1)">
+          <span class="dot-live-twint"></span> ⚡ 1 CHF spenden
+        </button>
         <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle theme">🌙</button>
-        <a href="#zakat" class="btn btn-outline btn-sm nav-btn-zakat">Calculate Zakat</a>
-        <button type="button" class="btn btn-primary btn-sm nav-btn-donate" onclick="openDonationModal()">Donate Now</button>
         <button type="button" id="mobile-menu-toggle" class="mobile-toggle" aria-label="Open mobile navigation menu" aria-expanded="false">
           <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -77,61 +149,74 @@
     </div>
   </header>
 
+  <!-- Swiss Trust & Standards Strip -->
+  <div class="swiss-trust-strip">
+    <div class="container">
+      <div class="swiss-trust-grid">
+        <div class="swiss-trust-item"><span class="swiss-trust-icon">🇨🇭</span> <span>ZEWO-konforme Standards</span></div>
+        <div class="swiss-trust-item"><span class="swiss-trust-icon">📄</span> <span>Steuerbefreit in der Schweiz (Art. 56 DBG)</span></div>
+        <div class="swiss-trust-item"><span class="swiss-trust-icon">🔍</span> <span>Swiss GAAP FER 21 geprüfte Berichte</span></div>
+        <div class="swiss-trust-item"><span class="swiss-trust-icon">📱</span> <span>TWINT & QR-Rechnung akzeptiert</span></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Mobile & Tablet Off-Canvas Navigation Drawer -->
   <div class="nav-drawer-backdrop" id="nav-drawer-backdrop"></div>
   <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation Menu">
     <div class="drawer-header">
       <a href="#" class="brand-logo" onclick="closeNavDrawer()">
-        <div class="logo-symbol"><span>س</span></div>
+        <div class="logo-symbol"><span>🇨🇭</span></div>
         <div class="brand-names">
-          <span class="brand-title">Mehran Sahara</span>
-          <span class="brand-sub">سنڌ سهارو ٽرسٽ</span>
+          <span class="brand-title">Swiss Sindh Relief</span>
+          <span class="brand-sub">Schweiz • سنڌ سهارو</span>
         </div>
       </a>
       <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Close navigation menu">✕</button>
     </div>
 
     <div class="drawer-currency-row">
-      <span class="drawer-currency-lbl">Currency:</span>
+      <span class="drawer-currency-lbl">Währung / Currency:</span>
       <div class="currency-toggle">
-        <button type="button" class="curr-btn curr-pkr-btn active">🇵🇰 PKR (₨)</button>
-        <button type="button" class="curr-btn curr-usd-btn">🌐 USD ($)</button>
+        <button type="button" class="curr-btn curr-chf-btn active">🇨🇭 CHF</button>
+        <button type="button" class="curr-btn curr-eur-btn">🇪🇺 EUR</button>
+        <button type="button" class="curr-btn curr-usd-btn">🌐 USD</button>
+        <button type="button" class="curr-btn curr-pkr-btn">🇵🇰 PKR</button>
       </div>
     </div>
 
     <nav class="drawer-nav">
       <ul class="drawer-links">
-        <li><a href="#causes" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🌱</span> <span>Our Sindh Causes</span> <span class="d-arrow">›</span></a></li>
-        <li><a href="#impact" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🧮</span> <span>Impact Calculator</span> <span class="d-arrow">›</span></a></li>
-        <li><a href="#districts" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🗺️</span> <span>Sindh District Focus</span> <span class="d-arrow">›</span></a></li>
-        <li><a href="#zakat" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🌙</span> <span>100% Zakat Portal</span> <span class="d-badge">Verified</span></a></li>
-        <li><a href="#transparency" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">📊</span> <span>Financial Transparency</span> <span class="d-arrow">›</span></a></li>
-        <li><a href="#stories" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">📖</span> <span>Stories of Hope</span> <span class="d-arrow">›</span></a></li>
+        <li><a href="#spark-module" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">⚡</span> <span>1-Franken-Funke (TWINT)</span> <span class="d-badge" style="background:var(--swiss-red); color:#fff;">Soforthilfe</span></a></li>
+        <li><a href="#causes" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🌱</span> <span>Hilfsprojekte in Sindh</span> <span class="d-arrow">›</span></a></li>
+        <li><a href="#stories" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">📖</span> <span>Stimmen & Schicksale</span> <span class="d-badge" style="background:#00A349; color:#fff;">Persönlich</span></a></li>
+        <li><a href="#impact" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">🧮</span> <span>Wirkungsrechner</span> <span class="d-arrow">›</span></a></li>
+        <li><a href="#transparency" class="drawer-link" onclick="closeNavDrawer()"><span class="d-icon">📊</span> <span>Finanzen & ZEWO</span> <span class="d-arrow">›</span></a></li>
       </ul>
     </nav>
 
     <div class="drawer-actions">
-      <button type="button" class="btn btn-primary btn-block btn-lg" onclick="closeNavDrawer(); openDonationModal();">
-        Donate Now 💚
+      <button type="button" class="btn btn-twint-spark btn-block btn-lg" onclick="closeNavDrawer(); openMicroDonationModal(1);">
+        ⚡ 1 CHF mit TWINT spenden
       </button>
-      <a href="#zakat" class="btn btn-outline btn-block" onclick="closeNavDrawer();">
-        Calculate My Zakat
-      </a>
+      <button type="button" class="btn btn-outline btn-block" onclick="closeNavDrawer(); document.getElementById('story-prologue-curtain').classList.remove('prologue-hidden');">
+        📖 Intro-Geschichte ansehen
+      </button>
+      <button type="button" class="btn btn-primary btn-block" onclick="closeNavDrawer(); openDonationModal();">
+        Spende anpassen (TWINT / QR)
+      </button>
       <button type="button" class="btn btn-gold btn-block open-volunteer-modal-btn" onclick="closeNavDrawer();">
-        Volunteer in Sindh 🤝
+        Freiwillig engagieren 🤝
       </button>
-      <a href="admin.html" class="btn btn-outline btn-block" style="border-style: dashed; font-size: 0.82rem;">
-        🔒 Staff Admin Portal
-      </a>
     </div>
 
     <div class="drawer-footer">
-      <a href="https://wa.me/923004746341" target="_blank" class="drawer-whatsapp-btn">
-        <span>💬 WhatsApp Field Helpline:</span>
-        <strong>+92 300 4746341</strong>
+      <a href="https://wa.me/41793408219" target="_blank" class="drawer-whatsapp-btn">
+        <span>💬 Schweizer Ansprechstelle:</span>
+        <strong>+41 79 340 82 19</strong>
       </a>
       <div class="drawer-reg-txt">
-        <span>Sindh Charity Commission Reg: SINDH-CC/0488</span> • <span>NTN: 8934120-4</span>
+        <span>Verein gemäss Art. 60 ZGB (Zürich/Genf)</span> • <span>Partner: Mehran Sahara Sindh</span>
       </div>
     </div>
   </aside>
@@ -141,34 +226,34 @@
     <div class="container hero-grid">
       <div class="hero-content">
         <div class="hero-tag">
-          <span>🌾 سندھ سہارا فاؤنڈیشن</span>
+          <span>🇨🇭 Schweizer-Pakistanische Partnerschaft</span>
           <span>•</span>
-          <span>100% Direct Delivery</span>
+          <span>100% Direkthilfe vor Ort</span>
         </div>
         <h1 class="hero-title">
-          Empowering Resilient Communities Across <span class="highlight">Sindh</span>
+          Direkte Hoffnung und Perspektiven für Menschen in <span class="highlight">Sindh</span>
         </h1>
         <p class="hero-lead">
-          From the arid sand dunes of Tharparkar to the vulnerable riverbanks of the Indus — we provide solar-powered deep water wells, climate-resilient homes, solar schools for rural girls, and mobile health clinics.
+          Aus der Schweiz direkt zu den bedürftigsten Familien: Wir bauen solarbetriebene Tiefbrunnen in der Wüste Tharparkar, errichten flutsichere Steinhäuser entlang des Indus und schenken jungen Mädchen Bildungschancen.
         </p>
 
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="#causes" class="btn btn-gold btn-lg">Explore Sindh Causes</a>
-          <button type="button" class="btn btn-outline btn-lg open-volunteer-modal-btn" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">Volunteer in Sindh</button>
+          <a href="#stories" class="btn btn-gold btn-lg">Persönliche Geschichten</a>
+          <button type="button" class="btn btn-outline btn-lg" onclick="openDonationModal()" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">Spende tätigen (TWINT)</button>
         </div>
 
         <div class="hero-stats-row">
           <div class="stat-item">
-            <div class="stat-num">₨ 240M<span class="plus">+</span></div>
-            <div class="stat-label">Direct Field Aid Delivered</div>
+            <div class="stat-num" id="hero-stat-aid">CHF 1.8M<span class="plus">+</span></div>
+            <div class="stat-label">Direkte Feldhilfe vor Ort</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">520<span class="plus">+</span></div>
-            <div class="stat-label">Solar Wells in Tharparkar</div>
+            <div class="stat-label">Solarbrunnen in Tharparkar</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">78,000<span class="plus">+</span></div>
-            <div class="stat-label">Sindh Families Empowered</div>
+            <div class="stat-num">78'000<span class="plus">+</span></div>
+            <div class="stat-label">Begünstigte Menschen in Sindh</div>
           </div>
         </div>
       </div>
@@ -177,27 +262,28 @@
       <div class="hero-donate-card">
         <div class="donate-card-header">
           <div class="card-title-row">
-            <h3 class="donate-card-title">Send Urgent Relief to Sindh</h3>
-            <span class="zakat-flag">100% Zakat Eligible</span>
+            <h3 class="donate-card-title">Direkt nach Sindh spenden</h3>
+            <span class="zakat-flag">100% Zakat Berechtigt</span>
           </div>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">Fast, secure & directly delivered to vetted beneficiaries.</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted);">Sicher, steuerbefreit & mit TWINT, QR-Rechnung oder Karte.</p>
         </div>
 
         <!-- Frequency Tabs -->
         <div class="freq-tabs">
-          <button type="button" class="freq-btn hero-freq-btn active" data-freq="once">Give Once</button>
-          <button type="button" class="freq-btn hero-freq-btn" data-freq="monthly">Monthly Hope</button>
-          <button type="button" class="freq-btn hero-freq-btn" data-freq="zakat">Pay Zakat</button>
+          <button type="button" class="freq-btn hero-freq-btn active" data-freq="once">Einmalig</button>
+          <button type="button" class="freq-btn hero-freq-btn" data-freq="monthly">Monatlich</button>
+          <button type="button" class="freq-btn hero-freq-btn" data-freq="zakat">100% Zakat</button>
         </div>
 
         <!-- Preset Amount Grid -->
         <div class="amount-grid" id="hero-preset-grid">
-          <!-- Populated dynamically via JS based on selected currency -->
+          <!-- Populated dynamically via JS based on selected currency (CHF 25, 50, 75, 150, 350, 800) -->
         </div>
 
         <!-- Custom Input -->
         <div class="custom-amount-wrapper">
-          <span class="currency-symbol-input curr-symbol-text">₨</span>
+          <span class="currency-symbol-input curr-symbol-text">CHF</span>
+
           <input type="number" id="hero-custom-amount" class="custom-amount-input" placeholder="Or enter custom amount" min="100">
         </div>
 
@@ -217,11 +303,11 @@
           </div>
           <span>•</span>
           <div class="guarantee-item">
-            <span>🧾</span> Instant Tax Receipt
+            <span>🧾</span> Direkte Spendenbescheinigung
           </div>
           <span>•</span>
           <div class="guarantee-item">
-            <span>🇵🇰</span> Raast / Easypaisa / Cards
+            <span>🇨🇭</span> TWINT / QR-Rechnung / Karten
           </div>
         </div>
       </div>
@@ -234,32 +320,125 @@
       <div class="trust-card">
         <div class="trust-icon-wrap">🛡️</div>
         <div class="trust-text">
-          <h4>100% Zakat Policy</h4>
-          <p>Every single rupee of Zakat reaches verified Mustahiqeen with 0% administrative deductions.</p>
+          <h4>100% Zakat-Garantie</h4>
+          <p>Jeder Zakat-Franken geht ohne Verwaltungsabzug direkt an verifizierte Mustahiqeen in Sindh.</p>
         </div>
       </div>
 
       <div class="trust-card">
-        <div class="trust-icon-wrap">🏛️</div>
+        <div class="trust-icon-wrap">🇨🇭</div>
         <div class="trust-text">
-          <h4>Sindh Registered Trust</h4>
-          <p>Approved by the Sindh Charity Commission & Government of Sindh welfare directorate.</p>
+          <h4>Schweizer Verein Art. 60 ZGB</h4>
+          <p>Offiziell anerkannte Schweizer Gemeinnützigkeit in direkter Partnerschaft mit lokalen Feldteams.</p>
         </div>
       </div>
 
       <div class="trust-card">
         <div class="trust-icon-wrap">⚖️</div>
         <div class="trust-text">
-          <h4>Shariah Certified</h4>
-          <p>Audited and verified by senior certified Islamic scholars for strict Zakat compliance.</p>
+          <h4>Steuerbefreite Spenden</h4>
+          <p>Steuerlich voll abzugsfähig in der Schweiz bei Bund, Kanton und Gemeinde (Art. 56 DBG).</p>
         </div>
       </div>
 
       <div class="trust-card">
         <div class="trust-icon-wrap">📄</div>
         <div class="trust-text">
-          <h4>FBR Tax Exemption</h4>
-          <p>Official tax deduction certificates issued automatically with every contribution.</p>
+          <h4>Swiss GAAP FER 21 & ZEWO</h4>
+          <p>Transparente Mittelverwendung und unabhängige jährliche Rechnungsprüfung nach Schweizer Standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Gamified 1-CHF Swiss Impact Spark Module
+       ========================================================================== -->
+  <section class="spark-section" id="spark-module">
+    <div class="container">
+      <div class="spark-container">
+        <div class="spark-header">
+          <div class="spark-tag-row">
+            <span class="spark-badge">🇨🇭 Der 1-Franken-Funke</span>
+            <span class="spark-counter-live">🔥 <strong id="spark-donor-count">3'847</strong> Spenden diesen Monat</span>
+          </div>
+          <h2 class="spark-title">Kleine Münze. <span class="highlight-red">Monumentale Wirkung.</span></h2>
+          <p class="spark-subtitle">
+            In der Schweiz ein unbemerktes Münzstück — in Sindh schenkt 1 Franken 25 Liter sauberes Trinkwasser oder ein ganzes warmes Schulmittagessen. Wähle deinen Funken:
+          </p>
+        </div>
+
+        <!-- Stepped Amounts Grid -->
+        <div class="spark-tiers-nav" id="spark-tiers-container">
+          <button type="button" class="spark-tier-btn active" data-amount="1" data-level="1">
+            <div class="tier-amount-wrap"><span class="curr-symbol-text">CHF</span> 1</div>
+            <div class="tier-label">Wasser-Funke</div>
+          </button>
+          <button type="button" class="spark-tier-btn" data-amount="2" data-level="2">
+            <div class="tier-amount-wrap"><span class="curr-symbol-text">CHF</span> 2</div>
+            <div class="tier-label">Schul-Funke</div>
+          </button>
+          <button type="button" class="spark-tier-btn" data-amount="5" data-level="3">
+            <div class="tier-amount-wrap"><span class="curr-symbol-text">CHF</span> 5</div>
+            <div class="tier-label">Hygiene-Funke</div>
+          </button>
+          <button type="button" class="spark-tier-btn" data-amount="10" data-level="4">
+            <div class="tier-amount-wrap"><span class="curr-symbol-text">CHF</span> 10</div>
+            <div class="tier-label">Lern-Funke</div>
+          </button>
+          <button type="button" class="spark-tier-btn" data-amount="25" data-level="5">
+            <div class="tier-amount-wrap"><span class="curr-symbol-text">CHF</span> 25</div>
+            <div class="tier-label">Familien-Funke</div>
+          </button>
+          <button type="button" class="spark-tier-btn" data-amount="50" data-level="6">
+            <div class="tier-amount-wrap"><span class="curr-symbol-text">CHF</span> 50</div>
+            <div class="tier-label">Rettungs-Funke</div>
+          </button>
+        </div>
+
+        <!-- Live Impact Card -->
+        <div class="spark-live-card">
+          <div class="spark-progress-header">
+            <div class="spark-status">
+              <span class="spark-level-icon" id="spark-badge-icon">🥉</span>
+              <div>
+                <div class="spark-level-name" id="spark-level-title">Stufe 1: Erst-Helfer</div>
+                <div class="spark-level-sub" id="spark-level-sub">Dein Beitrag entzündet Hoffnung in Tharparkar</div>
+              </div>
+            </div>
+            <div class="spark-impact-stat" id="spark-stat-highlight">
+              💧 <strong>25 Liter Trinkwasser</strong>
+            </div>
+          </div>
+
+          <div class="spark-bar-track">
+            <div class="spark-bar-fill" id="spark-progress-fill" style="width: 16.6%;"></div>
+          </div>
+
+          <div class="spark-story-preview">
+            <p id="spark-impact-desc">
+              Mit nur <strong>CHF 1.–</strong> finanzierst du 25 Liter gefiltertes, süsses Trinkwasser für ein Kind in der Wüste Thar. Keine Schachtbrunnen-Mühe mehr, kein Schmutzwasser.
+            </p>
+          </div>
+
+          <div class="spark-actions-row">
+            <button type="button" class="btn btn-twint-spark btn-lg" id="spark-twint-action-btn" onclick="openMicroDonationModal(1)">
+              <span>📱</span>
+              <span id="spark-btn-label">Jetzt 1 CHF mit TWINT spenden</span>
+              <span style="font-weight: 800;">›</span>
+            </button>
+            <button type="button" class="btn btn-outline btn-lg" id="spark-card-action-btn" onclick="openDonationModal({amount: 1, cause: '1-Franken Trinkwasser- & Soforthilfefonds'})">
+              Andere Zahlart (Karte / QR-Rechnung)
+            </button>
+          </div>
+
+          <div class="spark-trust-row">
+            <span>🇨🇭 100% sicher mit Schweizer TWINT</span>
+            <span>•</span>
+            <span>⚡ In unter 10 Sekunden ohne bürokratische Hürden</span>
+            <span>•</span>
+            <span>📄 Steuerbefreit (Art. 56 DBG)</span>
+          </div>
         </div>
       </div>
     </div>
@@ -269,43 +448,43 @@
   <section class="causes-section" id="causes">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">Active Relief Programs</span>
-        <h2 class="section-title">Critical Causes Requiring Your Support in Sindh</h2>
+        <span class="section-subtitle">Aktuelle Hilfsprogramme</span>
+        <h2 class="section-title">Dringende Hilfsprojekte in Sindh</h2>
         <p class="section-desc">
-          Every project is managed on the ground in partnership with local Sindhi village committees to ensure long-term community ownership and sustainability.
+          Jedes Projekt wird vor Ort in enger Zusammenarbeit mit den lokalen Dorfkomitees geplant und umgesetzt, um langfristige Selbsthilfe und Nachhaltigkeit zu sichern.
         </p>
       </div>
 
       <!-- Filter Bar -->
       <div class="filter-bar">
-        <button type="button" class="filter-pill active" data-filter="all">All Causes</button>
-        <button type="button" class="filter-pill" data-filter="water">💧 Thar Clean Water</button>
-        <button type="button" class="filter-pill" data-filter="education">📚 Rural Girls Education</button>
-        <button type="button" class="filter-pill" data-filter="flood">🏠 Flood Resilient Homes</button>
-        <button type="button" class="filter-pill" data-filter="health">🩺 Mobile Healthcare</button>
-        <button type="button" class="filter-pill" data-filter="emergency">🚨 Emergency Aid</button>
+        <button type="button" class="filter-pill active" data-filter="all">Alle Projekte</button>
+        <button type="button" class="filter-pill" data-filter="water">💧 Solar-Trinkwasser (Thar)</button>
+        <button type="button" class="filter-pill" data-filter="education">📚 Mädchen-Bildung</button>
+        <button type="button" class="filter-pill" data-filter="flood">🏠 Flutsichere Häuser</button>
+        <button type="button" class="filter-pill" data-filter="health">🩺 Mobile Klinikboote</button>
+        <button type="button" class="filter-pill" data-filter="emergency">🚨 Nothilfe</button>
       </div>
 
       <!-- Campaign Cards Grid -->
       <div class="campaigns-grid">
         <!-- Campaign 1: Thar Water -->
-        <div class="campaign-card" data-category="water">
+        <div class="campaign-card" data-category="water" data-base-goal-chf="50000" data-base-raised-chf="38400" data-base-default-chf="150">
           <div class="campaign-img-wrap">
-            <img src="assets/images/thar-water.jpg" alt="Solar Powered Clean Water Wells in Tharparkar Sindh" loading="lazy">
-            <span class="campaign-category-badge">Tharparkar Water</span>
-            <span class="campaign-zakat-pill">Zakat Eligible</span>
+            <img src="assets/images/story-mai-jamna.jpg" alt="Solar Powered Clean Water Wells in Tharparkar Sindh" loading="lazy">
+            <span class="campaign-category-badge">Tharparkar Wasser</span>
+            <span class="campaign-zakat-pill">100% Zakat</span>
           </div>
           <div class="campaign-body">
-            <div class="campaign-location">📍 Mithi & Chachro, Thar Desert</div>
-            <h3 class="campaign-title">Solar Deep Water Wells & RO Desalination in Thar</h3>
+            <div class="campaign-location">📍 Mithi & Chachro, Thar Wüste</div>
+            <h3 class="campaign-title">Solar-Tiefbrunnen & Trinkwasser-Anlagen in Thar</h3>
             <p class="campaign-desc">
-              Drilling 250-foot solar-powered boreholes to provide sweet, fluorosis-free drinking water to drought-stricken desert communities.
+              Bohrung von 80 Meter tiefen Solar-Tiefbrunnen zur Versorgung dürregeplagter Wüstendörfer mit sauberem, süssem Trinkwasser.
             </p>
 
             <div class="campaign-progress-block">
               <div class="progress-labels">
-                <span class="raised-val">₨ 3,840,000 Raised</span>
-                <span class="goal-val">Goal: ₨ 5,000,000</span>
+                <span class="raised-val">CHF 38'400.– gesammelt</span>
+                <span class="goal-val">Ziel: CHF 50'000.–</span>
               </div>
               <div class="progress-track">
                 <div class="progress-bar-fill" style="width: 76.8%;"></div>
@@ -313,34 +492,34 @@
             </div>
 
             <div class="campaign-meta-row">
-              <span>👥 482 Donors</span>
-              <span>⏳ 14 Days Remaining</span>
+              <span>👥 482 Spender</span>
+              <span>⏳ Noch 14 Tage</span>
             </div>
 
-            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Tharparkar Solar Deep Wells" data-default-pkr="10000">
-              Support Thar Water →
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Tharparkar Solar Deep Wells" data-default-chf="150">
+              Solarbrunnen unterstützen (CHF 150.–) →
             </button>
           </div>
         </div>
 
         <!-- Campaign 2: Education -->
-        <div class="campaign-card" data-category="education">
+        <div class="campaign-card" data-category="education" data-base-goal-chf="35000" data-base-raised-chf="24500" data-base-default-chf="75">
           <div class="campaign-img-wrap">
-            <img src="assets/images/education.jpg" alt="Rural Girls Education in interior Sindh" loading="lazy">
-            <span class="campaign-category-badge">Education</span>
-            <span class="campaign-zakat-pill">Zakat Eligible</span>
+            <img src="assets/images/story-amina.jpg" alt="Rural Girls Education in interior Sindh" loading="lazy">
+            <span class="campaign-category-badge">Bildung</span>
+            <span class="campaign-zakat-pill">Zakat-Berechtigt</span>
           </div>
           <div class="campaign-body">
             <div class="campaign-location">📍 Larkana & Qambar Shahdadkot</div>
-            <h3 class="campaign-title">Marvi Solar Classrooms & Girls' Education Fund</h3>
+            <h3 class="campaign-title">Marvi Solar-Klassenzimmer & Mädchen-Bildungsfonds</h3>
             <p class="campaign-desc">
-              Empowering young rural girls with free schooling, solar lighting, learning tablets, qualified female teachers, and midday nutritious meals.
+              Bildungschancen für junge Mädchen auf dem Land: Schuluniformen, Solarlampen, qualifizierte Lehrerinnen und warme Mahlzeiten.
             </p>
 
             <div class="campaign-progress-block">
               <div class="progress-labels">
-                <span class="raised-val">₨ 2,450,000 Raised</span>
-                <span class="goal-val">Goal: ₨ 3,500,000</span>
+                <span class="raised-val">CHF 24'500.– gesammelt</span>
+                <span class="goal-val">Ziel: CHF 35'000.–</span>
               </div>
               <div class="progress-track">
                 <div class="progress-bar-fill" style="width: 70%;"></div>
@@ -348,69 +527,69 @@
             </div>
 
             <div class="campaign-meta-row">
-              <span>👥 319 Donors</span>
-              <span>⏳ Ongoing Fund</span>
+              <span>👥 319 Spender</span>
+              <span>⏳ Laufender Bildungsfonds</span>
             </div>
 
-            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Marvi Girls Solar Education" data-default-pkr="5000">
-              Sponsor a Student →
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Marvi Girls Solar Education" data-default-chf="75">
+              Schulplatz schenken (CHF 75.–) →
             </button>
           </div>
         </div>
 
         <!-- Campaign 3: Flood Homes -->
-        <div class="campaign-card" data-category="flood">
+        <div class="campaign-card" data-category="flood" data-base-goal-chf="78000" data-base-raised-chf="62400" data-base-default-chf="350">
           <div class="campaign-img-wrap">
-            <img src="assets/images/flood-rebuild.jpg" alt="Flood Resilient Raised Brick Shelters in Sindh" loading="lazy">
-            <span class="campaign-category-badge">Housing Recovery</span>
-            <span class="campaign-zakat-pill">Zakat Eligible</span>
+            <img src="assets/images/story-allah-dino.jpg" alt="Flood Resilient Raised Brick Shelters in Sindh" loading="lazy">
+            <span class="campaign-category-badge">Wiederaufbau</span>
+            <span class="campaign-zakat-pill">Zakat-Berechtigt</span>
           </div>
           <div class="campaign-body">
             <div class="campaign-location">📍 Dadu, Khairpur & Johi</div>
-            <h3 class="campaign-title">Indus Basin Climate-Resilient Raised Homes</h3>
+            <h3 class="campaign-title">Klimaresistente, hochgelegte Backsteinhäuser am Indus</h3>
             <p class="campaign-desc">
-              Building sturdy 1-room brick homes on 4-foot elevated plinths to keep families, elderly, and livestock safe from future monsoon floodwaters.
+              Bau von soliden 1-Zimmer-Häusern auf 1,2 Meter hohen Fundamenten zum dauerhaften Schutz vor wiederkehrenden Monsunfluten.
             </p>
 
             <div class="campaign-progress-block">
               <div class="progress-labels">
-                <span class="raised-val">₨ 7,920,000 Raised</span>
-                <span class="goal-val">Goal: ₨ 10,000,000</span>
+                <span class="raised-val">CHF 62'400.– gesammelt</span>
+                <span class="goal-val">Ziel: CHF 78'000.–</span>
               </div>
               <div class="progress-track">
-                <div class="progress-bar-fill" style="width: 79.2%;"></div>
+                <div class="progress-bar-fill" style="width: 80%;"></div>
               </div>
             </div>
 
             <div class="campaign-meta-row">
-              <span>👥 684 Donors</span>
-              <span>⏳ 22 Days Remaining</span>
+              <span>👥 684 Spender</span>
+              <span>⏳ Noch 22 Tage</span>
             </div>
 
-            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Flood Resilient Brick Housing" data-default-pkr="35000">
-              Rebuild a Family Home →
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Flood Resilient Brick Housing" data-default-chf="350">
+              Familienheim aufbauen (CHF 350.–) →
             </button>
           </div>
         </div>
 
         <!-- Campaign 4: Healthcare -->
-        <div class="campaign-card" data-category="health">
+        <div class="campaign-card" data-category="health" data-base-goal-chf="28000" data-base-raised-chf="18900" data-base-default-chf="50">
           <div class="campaign-img-wrap">
-            <img src="assets/images/healthcare.jpg" alt="Mobile Mother and Child Healthcare clinic in Coastal Sindh" loading="lazy">
-            <span class="campaign-category-badge">Healthcare</span>
-            <span class="campaign-zakat-pill">Zakat Eligible</span>
+            <img src="assets/images/story-dr-saira.jpg" alt="Mobile Mother and Child Healthcare clinic in Coastal Sindh" loading="lazy">
+            <span class="campaign-category-badge">Gesundheit</span>
+            <span class="campaign-zakat-pill">Zakat-Berechtigt</span>
           </div>
           <div class="campaign-body">
-            <div class="campaign-location">📍 Thatta, Badin & Sujawal Delta</div>
-            <h3 class="campaign-title">Coastal Delta Mobile Mother & Child Medical Units</h3>
+            <div class="campaign-location">📍 Thatta & Indus Delta Inseln</div>
+            <h3 class="campaign-title">Mutter-Kind Klinikboote & mobile Delta-Versorgung</h3>
             <p class="campaign-desc">
-              Specialized boat and van clinics reaching remote riverine hamlets to provide prenatal care, pediatric screenings, and emergency medical kits.
+              Ausgerüstete Klinikboote erreichen abgelegene Flussinseln zur pränatalen Vorsorge, Neugeborenen-Rettung und Impfung.
             </p>
 
             <div class="campaign-progress-block">
               <div class="progress-labels">
-                <span class="raised-val">₨ 1,890,000 Raised</span>
-                <span class="goal-val">Goal: ₨ 2,800,000</span>
+                <span class="raised-val">CHF 18'900.– gesammelt</span>
+                <span class="goal-val">Ziel: CHF 28'000.–</span>
               </div>
               <div class="progress-track">
                 <div class="progress-bar-fill" style="width: 67.5%;"></div>
@@ -418,69 +597,69 @@
             </div>
 
             <div class="campaign-meta-row">
-              <span>👥 245 Donors</span>
-              <span>⏳ Monthly Mission</span>
+              <span>👥 245 Spender</span>
+              <span>⏳ Monatlicher Einsatz</span>
             </div>
 
-            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Mobile Coastal Healthcare Units" data-default-pkr="3500">
-              Support Medical Aid →
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Mobile Coastal Healthcare Units" data-default-chf="50">
+              Klinikboot fördern (CHF 50.–) →
             </button>
           </div>
         </div>
 
         <!-- Campaign 5: Emergency Rations -->
-        <div class="campaign-card" data-category="emergency">
+        <div class="campaign-card" data-category="emergency" data-base-goal-chf="16000" data-base-raised-chf="13200" data-base-default-chf="25">
           <div class="campaign-img-wrap">
             <img src="assets/images/hero.jpg" alt="Emergency Rations and Food Relief for Sindh" loading="lazy">
-            <span class="campaign-category-badge">Emergency Food</span>
+            <span class="campaign-category-badge">Nothilfe & Rationen</span>
             <span class="campaign-zakat-pill">100% Zakat</span>
           </div>
           <div class="campaign-body">
-            <div class="campaign-location">📍 Interior Sindh Districts</div>
-            <h3 class="campaign-title">Monsoon Emergency Rations & Nutrition Drive</h3>
+            <div class="campaign-location">📍 Flutgebiete & Notlager Sindh</div>
+            <h3 class="campaign-title">Monsun-Nothilfe: Nahrungspakete & Trinkwasser-Kits</h3>
             <p class="campaign-desc">
-              Delivering monthly packages of flour, rice, lentils, ghee, clean water jerrycans, and baby nutritional packs to vulnerable wage-labor families.
+              Monatspakete mit Mehl, Reis, Linsen, Speiseöl, Wasserentkeimungstabletten und Babynahrung für notleidende Familien in Notlagern.
             </p>
 
             <div class="campaign-progress-block">
               <div class="progress-labels">
-                <span class="raised-val">₨ 4,120,000 Raised</span>
-                <span class="goal-val">Goal: ₨ 5,000,000</span>
+                <span class="raised-val">CHF 13'200.– gesammelt</span>
+                <span class="goal-val">Ziel: CHF 16'000.–</span>
               </div>
               <div class="progress-track">
-                <div class="progress-bar-fill" style="width: 82.4%;"></div>
+                <div class="progress-bar-fill" style="width: 82.5%;"></div>
               </div>
             </div>
 
             <div class="campaign-meta-row">
-              <span>👥 712 Donors</span>
-              <span>⏳ High Urgency</span>
+              <span>👥 712 Spender</span>
+              <span>⏳ Höchste Dringlichkeit</span>
             </div>
 
-            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Monsoon Emergency Rations Drive" data-default-pkr="3500">
-              Provide Rations →
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Monsoon Emergency Rations Drive" data-default-chf="25">
+              Nahrungspaket bereitstellen (CHF 25.–) →
             </button>
           </div>
         </div>
 
         <!-- Campaign 6: Livelihood -->
-        <div class="campaign-card" data-category="flood">
+        <div class="campaign-card" data-category="flood" data-base-goal-chf="12000" data-base-raised-chf="8700" data-base-default-chf="50">
           <div class="campaign-img-wrap">
             <img src="assets/images/thar-water.jpg" alt="Sindhi Women Artisan Micro-Livelihood & Goat Units" loading="lazy">
-            <span class="campaign-category-badge">Livelihood</span>
-            <span class="campaign-zakat-pill">Zakat Eligible</span>
+            <span class="campaign-category-badge">Existenzsicherung</span>
+            <span class="campaign-zakat-pill">Zakat-Berechtigt</span>
           </div>
           <div class="campaign-body">
             <div class="campaign-location">📍 Sanghar & Mirpurkhas</div>
-            <h3 class="campaign-title">Sindh Women Micro-Livelihood & Livestock Grants</h3>
+            <h3 class="campaign-title">Frauen-Existenzsicherung: Ziegen- & Handwerksfonds</h3>
             <p class="campaign-desc">
-              Granting milk-producing goats, rilli quilting sewing machines, and artisan embroidery toolkits to widowed and landless rural women.
+              Übergabe von Milchziegen und traditionellen Rilli-Nähmaschinen an verwitwete Frauen zur selbstständigen Familienernährung.
             </p>
 
             <div class="campaign-progress-block">
               <div class="progress-labels">
-                <span class="raised-val">₨ 1,450,000 Raised</span>
-                <span class="goal-val">Goal: ₨ 2,000,000</span>
+                <span class="raised-val">CHF 8'700.– gesammelt</span>
+                <span class="goal-val">Ziel: CHF 12'000.–</span>
               </div>
               <div class="progress-track">
                 <div class="progress-bar-fill" style="width: 72.5%;"></div>
@@ -488,12 +667,12 @@
             </div>
 
             <div class="campaign-meta-row">
-              <span>👥 198 Donors</span>
-              <span>⏳ Ongoing Support</span>
+              <span>👥 198 Spender</span>
+              <span>⏳ Dauerhafte Hilfe</span>
             </div>
 
-            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Sindh Women Micro-Livelihood" data-default-pkr="15000">
-              Grant a Livestock Unit →
+            <button type="button" class="btn btn-primary btn-block btn-donate-campaign" data-cause="Sindh Women Micro-Livelihood" data-default-chf="50">
+              Nutztier-Einheit spenden (CHF 50.–) →
             </button>
           </div>
         </div>
@@ -727,55 +906,114 @@
   <section class="stories-section" id="stories">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">Voices from the Ground</span>
-        <h2 class="section-title">Stories of Transformation in Rural Sindh</h2>
+        <span class="section-subtitle">Persönliche Schicksale & Direkte Hilfe</span>
+        <h2 class="section-title">Die Gesichter hinter unserer Hilfe in Sindh</h2>
         <p class="section-desc">
-          Behind every statistic is a human life renewed. Meet the families whose dignity has been restored through your generosity.
+          Hinter jeder Spende steht ein konkretes Menschenleben. Jedes Foto erzählt eine Geschichte von Überlebenswillen, wiedergewonnener Würde und der direkten Kraft Ihrer Solidarität aus der Schweiz.
         </p>
       </div>
 
       <div class="stories-grid">
-        <!-- Story 1 -->
-        <div class="story-card">
-          <div class="quote-mark">“</div>
-          <p class="story-quote">
-            "Before the solar water pump, our women and young daughters spent six exhausting hours every day pulling brackish water from 180-foot wells under the Thar desert sun. Now, clean sweet water flows right into our village courtyard. Our girls are finally attending school instead of carrying water pots."
-          </p>
-          <div class="story-author">
-            <img src="assets/images/thar-water.jpg" alt="Mai Jamna" class="story-avatar">
-            <div class="author-info">
-              <h4>Mai Jamna</h4>
-              <p>Chachro, Tharparkar District</p>
+        <!-- Story 1: Amina -->
+        <div class="story-photo-card" data-story-id="amina" data-base-chf="75">
+          <div class="story-card-img-wrap">
+            <img src="assets/images/story-amina.jpg" alt="Amina in solar classroom" class="story-card-img" loading="lazy">
+            <span class="story-card-tag">Bildung & Zukunft</span>
+            <span class="story-card-impact-tag" data-impact-label="1 Schuljahr & Solarlampe">CHF 75.– = 1 Schuljahr & Solarlampe</span>
+          </div>
+          <div class="story-card-body">
+            <div class="story-person-header">
+              <h3 class="story-person-name">Amina (9 Jahre alt)</h3>
+              <span class="story-person-location">📍 Chachro, Tharparkar</span>
+            </div>
+            <p class="story-card-quote">
+              “Vor dem Bau unserer Solarschule musste ich jeden Tag 5 Stunden Wasser aus tiefen Brunnen holen. Heute bin ich Klassenbeste und träume davon, Ärztin zu werden.”
+            </p>
+            <div class="story-card-footer">
+              <button type="button" class="btn btn-outline btn-sm open-story-btn" data-story-id="amina">
+                Geschichte lesen ›
+              </button>
+              <button type="button" class="btn btn-primary btn-sm story-donate-btn" data-person-name="Amina" onclick="event.stopPropagation(); openDonationModal({cause: 'Marvi Girls Solar Education', amount: 75})">
+                Amina fördern (CHF 75.–) 💚
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- Story 2 -->
-        <div class="story-card">
-          <div class="quote-mark">“</div>
-          <p class="story-quote">
-            "The 2022 deluge washed away our ancestral mud house overnight. We lived on the highway embankment under plastic sheets for months. Mehran Sahara rebuilt our permanent brick home on a 4-foot raised plinth. When heavy rains returned this monsoon, our children slept warm and completely dry."
-          </p>
-          <div class="story-author">
-            <img src="assets/images/flood-rebuild.jpg" alt="Allah Dino" class="story-avatar">
-            <div class="author-info">
-              <h4>Allah Dino Solangi</h4>
-              <p>Khairpur Nathan Shah, Dadu</p>
+        <!-- Story 2: Allah Dino -->
+        <div class="story-photo-card" data-story-id="allah_dino" data-base-chf="350">
+          <div class="story-card-img-wrap">
+            <img src="assets/images/story-allah-dino.jpg" alt="Allah Dino and his family outside their raised brick home" class="story-card-img" loading="lazy">
+            <span class="story-card-tag">Flutsicherer Wiederaufbau</span>
+            <span class="story-card-impact-tag" data-impact-label="2'000 Ziegel & Fundament">CHF 350.– = 2'000 Ziegel & Fundament</span>
+          </div>
+          <div class="story-card-body">
+            <div class="story-person-header">
+              <h3 class="story-person-name">Allah Dino Solangi & Familie</h3>
+              <span class="story-person-location">📍 Khairpur Nathan Shah, Dadu</span>
+            </div>
+            <p class="story-card-quote">
+              “Die Flut riss unser Lehmhaus in Minuten fort. Wir lebten monatelang auf der Strasse. Heute schlafen unsere Kinder sicher in einem hochgelegten Backsteinhaus.”
+            </p>
+            <div class="story-card-footer">
+              <button type="button" class="btn btn-outline btn-sm open-story-btn" data-story-id="allah_dino">
+                Geschichte lesen ›
+              </button>
+              <button type="button" class="btn btn-primary btn-sm story-donate-btn" data-person-name="Familie Solangi" onclick="event.stopPropagation(); openDonationModal({cause: 'Flood Resilient Brick Housing', amount: 350})">
+                Familie Solangi fördern (CHF 350.–) 💚
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- Story 3 -->
-        <div class="story-card">
-          <div class="quote-mark">“</div>
-          <p class="story-quote">
-            "In our village, no girl had ever finished primary school because the nearest school had no roof or electricity. Mehran Sahara installed solar panels, ceiling fans, and provided free bags and books. I dream of becoming a doctor to heal mothers in our village."
-          </p>
-          <div class="story-author">
-            <img src="assets/images/education.jpg" alt="Bakhtawar" class="story-avatar">
-            <div class="author-info">
-              <h4>Bakhtawar & Amina</h4>
-              <p>Rural Qambar-Shahdadkot</p>
+        <!-- Story 3: Mai Jamna -->
+        <div class="story-photo-card" data-story-id="mai_jamna" data-base-chf="150">
+          <div class="story-card-img-wrap">
+            <img src="assets/images/story-mai-jamna.jpg" alt="Mai Jamna drinking clean water from solar tap" class="story-card-img" loading="lazy">
+            <span class="story-card-tag">Solar-Tiefbrunnen & Wasser</span>
+            <span class="story-card-impact-tag" data-impact-label="Wasser für 25 Familien">CHF 150.– = Wasser für 25 Familien</span>
+          </div>
+          <div class="story-card-body">
+            <div class="story-person-header">
+              <h3 class="story-person-name">Mai Jamna (67 Jahre alt)</h3>
+              <span class="story-person-location">📍 Mithi Wüste, Tharparkar</span>
+            </div>
+            <p class="story-card-quote">
+              “50 Jahre lang bluteten meine Hände an den tiefen Brunnenseilen. Dass heute reines, süsses Trinkwasser direkt aus dem Hahn in unserem Dorf fliesst, ist wie ein Wunder.”
+            </p>
+            <div class="story-card-footer">
+              <button type="button" class="btn btn-outline btn-sm open-story-btn" data-story-id="mai_jamna">
+                Geschichte lesen ›
+              </button>
+              <button type="button" class="btn btn-primary btn-sm story-donate-btn" data-person-name="Mai Jamna" onclick="event.stopPropagation(); openDonationModal({cause: 'Tharparkar Solar Deep Wells', amount: 150})">
+                Mai Jamna fördern (CHF 150.–) 💚
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 4: Dr. Saira -->
+        <div class="story-photo-card" data-story-id="dr_saira" data-base-chf="50">
+          <div class="story-card-img-wrap">
+            <img src="assets/images/story-dr-saira.jpg" alt="Dr. Saira examining baby Zayan on mobile boat" class="story-card-img" loading="lazy">
+            <span class="story-card-tag">Mutter-Kind Klinikboot</span>
+            <span class="story-card-impact-tag" data-impact-label="Vorsorge & Babynahrung">CHF 50.– = Vorsorge & Babynahrung</span>
+          </div>
+          <div class="story-card-body">
+            <div class="story-person-header">
+              <h3 class="story-person-name">Dr. Saira & Baby Zayan</h3>
+              <span class="story-person-location">📍 Indus Delta Inseln, Thatta</span>
+            </div>
+            <p class="story-card-quote">
+              “Wenn das Hochwasser die Flussinseln isoliert, bringt unser Klinikboot medizinische Rettung direkt zu den Müttern. Letzten Monat konnten wir über 400 Mütter versorgen.”
+            </p>
+            <div class="story-card-footer">
+              <button type="button" class="btn btn-outline btn-sm open-story-btn" data-story-id="dr_saira">
+                Geschichte lesen ›
+              </button>
+              <button type="button" class="btn btn-primary btn-sm story-donate-btn" data-person-name="Klinikboot" onclick="event.stopPropagation(); openDonationModal({cause: 'Mobile Coastal Healthcare Units', amount: 50})">
+                Klinikboot fördern (CHF 50.–) 💚
+              </button>
             </div>
           </div>
         </div>
@@ -783,78 +1021,79 @@
     </div>
   </section>
 
+
   <!-- Financial Transparency & Governance -->
   <section class="transparency-section" id="transparency">
     <div class="container">
       <div class="section-header">
-        <span class="section-subtitle">Accountability</span>
-        <h2 class="section-title">Where Every Rupee Truly Goes</h2>
+        <span class="section-subtitle">Transparenz & Rechenschaft</span>
+        <h2 class="section-title">Wo jeder Franken Wirkung entfaltet</h2>
         <p class="section-desc">
-          We believe absolute trust is earned through complete financial openness. Review our audited expenditure model.
+          Vertrauen entsteht durch lückenlose Offenlegung. Unsere Buchführung folgt den Grundsätzen von Swiss GAAP FER 21 und den Kriterien der Stiftung ZEWO.
         </p>
       </div>
 
       <div class="transparency-card">
         <div class="transparency-grid">
           <div class="allocation-breakdown">
-            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Annual Fund Utilization</h3>
+            <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Mittelverwendung & Wirkung</h3>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-              Independent annual audits conducted by leading chartered accounting firms. 100% of all Zakat is preserved in separate non-operational trust accounts.
+              Unabhängige Jahresprüfungen. 100% aller Zakat-Spenden fliessen ohne Abzug für Administration direkt an die verifizierten Empfänger (Tamleek-Prinzip).
             </p>
 
             <div class="alloc-item">
               <div class="alloc-meta">
-                <span>Field Aid & Beneficiary Programs</span>
-                <span style="color: var(--primary);">87%</span>
+                <span>Direkte Feldprojekte & Brunnenbau in Sindh</span>
+                <span style="color: var(--primary);">88%</span>
               </div>
               <div class="alloc-bar">
-                <div class="alloc-fill fill-programs"></div>
+                <div class="alloc-fill fill-programs" style="width: 88%;"></div>
               </div>
             </div>
 
             <div class="alloc-item">
               <div class="alloc-meta">
-                <span>Ground Logistics & Technical Monitoring</span>
+                <span>Projektüberwachung & technische Qualitätskontrolle</span>
                 <span style="color: var(--accent-gold);">8%</span>
               </div>
               <div class="alloc-bar">
-                <div class="alloc-fill fill-admin"></div>
+                <div class="alloc-fill fill-admin" style="width: 8%;"></div>
               </div>
             </div>
 
             <div class="alloc-item">
               <div class="alloc-meta">
-                <span>Sindh Emergency Response Reserve</span>
-                <span style="color: var(--accent-terracotta);">5%</span>
+                <span>Schweizer Katastrophen-Nothilfe-Reserve</span>
+                <span style="color: var(--accent-terracotta);">4%</span>
               </div>
               <div class="alloc-bar">
-                <div class="alloc-fill fill-reserve"></div>
+                <div class="alloc-fill fill-reserve" style="width: 4%;"></div>
               </div>
             </div>
           </div>
 
           <div class="audit-badges-pane">
             <div class="audit-box">
-              <div class="audit-icon">📋</div>
+              <div class="audit-icon">🇨🇭</div>
               <div class="audit-details">
-                <h4>Sindh Charity Commission Registered</h4>
-                <p>Registration No. SINDH-CC/REG/2021/0488. Fully compliant with charity regulation ordinances.</p>
+                <h4>Steuerbefreit in der Schweiz</h4>
+                <p>Spenden sind gemäss Art. 56 Bst. g DBG bei Bundes-, Kantons- und Gemeindesteuern voll abzugsfähig.</p>
               </div>
             </div>
 
             <div class="audit-box">
               <div class="audit-icon">🔍</div>
               <div class="audit-details">
-                <h4>Annual External Audits</h4>
-                <p>Audited financial statements available publicly for download every fiscal quarter.</p>
+                <h4>Swiss GAAP FER 21 Prüfstandard</h4>
+                <p>Transparente Berichterstattung nach anerkannten Schweizer Rechnungslegungsstandards für gemeinnützige Organisationen.</p>
               </div>
             </div>
 
             <div class="audit-box">
               <div class="audit-icon">🕌</div>
               <div class="audit-details">
-                <h4>Strict Shariah Supervision</h4>
-                <p>Supervised by Mufti Board to ensure 0% interest, halal banking, and exact Tamleek verification.</p>
+                <h4>100% Zakat-Garantie</h4>
+                <p>Geleitet nach strengen Tamleek-Regeln auf separaten Treuhandkonten ohne Abzug von Gemeinkosten.</p>
               </div>
             </div>
           </div>
@@ -867,41 +1106,41 @@
   <section class="cta-banner-section">
     <div class="container cta-banner-grid">
       <div class="cta-content">
-        <h2>Join the Caravan of Hope Across Sindh</h2>
+        <h2>Gemeinsam Hoffnung nach Sindh bringen</h2>
         <p>
-          Whether you are a doctor, water engineer, teacher, or passionate youth — your skills can save lives in interior Sindh. Join our field relief teams in the upcoming deployment.
+          Ob Ärztin, Wasserbauingenieur, Lehrkraft oder engagierte Privatperson: Wir suchen engagierte Freiwillige für unsere Einsätze in der Schweiz und vor Ort in Sindh.
         </p>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <button type="button" class="btn btn-gold btn-lg open-volunteer-modal-btn">Sign Up as Volunteer</button>
-          <a href="https://wa.me/923004746341" target="_blank" class="btn btn-outline btn-lg" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">
-            WhatsApp Field Desk
+          <button type="button" class="btn btn-gold btn-lg open-volunteer-modal-btn">Freiwillig mitwirken 🤝</button>
+          <a href="https://wa.me/41793408219" target="_blank" class="btn btn-outline btn-lg" style="color: #FFFFFF; border-color: rgba(255,255,255,0.4);">
+            Schweizer WhatsApp Desk
           </a>
         </div>
       </div>
 
       <div class="bank-info-box">
-        <h3>🏦 Official Bank Transfer Details</h3>
-        <p style="font-size: 0.8rem; color: #BDD1E8; margin-bottom: 1rem;">Direct bank deposits accepted via Raast, 1Link, and Roshan Digital Accounts:</p>
+        <h3>🏦 Schweizer Bankverbindung (QR-Rechnung)</h3>
+        <p style="font-size: 0.8rem; color: #BDD1E8; margin-bottom: 1rem;">Spendenkonto Schweiz für E-Banking & Daueraufträge:</p>
 
         <div class="bank-row">
-          <span class="bank-label">Bank Name:</span>
-          <span class="bank-val">Meezan Bank Limited</span>
+          <span class="bank-label">Bank:</span>
+          <span class="bank-val">PostFinance / Kantonalbank CH</span>
         </div>
         <div class="bank-row">
-          <span class="bank-label">Account Title:</span>
-          <span class="bank-val">Mehran Sahara Relief Trust</span>
+          <span class="bank-label">Begünstigter:</span>
+          <span class="bank-val">Swiss Sindh Relief (Verein Art. 60 ZGB)</span>
         </div>
         <div class="bank-row">
-          <span class="bank-label">IBAN:</span>
+          <span class="bank-label">IBAN Schweiz:</span>
+          <span class="bank-val">CH93 0076 2011 6238 9104 2</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">QR-Referenz:</span>
+          <span class="bank-val">21 00000 00000 92830 19283 04881</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-label">Feldkonto Sindh:</span>
           <span class="bank-val">PK42 MEZN 0001 0892 0192 8301</span>
-        </div>
-        <div class="bank-row">
-          <span class="bank-label">Raast ID:</span>
-          <span class="bank-val">03004746341</span>
-        </div>
-        <div class="bank-row">
-          <span class="bank-label">Swift Code:</span>
-          <span class="bank-val">MEZNPKKA</span>
         </div>
       </div>
     </div>
@@ -913,65 +1152,68 @@
       <div class="footer-top-grid">
         <div class="footer-brand">
           <div class="brand-logo" style="margin-bottom: 0.5rem;">
-            <div class="logo-symbol"><span>س</span></div>
+            <div class="logo-symbol"><span>🇨🇭</span></div>
             <div class="brand-names">
-              <span class="brand-title" style="color: #FFFFFF;">Mehran Sahara</span>
-              <span class="brand-sub" style="color: #A6C2B8;">سنڌ سهارو ٽرسٽ</span>
+              <span class="brand-title" style="color: #FFFFFF;">Swiss Sindh Relief</span>
+              <span class="brand-sub" style="color: #A6C2B8;">Schweizer Sindh Hilfswerk</span>
             </div>
           </div>
           <p>
-            A non-profit humanitarian foundation dedicated to sustainable development, disaster relief, water security, and rural empowerment across the province of Sindh, Pakistan.
+            Gemeinnützige Schweizer Hilfsinitiative zur Förderung von sauberem Trinkwasser, Flut-Wiederaufbau, Mädchenbildung und mobiler Gesundheitsversorgung in der Provinz Sindh, Pakistan.
           </p>
-          <div style="display: flex; gap: 0.8rem;">
+          <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
             <span class="ajrak-badge" style="background: rgba(255,255,255,0.1); color: var(--accent-gold-light); border-color: rgba(255,255,255,0.15);">
-              NTN: 8934120-4
+              Art. 60 ZGB Verein
             </span>
             <span class="ajrak-badge" style="background: rgba(255,255,255,0.1); color: #FFFFFF; border-color: rgba(255,255,255,0.15);">
-              SCC Reg: 0488
+              Art. 56 DBG Steuerbefreit
+            </span>
+            <span class="ajrak-badge" style="background: rgba(255,255,255,0.1); color: #00A349; border-color: rgba(255,255,255,0.15);">
+              TWINT Verifiziert
             </span>
           </div>
         </div>
 
         <div class="footer-col">
-          <h4>Our Programs</h4>
+          <h4>Schwerpunkt-Projekte</h4>
           <ul class="footer-links">
-            <li><a href="#causes">Tharparkar Water Wells</a></li>
-            <li><a href="#causes">Flood Resilient Brick Housing</a></li>
-            <li><a href="#causes">Marvi Girls Solar Schools</a></li>
-            <li><a href="#causes">Coastal Delta Medical Boats</a></li>
-            <li><a href="#causes">Emergency Food Packages</a></li>
+            <li><a href="#causes">Tharparkar Solar-Tiefbrunnen</a></li>
+            <li><a href="#causes">Flutsichere Backsteinhäuser</a></li>
+            <li><a href="#causes">Marvi Mädchen Solarschulen</a></li>
+            <li><a href="#causes">Klinikboote im Indus-Delta</a></li>
+            <li><a href="#causes">Nothilfe-Ration Pakete</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Governance & Zakat</h4>
+          <h4>Standards & Zakat</h4>
           <ul class="footer-links">
-            <li><a href="#zakat">100% Zakat Policy</a></li>
-            <li><a href="#zakat">Online Zakat Calculator</a></li>
-            <li><a href="#transparency">Audited Annual Reports</a></li>
-            <li><a href="#transparency">Shariah Certification</a></li>
-            <li><a href="#districts">Field Verification System</a></li>
+            <li><a href="#transparency">ZEWO-konforme Transparenz</a></li>
+            <li><a href="#transparency">Swiss GAAP FER 21 Berichte</a></li>
+            <li><a href="#zakat">100% Zakat Garantie (0% Admin)</a></li>
+            <li><a href="#zakat">Zakat Online-Rechner</a></li>
+            <li><a href="#stories">Verifizierte Wirkungsberichte</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Field Offices & Contact</h4>
+          <h4>Standorte & Kontakt</h4>
           <ul class="footer-contact-list">
             <li class="footer-contact-item">
-              <span>📍</span>
-              <span><strong>Head Office:</strong> Suite 402, Al-Rahim Tower, I.I. Chundrigar Rd, Karachi, Sindh</span>
+              <span>🇨🇭</span>
+              <span><strong>Liaison Schweiz:</strong> Bahnhofstrasse 45, 8001 Zürich / Rue du Rhône 14, 1204 Genève</span>
             </li>
             <li class="footer-contact-item">
               <span>📍</span>
-              <span><strong>Thar Field Hub:</strong> Main Bypass Road, Mithi, Tharparkar</span>
+              <span><strong>Feldleitung Sindh:</strong> Suite 402, Al-Rahim Tower, Karachi</span>
             </li>
             <li class="footer-contact-item">
               <span>📞</span>
-              <span><strong>Helpline:</strong> +92 (021) 3241-8900</span>
+              <span><strong>Schweiz Helpline / TWINT:</strong> +41 79 340 82 19</span>
             </li>
             <li class="footer-contact-item">
               <span>✉️</span>
-              <span><strong>Email:</strong> relief@mehran-sahara.org</span>
+              <span><strong>E-Mail:</strong> spenden@swiss-sindh.ch</span>
             </li>
           </ul>
         </div>
@@ -979,17 +1221,18 @@
 
       <div class="footer-bottom">
         <div>
-          © 2026 Mehran Sahara Relief & Welfare Trust (سنڌ سهارو). All rights reserved. Registered Charity in Pakistan.
+          © 2026 Swiss Sindh Relief (Schweizer Sindh Hilfswerk / Mehran Sahara Partner). Steuerbefreite Organisation in der Schweiz.
         </div>
         <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
-          <span>Crafted with reverence for Sindh’s people & resilient future.</span>
+          <span>Geprüfte Direkthilfe für eine würdevolle Zukunft in Sindh.</span>
           <a href="admin.html" style="color: var(--accent-gold); font-weight: 700; text-decoration: underline; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.3rem;">
-            <span>🔒</span> Staff Admin Portal
+            <span>🔒</span> Mitarbeiter Admin-Portal
           </a>
         </div>
       </div>
     </div>
   </footer>
+
 
   <!-- ==========================================================================
        MODAL 1: Universal Donation Wizard Checkout
@@ -1111,52 +1354,70 @@
             </div>
           </div>
 
-          <label class="form-label">Select Payment Method</label>
+          <label class="form-label">Zahlungsmethode wählen / Payment Method</label>
           <div class="payment-methods-grid">
-            <div class="payment-option-card active" data-method="easypaisa">
-              <div class="payment-badge-icon badge-easypaisa">EP</div>
+            <div class="payment-option-card active" data-method="twint">
+              <div class="payment-badge-icon badge-twint">TWINT</div>
               <div class="payment-text">
-                <h5>Easypaisa</h5>
-                <p>Mobile Account / QR</p>
+                <h5>TWINT</h5>
+                <p>Schweiz #1 App / Sofort</p>
               </div>
             </div>
 
-            <div class="payment-option-card" data-method="jazzcash">
-              <div class="payment-badge-icon badge-jazzcash">JC</div>
+            <div class="payment-option-card" data-method="qrbill">
+              <div class="payment-badge-icon badge-qrbill">QR</div>
               <div class="payment-text">
-                <h5>JazzCash</h5>
-                <p>Mobile Wallet / MPIN</p>
+                <h5>QR-Rechnung</h5>
+                <p>Schweizer IBAN & E-Banking</p>
               </div>
             </div>
 
-            <div class="payment-option-card" data-method="raast">
-              <div class="payment-badge-icon badge-raast">⚡</div>
+            <div class="payment-option-card" data-method="postfinance">
+              <div class="payment-badge-icon badge-postfinance">PF</div>
               <div class="payment-text">
-                <h5>Raast / 1Link</h5>
-                <p>Instant Pakistani Banks</p>
+                <h5>PostFinance</h5>
+                <p>E-Finance & Card</p>
               </div>
             </div>
 
             <div class="payment-option-card" data-method="card">
               <div class="payment-badge-icon badge-card">💳</div>
               <div class="payment-text">
-                <h5>Credit / Debit Card</h5>
-                <p>Visa, Mastercard, PayPak</p>
+                <h5>Kreditkarte / Apple Pay</h5>
+                <p>Visa, Mastercard, Amex</p>
+              </div>
+            </div>
+
+            <div class="payment-option-card" data-method="raast">
+              <div class="payment-badge-icon badge-raast">⚡</div>
+              <div class="payment-text">
+                <h5>Direktkonto / Wire</h5>
+                <p>Meezan Bank & Raast</p>
               </div>
             </div>
           </div>
 
           <!-- Dynamic Gateway Instructions Box -->
           <div class="gateway-details-box" id="gateway-dynamic-instructions">
-            <div class="instruction-step"><strong>1.</strong> Send contribution to Easypaisa Till / Mobile Account: <strong>0300-4746341 (Mehran Sahara Trust)</strong></div>
-            <div class="instruction-step"><strong>2.</strong> Or enter your registered phone number for automatic instant push payment request.</div>
-            <input type="tel" class="form-control" placeholder="03XXXXXXXXX (Your Easypaisa mobile number)" style="margin-top: 0.8rem;" value="03">
+            <div class="swiss-pay-box twint-box">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 0.8rem;">
+                <span style="font-weight: 800; font-size: 1.1rem; color: #00A349;">🟢 TWINT Sofortspende</span>
+                <span style="background:#00A349; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem;">Schweiz #1 App</span>
+              </div>
+              <div class="instruction-step"><strong>1. TWINT Nummer:</strong> <code>+41 79 340 82 19</code> (Empfänger: <em>Swiss Sindh Relief</em>)</div>
+              <div class="instruction-step"><strong>2. Betrag:</strong> <strong id="twint-preview-amount">CHF 75.–</strong></div>
+              <div class="instruction-step"><strong>3. Oder TWINT Push anfordern:</strong> Schweizer Mobilnummer eingeben:</div>
+              <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+                <input type="tel" class="form-control" placeholder="+41 79 XXX XX XX" value="+41 " style="flex:1;">
+                <button type="button" class="btn btn-sm btn-primary" onclick="showToast('TWINT Push-Anfrage gesendet! Bitte in der TWINT App freigeben.', '📱')">TWINT Push</button>
+              </div>
+            </div>
           </div>
 
           <div style="display: flex; gap: 0.85rem;">
-            <button type="button" id="btn-wizard-back-step2" class="btn btn-outline" style="flex: 1;">← Back</button>
+            <button type="button" id="btn-wizard-back-step2" class="btn btn-outline" style="flex: 1;">← Zurück</button>
             <button type="button" id="btn-wizard-submit-payment" class="btn btn-accent" style="flex: 2;">
-              Confirm & Complete Donation
+              Spende jetzt bestätigen 💚
             </button>
           </div>
         </div>
@@ -1165,81 +1426,81 @@
   </div>
 
   <!-- ==========================================================================
-       MODAL 2: Official Printable Donation Receipt
+       MODAL 2: Official Printable Donation Receipt (Swiss Tax Compliant)
        ========================================================================== -->
   <div class="modal-overlay" id="receipt-modal-overlay">
     <div class="modal-container" style="max-width: 580px;">
       <div class="modal-header">
         <h3 class="modal-header-title">
           <span>📜</span>
-          <span>Official Donation Receipt</span>
+          <span>Offizielle Spendenbescheinigung (Schweiz)</span>
         </h3>
         <button type="button" class="modal-close-btn" id="receipt-modal-close" aria-label="Close modal">×</button>
       </div>
 
       <div class="modal-body">
         <div class="receipt-certificate" id="printable-receipt-card">
-          <div class="receipt-watermark">MEHRAN SAHARA</div>
+          <div class="receipt-watermark">SWISS SINDH</div>
 
           <div class="receipt-header">
-            <div class="receipt-ngo-name">Mehran Sahara Relief & Welfare Trust</div>
-            <div class="receipt-reg-info">Registered under Sindh Charity Commission Act (Reg # SINDH-CC/0488) • NTN: 8934120-4</div>
-            <div class="receipt-title-badge" id="receipt-zakat-status">TAX EXEMPT SINDH CHARITY DONATION</div>
+            <div class="receipt-ngo-name">Swiss Sindh Relief (Schweizer Sindh Hilfswerk)</div>
+            <div class="receipt-reg-info">Gemeinnütziger Verein nach Art. 60 ZGB • Partner: Mehran Sahara Relief Trust (Reg # SINDH-CC/0488)</div>
+            <div class="receipt-title-badge" id="receipt-zakat-status">STEUERBEFREITE SPENDE / TAX-DEDUCTIBLE DONATION (ART. 56 DBG)</div>
           </div>
 
           <div class="receipt-meta-grid">
             <div class="receipt-meta-row">
-              <span class="receipt-meta-label">Receipt / TX ID:</span>
-              <span class="receipt-meta-value" id="receipt-tx-id">MSF-2026-891245</span>
+              <span class="receipt-meta-label">Beleg / TX ID:</span>
+              <span class="receipt-meta-value" id="receipt-tx-id">SSR-CH-2026-891245</span>
             </div>
             <div class="receipt-meta-row">
-              <span class="receipt-meta-label">Date & Time:</span>
-              <span class="receipt-meta-value" id="receipt-date">12 Sep 2026</span>
+              <span class="receipt-meta-label">Datum & Zeit:</span>
+              <span class="receipt-meta-value" id="receipt-date">14. September 2026</span>
             </div>
             <div class="receipt-meta-row">
-              <span class="receipt-meta-label">Donor Name:</span>
+              <span class="receipt-meta-label">Spender / Donor:</span>
               <span class="receipt-meta-value" id="receipt-donor-name">Sarang Saif</span>
             </div>
             <div class="receipt-meta-row">
-              <span class="receipt-meta-label">Email:</span>
-              <span class="receipt-meta-value" id="receipt-donor-email">donor@domain.com</span>
+              <span class="receipt-meta-label">E-Mail:</span>
+              <span class="receipt-meta-value" id="receipt-donor-email">spender@domain.ch</span>
             </div>
             <div class="receipt-meta-row">
-              <span class="receipt-meta-label">Cause:</span>
+              <span class="receipt-meta-label">Hilfsprojekt:</span>
               <span class="receipt-meta-value" id="receipt-cause">Tharparkar Solar Deep Wells</span>
             </div>
             <div class="receipt-meta-row">
-              <span class="receipt-meta-label">Method / Type:</span>
-              <span class="receipt-meta-value"><span id="receipt-method">EASYPAISA</span> (<span id="receipt-freq">ONCE</span>)</span>
+              <span class="receipt-meta-label">Zahlungsart:</span>
+              <span class="receipt-meta-value"><span id="receipt-method">TWINT</span> (<span id="receipt-freq">EINMALIG</span>)</span>
             </div>
           </div>
 
           <div class="receipt-amount-banner">
-            <span>Total Donated Amount</span>
-            <div class="receipt-amount-val" id="receipt-amount">₨ 3,500</div>
+            <span>Gespendeter Betrag / Donated Amount</span>
+            <div class="receipt-amount-val" id="receipt-amount">CHF 75.–</div>
           </div>
 
           <p style="font-size: 0.76rem; color: #555; text-align: center; line-height: 1.5;">
-            Thank you for bringing hope, dignity, and life-saving water to the communities of Sindh. Under Section 61 of the Income Tax Ordinance, donations to registered welfare trusts are eligible for full tax credit.
+            Herzlichen Dank für Ihre Solidarität. Spenden an Swiss Sindh Relief sind gemäss Art. 56 Bst. g DBG sowie den kantonalen Steuergesetzen bei der direkten Bundes-, Kantons- und Gemeindesteuer vollumfänglich steuerlich abzugsfähig. Dieser Beleg dient als amtlicher Steuernachweis.
           </p>
 
           <div class="receipt-footer-stamp">
             <div>
-              <strong>Audit Officer</strong><br>
-              Sindh Field Disbursement Desk
+              <strong>Revisionsstelle Schweiz</strong><br>
+              Zürich & Sindh Field Disbursement Desk
             </div>
             <div class="verified-stamp">
-              ✓ VERIFIED SHARIAH COMPLIANT
+              ✓ VERIFIZIERT SWISS GAAP FER 21
             </div>
           </div>
         </div>
 
         <div style="display: flex; gap: 0.85rem; margin-top: 1.5rem;">
           <button type="button" class="btn btn-outline btn-block" id="print-receipt-btn">
-            🖨️ Print / Save as PDF
+            🖨️ Drucken / Als PDF speichern
           </button>
-          <a href="https://wa.me/?text=I%20just%20supported%20Mehran%20Sahara%20Foundation%20to%20help%20communities%20in%20Sindh!%20Join%20me%20in%20bringing%20hope." target="_blank" class="btn btn-primary btn-block">
-            📲 Share on WhatsApp
+          <a href="https://wa.me/?text=Ich%20habe%20gerade%20Swiss%20Sindh%20Relief%20unterst%C3%BCtzt%2C%20um%20Menschen%20in%20Sindh%20sauberes%20Trinkwasser%20und%20Bildung%20zu%20schenken!" target="_blank" class="btn btn-primary btn-block">
+            📲 Auf WhatsApp teilen
           </a>
         </div>
       </div>
@@ -1254,7 +1515,7 @@
       <div class="modal-header">
         <h3 class="modal-header-title">
           <span>🤝</span>
-          <span>Volunteer for Sindh Relief</span>
+          <span>Freiwilligenarbeit für Sindh Relief</span>
         </h3>
         <button type="button" class="modal-close-btn" id="volunteer-modal-close" aria-label="Close modal">×</button>
       </div>
@@ -1262,57 +1523,93 @@
       <div class="modal-body">
         <form id="volunteer-signup-form">
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-            Join our dedicated teams of field volunteers, medical practitioners, engineers, and teachers deployed across Sindh districts.
+            Unterstützen Sie unsere Einsatzteams in der Schweiz (Zürich/Genf) oder direkt vor Ort in den Hilfsregionen in Sindh.
           </p>
 
           <div class="form-group">
-            <label class="form-label" for="vol-name">Full Name *</label>
-            <input type="text" id="vol-name" class="form-control" required placeholder="Your name">
+            <label class="form-label" for="vol-name">Vollständiger Name *</label>
+            <input type="text" id="vol-name" class="form-control" required placeholder="Ihr Vor- und Nachname">
           </div>
 
           <div class="form-grid-2">
             <div class="form-group">
-              <label class="form-label" for="vol-email">Email Address *</label>
-              <input type="email" id="vol-email" class="form-control" required placeholder="name@domain.com">
+              <label class="form-label" for="vol-email">E-Mail-Adresse *</label>
+              <input type="email" id="vol-email" class="form-control" required placeholder="name@domain.ch">
             </div>
             <div class="form-group">
-              <label class="form-label" for="vol-phone">WhatsApp Number *</label>
-              <input type="tel" id="vol-phone" class="form-control" required placeholder="+92 3XX XXXXXXX">
+              <label class="form-label" for="vol-phone">Telefon / WhatsApp *</label>
+              <input type="tel" id="vol-phone" class="form-control" required placeholder="+41 79 XXX XX XX">
             </div>
           </div>
 
           <div class="form-grid-2">
             <div class="form-group">
-              <label class="form-label" for="vol-city">Current City / District</label>
-              <input type="text" id="vol-city" class="form-control" placeholder="e.g. Karachi / Hyderabad / Sukkur">
+              <label class="form-label" for="vol-city">Wohnort / Kanton</label>
+              <input type="text" id="vol-city" class="form-control" placeholder="z.B. Zürich, Bern, Genf, Basel">
             </div>
             <div class="form-group">
-              <label class="form-label" for="vol-skill">Primary Skill Area</label>
+              <label class="form-label" for="vol-skill">Fachbereich / Kompetenz</label>
               <select id="vol-skill" class="form-select">
-                <option value="doctor">Medical / Nurse / Healthcare</option>
-                <option value="water">Civil / Water / Solar Engineering</option>
-                <option value="education">Teacher / Education Specialist</option>
-                <option value="relief">Field Relief & Logistics</option>
-                <option value="media">Photography / Media & Storytelling</option>
+                <option value="doctor">Medizin / Pflege / Hebamme</option>
+                <option value="water">Wasserbau / Solartechnik / Bauingenieur</option>
+                <option value="education">Pädagogik / Lehrperson / Bildung</option>
+                <option value="relief">Logistik / Projektkoordination</option>
+                <option value="media">Fotografie / Kommunikation / Medien</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="vol-district">Preferred Sindh District for Deployment</label>
+            <label class="form-label" for="vol-district">Bevorzugter Einsatzbereich</label>
             <select id="vol-district" class="form-select">
-              <option value="tharparkar">Tharparkar (Mithi / Islamkot / Chachro)</option>
-              <option value="dadu">Dadu & Khairpur</option>
-              <option value="thatta">Thatta & Sujawal Delta</option>
-              <option value="larkana">Larkana & Qambar</option>
-              <option value="any">Any district where need is highest</option>
+              <option value="ch_team">Schweizer Koordinationsteam (Zürich/Remote)</option>
+              <option value="tharparkar">Tharparkar Wüste (Solar-Tiefbrunnen)</option>
+              <option value="dadu">Dadu & Indus-Becken (Flut-Wiederaufbau)</option>
+              <option value="thatta">Thatta Delta (Mobiles Klinikboot)</option>
+              <option value="any">Dort, wo der Bedarf am grössten ist</option>
             </select>
           </div>
 
           <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">
-            Submit Volunteer Registration
+            Anmeldung absenden 🤝
           </button>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 4: Story Reader Deep Immersion Modal
+       ========================================================================== -->
+  <div class="modal-overlay" id="story-modal-overlay">
+    <div class="modal-container" style="max-width: 840px;">
+      <div class="modal-header">
+        <h3 class="modal-header-title">
+          <span>📖</span>
+          <span id="story-modal-name">Amina's Weg in die Schule</span>
+        </h3>
+        <button type="button" class="modal-close-btn" id="story-modal-close" aria-label="Close modal">×</button>
+      </div>
+
+      <div class="story-modal-grid">
+        <div class="story-modal-img-col">
+          <img src="assets/images/story-amina.jpg" id="story-modal-img" alt="Story Beneficiary" class="story-modal-img">
+        </div>
+        <div class="story-modal-content-col">
+          <span class="story-modal-tag" id="story-modal-tag">Bildung & Zukunft</span>
+          <div class="story-modal-meta" id="story-modal-meta">Chachro, Tharparkar • 9 Jahre alt</div>
+          <div class="story-modal-quote" id="story-modal-quote">“...”</div>
+          <div class="story-modal-body" id="story-modal-body">...</div>
+          <div class="story-modal-impact-banner">
+            <span>💚 Direkte Wirkung:</span>
+            <strong id="story-modal-impact">CHF 75 = 1 Schuljahr & Solarlampe</strong>
+          </div>
+          <div class="story-modal-actions">
+            <button type="button" class="btn btn-primary btn-block btn-lg" id="story-modal-donate-btn">
+              Diese Geschichte unterstützen (CHF 75) 💚
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1320,10 +1617,10 @@
   <!-- Floating Mobile Donate Sticky Bar -->
   <div class="floating-donate-bar">
     <div class="floating-content">
-      <span class="floating-title">Sindh Relief Appeal</span>
-      <span class="floating-sub">100% Direct Zakat Delivery</span>
+      <span class="floating-title">🇨🇭 Swiss Sindh Relief</span>
+      <span class="floating-sub">100% Direkthilfe • Steuerbefreit</span>
     </div>
-    <button type="button" class="btn btn-accent btn-sm" onclick="openDonationModal()">Donate Now</button>
+    <button type="button" class="btn btn-accent btn-sm" onclick="openDonationModal()">Spenden (TWINT) 💚</button>
   </div>
 
   <!-- JavaScript Scripts -->
@@ -1332,3 +1629,4 @@
   <script src="js/app.js"></script>
 </body>
 </html>
+

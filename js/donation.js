@@ -1,19 +1,26 @@
 /* ==========================================================================
-   MEHRAN SAHARA FOUNDATION - DONATION SYSTEM & CHECKOUT ENGINE
+   SWISS SINDH RELIEF - CURRENCY & DONATION ENGINE (100% REACTIVE)
+   Supports CHF (Default), EUR, USD, PKR across all components, cards & widgets
    ========================================================================== */
 
 const DonationState = {
-  currency: 'PKR',
-  exchangeRate: 280, // 1 USD = 280 PKR
+  currency: 'CHF', // Default Swiss Franc
+  exchangeRates: {
+    CHF: 1.0,     // Base
+    EUR: 0.94,    // 1 CHF = 0.94 EUR
+    USD: 1.15,    // 1 CHF = 1.15 USD
+    PKR: 320.0    // 1 CHF = 320 PKR
+  },
   frequency: 'once', // 'once' | 'monthly' | 'zakat'
-  cause: 'General Sindh Relief Fund',
-  amount: 3500,
-  paymentMethod: 'easypaisa',
+  cause: 'General Sindh Emergency Relief',
+  amount: 75,
+  paymentMethod: 'twint',
   donor: {
     fullName: '',
     email: '',
     phone: '',
     city: '',
+    country: 'Switzerland',
     isAnonymous: false,
     dedication: ''
   }
@@ -21,106 +28,208 @@ const DonationState = {
 
 // Preset Amounts mapped to currency
 const Presets = {
-  PKR: [1500, 3500, 10000, 35000, 75000, 150000],
-  USD: [15, 25, 50, 150, 300, 600]
+  CHF: [25, 50, 75, 150, 350, 800],
+  EUR: [25, 50, 75, 150, 350, 800],
+  USD: [30, 60, 90, 180, 400, 900],
+  PKR: [8000, 15000, 24000, 48000, 112000, 250000]
 };
 
-// Impact descriptors mapped to PKR value ranges
-function getImpactDescription(pkrAmount) {
-  if (pkrAmount < 2500) {
-    return "Provides clean drinking water filter and nutrition packs for 1 rural child for a month.";
-  } else if (pkrAmount < 8000) {
-    return "Supplies 1 month of emergency food rations & clean water jerrycans for an entire family.";
-  } else if (pkrAmount < 25000) {
-    return "Sponsors a schoolbag, uniform, solar study lamp, and textbooks for 2 rural girls for a full school year.";
-  } else if (pkrAmount < 60000) {
-    return "Installs a deep-bore community freshwater handpump in Tharparkar serving over 150 villagers.";
-  } else if (pkrAmount < 120000) {
-    return "Sets up solar lighting & ceiling fans for a rural community school classroom in interior Sindh.";
-  } else {
-    return "Funds high-plinth climate-resilient brick shelter construction for a displaced family in Dadu/Khairpur.";
-  }
-}
+// Gamified 1-CHF Spark stepped amounts per currency
+const SparkSteps = {
+  CHF: [1, 2, 5, 10, 25, 50],
+  EUR: [1, 2, 5, 10, 25, 50],
+  USD: [1, 3, 6, 12, 30, 60],
+  PKR: [300, 600, 1500, 3000, 7500, 15000]
+};
 
-// Format Currency
+// Format Money across currencies with Swiss precision
 function formatMoney(amount, currency = DonationState.currency) {
-  if (currency === 'PKR') {
-    return '₨ ' + Number(amount).toLocaleString('en-PK');
+  const num = Number(amount);
+  if (currency === 'CHF') {
+    return `CHF ${num.toLocaleString('de-CH')}.–`;
+  } else if (currency === 'EUR') {
+    return `€ ${num.toLocaleString('de-DE')}`;
+  } else if (currency === 'USD') {
+    return `$ ${num.toLocaleString('en-US')}`;
   } else {
-    return '$ ' + Number(amount).toLocaleString('en-US');
+    return `₨ ${num.toLocaleString('en-PK')}`;
   }
 }
 
-// Convert between currencies
+// Convert from CHF base to target currency
+function convertFromChf(chfAmount, targetCurrency = DonationState.currency) {
+  const rate = DonationState.exchangeRates[targetCurrency] || 1.0;
+  const val = chfAmount * rate;
+  if (targetCurrency === 'PKR') {
+    return Math.round(val / 100) * 100;
+  } else if (targetCurrency === 'USD') {
+    return Math.round(val / 5) * 5 || Math.round(val);
+  } else {
+    return Math.round(val / 5) * 5 || Math.round(val);
+  }
+}
+
+// Convert from any currency to another
 function convertAmount(amount, from, to) {
   if (from === to) return amount;
-  if (from === 'USD' && to === 'PKR') {
-    return Math.round(amount * DonationState.exchangeRate);
-  }
-  if (from === 'PKR' && to === 'USD') {
-    return Math.max(5, Math.round(amount / DonationState.exchangeRate));
-  }
-  return amount;
+  const chfBase = amount / (DonationState.exchangeRates[from] || 1.0);
+  return convertFromChf(chfBase, to);
 }
 
-// Initialize Donation Engine
-document.addEventListener('DOMContentLoaded', () => {
-  initCurrencyControls();
-  initHeroWidget();
-  initDonationModal();
+// Impact descriptors mapped to CHF value
+function getImpactDescription(chfAmount) {
+  if (chfAmount < 5) {
+    return "Liefert 25 Liter reinstes, fluoridfreies Trinkwasser für ein Wüstenkind.";
+  } else if (chfAmount < 25) {
+    return "Schenkt 1 Monat Schulhefte, Stifte & nahrhafte Mahlzeiten für ein Mädchen.";
+  } else if (chfAmount < 70) {
+    return "Versorgt eine 5-köpfige Familie mit Notfall-Rationen, Entkeimungs-Kits & Vitaminen.";
+  } else if (chfAmount < 140) {
+    return "Schenkt 1 ganzes Jahr Bildung: Schuluniform, Ranzen, Bücher und Solar-Studienlampe.";
+  } else if (chfAmount < 300) {
+    return "Ermöglicht den Bau eines Solar-Tiefbrunnens in Thar für über 150 Dorfbewohner.";
+  } else if (chfAmount < 700) {
+    return "Ausstattung eines Dorf-Klassenzimmers mit Solaranlage, Deckenventilatoren & Lern-Tablets.";
+  } else {
+    return "Vollständiger Bau eines flutsicheren, 1,2m hochgelegten Backsteinhauses für eine Familie.";
+  }
+}
+
+// Master DOM Currency Update (Updates every single number and label on page)
+function updateAllCurrenciesOnPage() {
+  const curr = DonationState.currency;
+
+  // 1. Update Symbol texts
+  const symbolMap = { CHF: 'CHF', EUR: '€', USD: '$', PKR: '₨' };
+  document.querySelectorAll('.curr-symbol-text').forEach(el => {
+    el.textContent = symbolMap[curr] || curr;
+  });
+
+  // 2. Update Active Button states in all toggles
+  document.querySelectorAll('.curr-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll(`.curr-${curr.toLowerCase()}-btn`).forEach(btn => btn.classList.add('active'));
+
+  // 3. Update Hero Preset Buttons
+  refreshPresetButtons();
   updateImpactCardUI();
-});
 
-// Currency Switcher
-function initCurrencyControls() {
-  const pkrBtns = document.querySelectorAll('.curr-pkr-btn');
-  const usdBtns = document.querySelectorAll('.curr-usd-btn');
-
-  function setCurrency(newCurr) {
-    if (DonationState.currency === newCurr) return;
-    
-    const oldCurr = DonationState.currency;
-    DonationState.currency = newCurr;
-
-    // Convert current amount
-    DonationState.amount = convertAmount(DonationState.amount, oldCurr, newCurr);
-
-    // Update active button state
-    document.querySelectorAll('.curr-btn').forEach(b => b.classList.remove('active'));
-    if (newCurr === 'PKR') {
-      pkrBtns.forEach(b => b.classList.add('active'));
-      document.querySelectorAll('.curr-symbol-text').forEach(el => el.textContent = '₨');
-    } else {
-      usdBtns.forEach(b => b.classList.add('active'));
-      document.querySelectorAll('.curr-symbol-text').forEach(el => el.textContent = '$');
-    }
-
-    // Update preset buttons and custom inputs
-    refreshPresetButtons();
-    updateImpactCardUI();
-    if (typeof updateSimulatorDisplay === 'function') {
-      updateSimulatorDisplay();
-    }
-
-    showToast(`Currency updated to ${newCurr}`, '🌐');
+  // 4. Update Hero Stats Row
+  const heroStatAid = document.getElementById('hero-stat-aid');
+  if (heroStatAid) {
+    const aidInChf = 1800000;
+    if (curr === 'CHF') heroStatAid.innerHTML = `CHF 1.8M<span class="plus">+</span>`;
+    else if (curr === 'EUR') heroStatAid.innerHTML = `€ 1.7M<span class="plus">+</span>`;
+    else if (curr === 'USD') heroStatAid.innerHTML = `$ 2.1M<span class="plus">+</span>`;
+    else heroStatAid.innerHTML = `₨ 570M<span class="plus">+</span>`;
   }
 
-  pkrBtns.forEach(b => b.addEventListener('click', () => setCurrency('PKR')));
-  usdBtns.forEach(b => b.addEventListener('click', () => setCurrency('USD')));
+  // 5. Update Campaign Cards (Goals, Raised, and Donate Buttons)
+  document.querySelectorAll('.campaign-card').forEach(card => {
+    const goalChf = parseFloat(card.dataset.baseGoalChf) || 50000;
+    const raisedChf = parseFloat(card.dataset.baseRaisedChf) || 38400;
+    const defaultChf = parseFloat(card.dataset.baseDefaultChf) || 100;
+
+    const goalConverted = convertFromChf(goalChf, curr);
+    const raisedConverted = convertFromChf(raisedChf, curr);
+    const defaultConverted = convertFromChf(defaultChf, curr);
+
+    const raisedEl = card.querySelector('.raised-val');
+    const goalEl = card.querySelector('.goal-val');
+    const btnEl = card.querySelector('.btn-donate-campaign');
+
+    if (raisedEl) raisedEl.textContent = `${formatMoney(raisedConverted, curr)} gesammelt`;
+    if (goalEl) goalEl.textContent = `Ziel: ${formatMoney(goalConverted, curr)}`;
+    if (btnEl) {
+      btnEl.textContent = `Jetzt fördern (${formatMoney(defaultConverted, curr)}) →`;
+      btnEl.dataset.currentAmount = defaultConverted;
+    }
+  });
+
+  // 6. Update Story Cards (Impact Tags and CTA Buttons)
+  document.querySelectorAll('.story-photo-card').forEach(card => {
+    const baseChf = parseFloat(card.dataset.baseChf) || 75;
+    const converted = convertFromChf(baseChf, curr);
+    const impactTag = card.querySelector('.story-card-impact-tag');
+    const donateBtn = card.querySelector('.story-donate-btn');
+
+    if (impactTag) {
+      const label = impactTag.dataset.impactLabel || 'Wirkung';
+      impactTag.textContent = `${formatMoney(converted, curr)} = ${label}`;
+    }
+    if (donateBtn) {
+      const name = donateBtn.dataset.personName || 'Projekt';
+      donateBtn.textContent = `${name} fördern (${formatMoney(converted, curr)}) 💚`;
+    }
+  });
+
+  // 7. Update Gamified 1-CHF Spark widget
+  if (typeof updateSparkWidgetCurrency === 'function') {
+    updateSparkWidgetCurrency();
+  }
+
+  // 8. Update Simulator Display
+  if (typeof updateSimulatorDisplay === 'function') {
+    updateSimulatorDisplay();
+  }
+
+  // 9. Update Modal values if open
+  const modalInput = document.getElementById('wizard-amount-input');
+  if (modalInput) {
+    modalInput.value = DonationState.amount;
+  }
+  const summaryAmount = document.getElementById('summary-pay-amount');
+  if (summaryAmount) {
+    summaryAmount.textContent = formatMoney(DonationState.amount);
+  }
+  const twintPreview = document.getElementById('twint-preview-amount');
+  if (twintPreview) {
+    twintPreview.textContent = formatMoney(DonationState.amount);
+  }
 }
 
-// Refresh Preset Buttons on Currency Change
+// Currency Switcher Listener Setup
+function initCurrencyControls() {
+  document.querySelectorAll('.curr-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      let targetCurr = 'CHF';
+      if (btn.classList.contains('curr-eur-btn')) targetCurr = 'EUR';
+      else if (btn.classList.contains('curr-usd-btn')) targetCurr = 'USD';
+      else if (btn.classList.contains('curr-pkr-btn')) targetCurr = 'PKR';
+      else targetCurr = 'CHF';
+
+      setCurrency(targetCurr);
+    });
+  });
+}
+
+function setCurrency(newCurr) {
+  if (DonationState.currency === newCurr) return;
+
+  const oldCurr = DonationState.currency;
+  DonationState.currency = newCurr;
+
+  // Convert current selected amount
+  DonationState.amount = convertAmount(DonationState.amount, oldCurr, newCurr);
+
+  // Update entire page reactively
+  updateAllCurrenciesOnPage();
+
+  showToast(`Währung gewechselt zu ${newCurr}`, '🇨🇭');
+}
+
+// Refresh Hero Preset Buttons
 function refreshPresetButtons() {
   const container = document.getElementById('hero-preset-grid');
   if (!container) return;
 
   container.innerHTML = '';
-  const list = Presets[DonationState.currency];
+  const list = Presets[DonationState.currency] || Presets.CHF;
 
   list.forEach((val, idx) => {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = `amount-btn ${idx === 1 ? 'active' : ''}`;
+    btn.className = `amount-btn ${idx === 2 ? 'active' : ''}`;
     btn.textContent = formatMoney(val);
     btn.dataset.amount = val;
 
@@ -136,15 +245,13 @@ function refreshPresetButtons() {
     container.appendChild(btn);
   });
 
-  // Default to second preset
-  DonationState.amount = list[1];
+  DonationState.amount = list[2] || list[1];
 }
 
-// Hero Quick Donation Widget Init
+// Hero Quick Donation Widget
 function initHeroWidget() {
   refreshPresetButtons();
 
-  // Frequency tabs
   const freqTabs = document.querySelectorAll('.hero-freq-btn');
   freqTabs.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -155,7 +262,6 @@ function initHeroWidget() {
     });
   });
 
-  // Custom amount input
   const customInput = document.getElementById('hero-custom-amount');
   if (customInput) {
     customInput.addEventListener('input', (e) => {
@@ -168,33 +274,31 @@ function initHeroWidget() {
     });
   }
 
-  // Hero Donate Button
   const heroDonateBtn = document.getElementById('hero-submit-donate-btn');
   if (heroDonateBtn) {
     heroDonateBtn.addEventListener('click', () => {
       openDonationModal({
         amount: DonationState.amount,
         frequency: DonationState.frequency,
-        cause: 'General Sindh Relief Fund'
+        cause: 'General Sindh Emergency Relief'
       });
     });
   }
 }
 
-// Update Impact text on Hero Card
 function updateImpactCardUI() {
   const impactDesc = document.getElementById('hero-impact-text');
   if (!impactDesc) return;
 
-  const pkrEquivalent = DonationState.currency === 'PKR' 
-    ? DonationState.amount 
-    : DonationState.amount * DonationState.exchangeRate;
+  const chfEquivalent = DonationState.currency === 'CHF'
+    ? DonationState.amount
+    : convertAmount(DonationState.amount, DonationState.currency, 'CHF');
 
-  impactDesc.textContent = getImpactDescription(pkrEquivalent);
+  impactDesc.textContent = getImpactDescription(chfEquivalent);
 }
 
 /* ==========================================================================
-   Checkout Donation Modal Flow
+   Checkout Donation Modal Flow & Swiss Gateways
    ========================================================================== */
 
 let currentWizardStep = 1;
@@ -210,7 +314,6 @@ function initDonationModal() {
     });
   }
 
-  // Wizard Navigation
   const nextToStep2 = document.getElementById('btn-wizard-to-step2');
   const backToStep1 = document.getElementById('btn-wizard-back-step1');
   const nextToStep3 = document.getElementById('btn-wizard-to-step3');
@@ -223,7 +326,6 @@ function initDonationModal() {
   if (backToStep2) backToStep2.addEventListener('click', () => setWizardStep(2));
   if (submitPaymentBtn) submitPaymentBtn.addEventListener('click', processDonationPayment);
 
-  // Payment method selection
   const payCards = document.querySelectorAll('.payment-option-card');
   payCards.forEach(card => {
     card.addEventListener('click', () => {
@@ -234,7 +336,6 @@ function initDonationModal() {
     });
   });
 
-  // Receipt Modal actions
   const printBtn = document.getElementById('print-receipt-btn');
   if (printBtn) {
     printBtn.addEventListener('click', () => window.print());
@@ -248,7 +349,6 @@ function initDonationModal() {
   }
 }
 
-// Open Donation Modal with specific cause/amount pre-filled
 function openDonationModal(options = {}) {
   if (options.amount) DonationState.amount = options.amount;
   if (options.frequency) DonationState.frequency = options.frequency;
@@ -264,8 +364,24 @@ function openDonationModal(options = {}) {
   if (freqSelect && options.frequency) freqSelect.value = options.frequency;
 
   setWizardStep(1);
-  modalOverlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  if (modalOverlay) {
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+// Instant Micro-Donation Modal for 1-CHF Quick TWINT
+function openMicroDonationModal(amount = 1) {
+  openDonationModal({
+    amount: amount,
+    cause: '1-Franken Trinkwasser- & Soforthilfefonds',
+    frequency: 'once'
+  });
+  // Jump directly to payment step for effortless 1-click giving!
+  DonationState.donor.fullName = 'Schweizer Solidaritäts-Spender';
+  DonationState.donor.email = 'spender@swiss-sindh.ch';
+  DonationState.paymentMethod = 'twint';
+  setWizardStep(3);
 }
 
 function closeDonationModal() {
@@ -279,7 +395,6 @@ function closeDonationModal() {
 function setWizardStep(step) {
   currentWizardStep = step;
 
-  // Update indicators
   for (let i = 1; i <= 3; i++) {
     const indicator = document.getElementById(`wizard-indicator-${i}`);
     const content = document.getElementById(`wizard-step-${i}`);
@@ -292,6 +407,14 @@ function setWizardStep(step) {
       content.classList.toggle('active', i === step);
     }
   }
+
+  if (step === 3) {
+    const summaryAmount = document.getElementById('summary-pay-amount');
+    const summaryCause = document.getElementById('summary-pay-cause');
+    if (summaryAmount) summaryAmount.textContent = formatMoney(DonationState.amount);
+    if (summaryCause) summaryCause.textContent = DonationState.cause;
+    updatePaymentInstructions(DonationState.paymentMethod);
+  }
 }
 
 function goToStep2() {
@@ -301,7 +424,7 @@ function goToStep2() {
 
   const val = parseFloat(amountInput.value);
   if (isNaN(val) || val <= 0) {
-    alert('Please enter a valid donation amount.');
+    alert('Bitte geben Sie einen gültigen Spendenbetrag ein.');
     return;
   }
 
@@ -321,24 +444,18 @@ function goToStep3() {
   const dedicationInput = document.getElementById('donor-dedication');
 
   if (!anonCheck.checked && (!nameInput.value.trim() || !emailInput.value.trim())) {
-    alert('Please enter your name and email address, or check "Make my donation anonymous".');
+    alert('Bitte geben Sie Ihren Namen und E-Mail für die Spendenquittung ein oder wählen Sie "Anonym spenden".');
     return;
   }
 
   DonationState.donor = {
-    fullName: anonCheck.checked ? 'Generous Anonymous Donor' : nameInput.value.trim(),
-    email: emailInput.value.trim() || 'donor@mehran-sahara.org',
-    phone: phoneInput.value.trim() || '+92-300-0000000',
-    city: cityInput.value.trim() || 'Sindh, Pakistan',
+    fullName: anonCheck.checked ? 'Anonymer Spender / Anonymous Donor' : nameInput.value.trim(),
+    email: emailInput.value.trim() || 'spenden@swiss-sindh.ch',
+    phone: phoneInput.value.trim() || '+41 79 000 00 00',
+    city: cityInput.value.trim() || 'Schweiz',
     isAnonymous: anonCheck.checked,
-    dedication: dedicationInput.value.trim()
+    dedication: dedicationInput ? dedicationInput.value.trim() : ''
   };
-
-  // Update Summary before Payment
-  const summaryAmount = document.getElementById('summary-pay-amount');
-  const summaryCause = document.getElementById('summary-pay-cause');
-  if (summaryAmount) summaryAmount.textContent = formatMoney(DonationState.amount);
-  if (summaryCause) summaryCause.textContent = DonationState.cause;
 
   setWizardStep(3);
 }
@@ -347,135 +464,149 @@ function updatePaymentInstructions(method) {
   const detailsBox = document.getElementById('gateway-dynamic-instructions');
   if (!detailsBox) return;
 
-  const pkrVal = DonationState.currency === 'PKR' ? DonationState.amount : DonationState.amount * DonationState.exchangeRate;
+  const currentAmt = formatMoney(DonationState.amount);
 
   let html = '';
   switch (method) {
-    case 'easypaisa':
+    case 'twint':
       html = `
-        <div class="instruction-step"><strong>1.</strong> Send <strong>${formatMoney(DonationState.amount)}</strong> to Easypaisa Till / Mobile Account: <strong>0300-4746341 (Mehran Sahara Trust)</strong></div>
-        <div class="instruction-step"><strong>2.</strong> Or enter your registered Easypaisa mobile number below to receive an instant push payment request on your phone.</div>
-        <input type="tel" class="form-control" placeholder="03XXXXXXXXX (Your Easypaisa mobile number)" style="margin-top: 0.8rem;" value="03">
-      `;
-      break;
-    case 'jazzcash':
-      html = `
-        <div class="instruction-step"><strong>1.</strong> Send <strong>${formatMoney(DonationState.amount)}</strong> to JazzCash Till ID: <strong>928174 (Mehran Sahara Relief)</strong></div>
-        <div class="instruction-step"><strong>2.</strong> Or enter your registered JazzCash phone number for instant MPIN prompt.</div>
-        <input type="tel" class="form-control" placeholder="03XXXXXXXXX (Your JazzCash mobile number)" style="margin-top: 0.8rem;" value="03">
-      `;
-      break;
-    case 'raast':
-      html = `
-        <div class="instruction-step"><strong>1. Instant Raast ID:</strong> <code>03004746341</code> or IBAN: <code>PK42MEZN0001089201928301</code></div>
-        <div class="instruction-step"><strong>2. Bank:</strong> Meezan Bank Limited (Islamic Banking Sindh)</div>
-        <div class="instruction-step"><strong>3. Title:</strong> Mehran Sahara Relief & Welfare Trust</div>
-      `;
-      break;
-    case 'card':
-      html = `
-        <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-          <input type="text" class="form-control" placeholder="Cardholder Name" value="${DonationState.donor.fullName !== 'Generous Anonymous Donor' ? DonationState.donor.fullName : ''}">
-          <input type="text" class="form-control" placeholder="Card Number (Visa, Mastercard, PayPak)" maxlength="19" value="4242 •••• •••• 4242">
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
-            <input type="text" class="form-control" placeholder="MM/YY" value="12/28">
-            <input type="password" class="form-control" placeholder="CVC" maxlength="4" value="888">
+        <div class="swiss-pay-box twint-box">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 0.8rem;">
+            <span style="font-weight: 800; font-size: 1.05rem; color: #00A349;">🟢 TWINT Sofortspende</span>
+            <span style="background:#00A349; color:#fff; padding:2px 8px; border-radius:4px; font-size:0.75rem; font-weight:700;">Keine Gebühren</span>
+          </div>
+          <div class="instruction-step"><strong>1. Spenden-Betrag:</strong> <span style="font-size: 1.15rem; font-weight: 800; color: #00A349;">${currentAmt}</span></div>
+          <div class="instruction-step"><strong>2. TWINT Direktnummer:</strong> <code>+41 79 340 82 19</code> (Swiss Sindh Relief)</div>
+          <div class="instruction-step"><strong>3. Push-Anfrage auf Ihr Smartphone:</strong></div>
+          <div style="display:flex; gap:0.5rem; margin-top:0.6rem;">
+            <input type="tel" class="form-control" id="twint-phone-input" placeholder="+41 79 XXX XX XX" value="${DonationState.donor.phone.startsWith('+41') ? DonationState.donor.phone : '+41 '}" style="flex:1;">
+            <button type="button" class="btn btn-sm btn-primary" onclick="showToast('TWINT Push-Anforderung gesendet! Bitte in der TWINT App freigeben.', '📱')">TWINT Push</button>
           </div>
         </div>
       `;
       break;
-    case 'paypal':
+
+    case 'qrbill':
       html = `
-        <div class="instruction-step">Recommended for Overseas Pakistani Diaspora in USA, UK, Canada & Middle East.</div>
-        <div class="instruction-step">USD equivalent will be securely processed: <strong>${DonationState.currency === 'USD' ? formatMoney(DonationState.amount, 'USD') : formatMoney(Math.round(pkrVal / 280), 'USD')}</strong></div>
+        <div class="swiss-pay-box qrbill-box">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 0.8rem;">
+            <span style="font-weight: 800; font-size: 1.05rem; color: var(--text-heading);">🇨🇭 Schweizer QR-Rechnung</span>
+            <span style="font-size:0.75rem; color:var(--text-muted);">E-Banking Scan</span>
+          </div>
+          <div class="instruction-step"><strong>Konto / IBAN:</strong> <code>CH93 0076 2011 6238 9104 2</code></div>
+          <div class="instruction-step"><strong>Begünstigter:</strong> Swiss Sindh Relief, 8001 Zürich</div>
+          <div class="instruction-step"><strong>QR-Referenz:</strong> <code>21 00000 00000 92830 19283 04881</code></div>
+          <div class="instruction-step"><strong>Betrag:</strong> <strong>${currentAmt}</strong></div>
+          <div style="margin-top: 0.8rem; display:flex; gap:0.6rem;">
+            <button type="button" class="btn btn-sm btn-outline" onclick="showToast('IBAN in Zwischenablage kopiert!', '📋')">📋 IBAN kopieren</button>
+            <button type="button" class="btn btn-sm btn-outline" onclick="showToast('QR-Rechnung als PDF wird vorbereitet...', '📄')">📄 QR-Rechnung PDF</button>
+          </div>
+        </div>
       `;
       break;
+
+    case 'postfinance':
+      html = `
+        <div class="swiss-pay-box">
+          <div style="font-weight: 800; font-size: 1.05rem; color: #111; margin-bottom: 0.8rem;">PostFinance E-Finance & Card</div>
+          <div class="instruction-step"><strong>1.</strong> Verschlüsselte Weiterleitung zum PostFinance Portal.</div>
+          <div class="instruction-step"><strong>2.</strong> Spendenbetrag: <strong>${currentAmt}</strong> (gebührenfrei für Schweizer Hilfswerke).</div>
+        </div>
+      `;
+      break;
+
+    case 'card':
+      html = `
+        <div class="swiss-pay-box">
+          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+            <label style="font-size: 0.78rem; font-weight:700; color:var(--text-muted);">Kreditkarte / Debitkarte / Apple Pay:</label>
+            <input type="text" class="form-control" placeholder="Name des Karteninhabers" value="${DonationState.donor.fullName !== 'Anonymer Spender / Anonymous Donor' ? DonationState.donor.fullName : ''}">
+            <input type="text" class="form-control" placeholder="Kartennummer (Visa, Mastercard, Amex)" maxlength="19" value="4242 •••• •••• 4242">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+              <input type="text" class="form-control" placeholder="MM/YY" value="12/28">
+              <input type="password" class="form-control" placeholder="CVC" maxlength="4" value="888">
+            </div>
+          </div>
+        </div>
+      `;
+      break;
+
+    case 'raast':
+      html = `
+        <div class="instruction-step"><strong>1. Instant Raast ID:</strong> <code>03004746341</code> oder IBAN: <code>PK42MEZN0001089201928301</code></div>
+        <div class="instruction-step"><strong>2. Bank:</strong> Meezan Bank Limited (Islamic Banking Sindh / Field Direct Account)</div>
+        <div class="instruction-step"><strong>3. Title:</strong> Mehran Sahara Relief & Welfare Trust</div>
+      `;
+      break;
+
     default:
-      html = `<div class="instruction-step">Direct transfer to Mehran Sahara Foundation official trust account.</div>`;
+      html = `<div class="instruction-step">Direktüberweisung auf das offizielle Schweizer Hilfswerkkonto.</div>`;
   }
 
   detailsBox.innerHTML = html;
 }
 
-// Process Payment & Render Receipt
 function processDonationPayment() {
   const submitBtn = document.getElementById('btn-wizard-submit-payment');
   if (!submitBtn) return;
 
   submitBtn.disabled = true;
-  submitBtn.innerHTML = `
-    <svg style="animation: spin 1s linear infinite; width: 18px; height: 18px; margin-right: 6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <circle cx="12" cy="12" r="10" stroke-width="3" stroke-dasharray="32" stroke-linecap="round"></circle>
-    </svg>
-    Securing Your Donation...
-  `;
+  submitBtn.innerHTML = `Zahlung wird verifiziert...`;
 
   setTimeout(() => {
     submitBtn.disabled = false;
-    submitBtn.innerHTML = `Complete Donation`;
+    submitBtn.innerHTML = `Spende abschliessen`;
 
-    // Close donation modal
     closeDonationModal();
 
-    // Generate Transaction Reference
-    const txId = 'MSF-' + new Date().getFullYear() + '-' + Math.floor(100000 + Math.random() * 900000);
-    const dateStr = new Date().toLocaleDateString('en-GB', {
+    const txId = 'SSR-CH-' + new Date().getFullYear() + '-' + Math.floor(100000 + Math.random() * 900000);
+    const dateStr = new Date().toLocaleDateString('de-CH', {
       day: 'numeric',
-      month: 'short',
+      month: 'long',
       year: 'numeric',
       hour: '2-digit',
       minute: '2-digit'
     });
 
-    // Populate Receipt
-    document.getElementById('receipt-tx-id').textContent = txId;
-    document.getElementById('receipt-date').textContent = dateStr;
-    document.getElementById('receipt-donor-name').textContent = DonationState.donor.fullName;
-    document.getElementById('receipt-donor-email').textContent = DonationState.donor.email;
-    document.getElementById('receipt-cause').textContent = DonationState.cause;
-    document.getElementById('receipt-freq').textContent = DonationState.frequency.toUpperCase();
-    document.getElementById('receipt-method').textContent = DonationState.paymentMethod.toUpperCase();
-    document.getElementById('receipt-amount').textContent = formatMoney(DonationState.amount);
+    const elTx = document.getElementById('receipt-tx-id');
+    const elDate = document.getElementById('receipt-date');
+    const elDonor = document.getElementById('receipt-donor-name');
+    const elEmail = document.getElementById('receipt-donor-email');
+    const elCause = document.getElementById('receipt-cause');
+    const elFreq = document.getElementById('receipt-freq');
+    const elMethod = document.getElementById('receipt-method');
+    const elAmt = document.getElementById('receipt-amount');
 
-    const zakatBadge = document.getElementById('receipt-zakat-status');
-    if (DonationState.frequency === 'zakat') {
-      zakatBadge.textContent = '100% ZAKAT APPLIED (0% ADMIN DEDUCTION)';
-      zakatBadge.style.display = 'inline-block';
-    } else {
-      zakatBadge.textContent = 'TAX EXEMPT SINDH CHARITY DONATION';
-    }
+    if (elTx) elTx.textContent = txId;
+    if (elDate) elDate.textContent = dateStr;
+    if (elDonor) elDonor.textContent = DonationState.donor.fullName;
+    if (elEmail) elEmail.textContent = DonationState.donor.email;
+    if (elCause) elCause.textContent = DonationState.cause;
+    if (elFreq) elFreq.textContent = DonationState.frequency.toUpperCase();
+    if (elMethod) elMethod.textContent = DonationState.paymentMethod.toUpperCase();
+    if (elAmt) elAmt.textContent = formatMoney(DonationState.amount);
 
-    // Persist donation into localStorage for Admin Portal
-    try {
-      const existing = JSON.parse(localStorage.getItem('msf_donations') || '[]');
-      const newDonation = {
-        id: txId,
-        date: dateStr,
-        donor: DonationState.donor.fullName,
-        email: DonationState.donor.email,
-        phone: DonationState.donor.phone,
-        city: DonationState.donor.city,
-        cause: DonationState.cause,
-        amount: DonationState.amount,
-        currency: DonationState.currency,
-        frequency: DonationState.frequency,
-        method: DonationState.paymentMethod,
-        isAnonymous: DonationState.donor.isAnonymous,
-        dedication: DonationState.donor.dedication,
-        status: 'Verified'
-      };
-      existing.unshift(newDonation);
-      localStorage.setItem('msf_donations', JSON.stringify(existing));
-    } catch (err) {
-      console.warn('Could not persist donation to localStorage', err);
-    }
-
-    // Show Receipt Modal
     const receiptModal = document.getElementById('receipt-modal-overlay');
     if (receiptModal) {
       receiptModal.classList.add('active');
     }
 
-    showToast('Alhamdulillah! Your contribution for Sindh has been received.', '💚');
-  }, 1200);
+    showToast('Herzlichen Dank für Ihre lebensrettende Solidarität! 🇨🇭💚', '💚');
+  }, 1000);
 }
+
+// Initialize on DOM Ready
+document.addEventListener('DOMContentLoaded', () => {
+  initCurrencyControls();
+  initHeroWidget();
+  initDonationModal();
+  updateAllCurrenciesOnPage();
+});
+
+window.openDonationModal = openDonationModal;
+window.closeDonationModal = closeDonationModal;
+window.openMicroDonationModal = openMicroDonationModal;
+window.setCurrency = setCurrency;
+window.formatMoney = formatMoney;
+window.convertFromChf = convertFromChf;
+window.updateAllCurrenciesOnPage = updateAllCurrenciesOnPage;
