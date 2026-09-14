@@ -164,12 +164,20 @@ function updateAllCurrenciesOnPage() {
 
   // 7. Update Gamified 1-CHF Spark widget
   if (typeof updateSparkWidgetCurrency === 'function') {
-    updateSparkWidgetCurrency();
+    try {
+      updateSparkWidgetCurrency();
+    } catch (err) {
+      console.warn('Spark widget update deferred:', err);
+    }
   }
 
   // 8. Update Simulator Display
   if (typeof updateSimulatorDisplay === 'function') {
-    updateSimulatorDisplay();
+    try {
+      updateSimulatorDisplay();
+    } catch (err) {
+      console.warn('Simulator display update deferred:', err);
+    }
   }
 
   // 9. Update Modal values if open
@@ -610,3 +618,5 @@ window.setCurrency = setCurrency;
 window.formatMoney = formatMoney;
 window.convertFromChf = convertFromChf;
 window.updateAllCurrenciesOnPage = updateAllCurrenciesOnPage;
+window.DonationState = DonationState;
+window.SparkSteps = SparkSteps;

@@ -1,73 +1,5 @@
-/* ==========================================================================
-   SWISS SINDH RELIEF - MAIN APPLICATION LOGIC
-   Swiss Standards, Impact Simulator, District Explorer & Storytelling Modal
-   ========================================================================== */
-
-document.addEventListener('DOMContentLoaded', () => {
-  initPrologueCurtain();
-  initSparkModule();
-  initCauseFilters();
-  initImpactSimulator();
-  initDistrictShowcase();
-  initThemeToggle();
-  initVolunteerModal();
-  initDirectDonateTriggers();
-  initStoryModalLogic();
-  initMobileNav();
-});
-
-// 0. Cinematic Story Prologue Curtain (Swiss First-Impression Entrance)
-function initPrologueCurtain() {
-  const curtain = document.getElementById('story-prologue-curtain');
-  const enterBtn = document.getElementById('prologue-enter-btn');
-  const skipBtn = document.getElementById('prologue-skip-btn');
-  const replayBtn = document.getElementById('prologue-replay-btn');
-  const twintBtn = document.getElementById('prologue-twint-btn');
-
-  if (!curtain) return;
-
-  function dismissCurtain() {
-    curtain.classList.add('prologue-hidden');
-    document.body.style.overflow = 'auto';
-    sessionStorage.setItem('ssr_prologue_seen', 'true');
-  }
-
-  function showCurtain() {
-    curtain.classList.remove('prologue-hidden');
-    document.body.style.overflow = 'hidden';
-  }
-
-  // Check if previously dismissed in session
-  const alreadySeen = sessionStorage.getItem('ssr_prologue_seen');
-  if (alreadySeen === 'true') {
-    curtain.classList.add('prologue-hidden');
-  } else {
-    document.body.style.overflow = 'hidden';
-  }
-
-  if (enterBtn) enterBtn.addEventListener('click', dismissCurtain);
-  if (skipBtn) skipBtn.addEventListener('click', dismissCurtain);
-  if (replayBtn) replayBtn.addEventListener('click', showCurtain);
-
-  if (twintBtn) {
-    twintBtn.addEventListener('click', () => {
-      dismissCurtain();
-      if (typeof openMicroDonationModal === 'function') {
-        openMicroDonationModal(1);
-      }
-    });
-  }
-
-  // Dismiss on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !curtain.classList.contains('prologue-hidden')) {
-      dismissCurtain();
-    }
-  });
-}
-
-// 0.5 Gamified 1-CHF Swiss Impact Spark Module
-const SparkLevels = [
+// 0. Gamified 1-CHF Swiss Impact Spark Module Data (Global)
+var SparkLevels = [
   {
     level: 1,
     badge: '🥉',
@@ -130,8 +62,132 @@ const SparkLevels = [
   }
 ];
 
-let selectedSparkLevel = 1;
-let currentSparkAmount = 1;
+var selectedSparkLevel = 1;
+var currentSparkAmount = 1;
+window.SparkLevels = SparkLevels;
+window.selectedSparkLevel = selectedSparkLevel;
+
+document.addEventListener('DOMContentLoaded', () => {
+  initPrologueCurtain();
+  initSparkModule();
+  initCauseFilters();
+  initImpactSimulator();
+  initDistrictShowcase();
+  initThemeToggle();
+  initVolunteerModal();
+  initDirectDonateTriggers();
+  initStoryModalLogic();
+  initMobileNav();
+});
+
+// 0. Cinematic Story Prologue Curtain (Swiss First-Impression Entrance with Auto-Open)
+let prologueTimerInterval = null;
+let prologueAutoOpenTimeout = null;
+
+function initPrologueCurtain() {
+  const curtain = document.getElementById('story-prologue-curtain');
+  const enterBtn = document.getElementById('prologue-enter-btn');
+  const skipBtn = document.getElementById('prologue-skip-btn');
+  const replayBtn = document.getElementById('prologue-replay-btn');
+  const twintBtn = document.getElementById('prologue-twint-btn');
+  const progressBar = document.getElementById('prologue-progress-bar');
+  const timerPill = document.getElementById('prologue-timer-pill');
+
+  if (!curtain) return;
+
+  function clearTimers() {
+    if (prologueTimerInterval) {
+      clearInterval(prologueTimerInterval);
+      prologueTimerInterval = null;
+    }
+    if (prologueAutoOpenTimeout) {
+      clearTimeout(prologueAutoOpenTimeout);
+      prologueAutoOpenTimeout = null;
+    }
+  }
+
+  function dismissCurtain() {
+    clearTimers();
+    curtain.classList.add('prologue-hidden');
+    curtain.style.pointerEvents = 'none';
+    document.body.style.overflow = '';
+    sessionStorage.setItem('ssr_prologue_seen', 'true');
+    setTimeout(() => {
+      if (curtain.classList.contains('prologue-hidden')) {
+        curtain.style.display = 'none';
+      }
+    }, 850);
+  }
+
+  function startCountdown() {
+    clearTimers();
+    let secondsLeft = 4;
+    if (timerPill) timerPill.textContent = `(öffnet in ${secondsLeft}s)`;
+    if (progressBar) {
+      progressBar.style.transition = 'none';
+      progressBar.style.width = '0%';
+      void progressBar.offsetWidth; // Force reflow
+      progressBar.style.transition = 'width 4s linear';
+      progressBar.style.width = '100%';
+    }
+
+    prologueTimerInterval = setInterval(() => {
+      secondsLeft--;
+      if (secondsLeft > 0) {
+        if (timerPill) timerPill.textContent = `(öffnet in ${secondsLeft}s)`;
+      } else {
+        if (timerPill) timerPill.textContent = `(wird geöffnet...)`;
+        clearTimers();
+      }
+    }, 1000);
+
+    prologueAutoOpenTimeout = setTimeout(() => {
+      dismissCurtain();
+    }, 4200);
+  }
+
+  function showCurtain() {
+    clearTimers();
+    curtain.style.display = 'flex';
+    void curtain.offsetWidth; // Force reflow
+    curtain.classList.remove('prologue-hidden');
+    curtain.style.pointerEvents = 'auto';
+    document.body.style.overflow = 'hidden';
+    startCountdown();
+  }
+
+  // Check if previously dismissed in session
+  const alreadySeen = sessionStorage.getItem('ssr_prologue_seen');
+  if (alreadySeen === 'true') {
+    curtain.classList.add('prologue-hidden');
+    curtain.style.display = 'none';
+    curtain.style.pointerEvents = 'none';
+    document.body.style.overflow = '';
+  } else {
+    document.body.style.overflow = 'hidden';
+    startCountdown();
+  }
+
+  if (enterBtn) enterBtn.addEventListener('click', dismissCurtain);
+  if (skipBtn) skipBtn.addEventListener('click', dismissCurtain);
+  if (replayBtn) replayBtn.addEventListener('click', showCurtain);
+
+  if (twintBtn) {
+    twintBtn.addEventListener('click', () => {
+      dismissCurtain();
+      if (typeof openMicroDonationModal === 'function') {
+        openMicroDonationModal(1);
+      }
+    });
+  }
+
+  // Dismiss on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !curtain.classList.contains('prologue-hidden')) {
+      dismissCurtain();
+    }
+  });
+}
 
 function initSparkModule() {
   const tierBtns = document.querySelectorAll('.spark-tier-btn');
@@ -168,9 +224,12 @@ function initSparkModule() {
 }
 
 function setSparkLevel(levelNum) {
+  if (typeof SparkLevels === 'undefined' || !Array.isArray(SparkLevels)) return;
   selectedSparkLevel = levelNum;
+  window.selectedSparkLevel = levelNum;
   const config = SparkLevels.find(l => l.level === levelNum) || SparkLevels[0];
-  const curr = typeof DonationState !== 'undefined' ? DonationState.currency : 'CHF';
+  if (!config) return;
+  const curr = (typeof DonationState !== 'undefined' && DonationState.currency) ? DonationState.currency : 'CHF';
 
   currentSparkAmount = typeof convertFromChf === 'function' ? convertFromChf(config.baseChf, curr) : config.baseChf;
   const formatted = typeof formatMoney === 'function' ? formatMoney(currentSparkAmount, curr) : `${curr} ${currentSparkAmount}`;
@@ -204,7 +263,8 @@ function setSparkLevel(levelNum) {
 }
 
 function updateSparkWidgetCurrency() {
-  const curr = typeof DonationState !== 'undefined' ? DonationState.currency : 'CHF';
+  if (typeof SparkLevels === 'undefined' || !Array.isArray(SparkLevels)) return;
+  const curr = (typeof DonationState !== 'undefined' && DonationState.currency) ? DonationState.currency : 'CHF';
   const tierBtns = document.querySelectorAll('.spark-tier-btn');
 
   tierBtns.forEach((btn, idx) => {
@@ -218,7 +278,8 @@ function updateSparkWidgetCurrency() {
     }
   });
 
-  setSparkLevel(selectedSparkLevel);
+  const lvl = (typeof selectedSparkLevel !== 'undefined' && selectedSparkLevel) ? selectedSparkLevel : 1;
+  setSparkLevel(lvl);
 }
 
 window.updateSparkWidgetCurrency = updateSparkWidgetCurrency;

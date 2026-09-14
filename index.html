@@ -21,13 +21,17 @@
        Cinematic Story Prologue Curtain (Swiss First-Impression Entrance)
        ========================================================================== -->
   <div id="story-prologue-curtain" class="story-prologue-curtain" role="dialog" aria-modal="true" aria-label="Unsere Geschichte aus Sindh">
+    <div class="prologue-progress-track">
+      <div class="prologue-progress-bar" id="prologue-progress-bar"></div>
+    </div>
     <div class="prologue-top-bar">
       <div class="prologue-flag-badge">
         <span>🇨🇭</span>
-        <span>Schweizer Hilfsinitiative für Sindh</span>
+        <span class="flag-badge-text-full">Schweizer Hilfsinitiative für Sindh</span>
+        <span class="flag-badge-text-mobile">Sindh-Hilfe</span>
       </div>
       <button type="button" class="prologue-skip-btn" id="prologue-skip-btn">
-        Überspringen & zur Website ›
+        <span>Überspringen</span> <span class="prologue-timer-pill" id="prologue-timer-pill">(öffnet in 4s)</span> ›
       </button>
     </div>
 
@@ -284,7 +288,7 @@
         <div class="custom-amount-wrapper">
           <span class="currency-symbol-input curr-symbol-text">CHF</span>
 
-          <input type="number" id="hero-custom-amount" class="custom-amount-input" placeholder="Or enter custom amount" min="100">
+          <input type="number" id="hero-custom-amount" class="custom-amount-input" placeholder="Freier Betrag (z.B. 100)" min="1">
         </div>
 
         <!-- Dynamic Impact Description -->
